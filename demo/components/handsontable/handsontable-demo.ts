@@ -7,8 +7,59 @@ import {
 
 import {handsontable} from '../../../components/index';
 
+declare var Handsontable:Function;
+
 // webpack html imports
 let template = require('./handsontable-demo.html');
+
+function genData(rows:number = 10):Array<any> {
+  let products:Array<any> = [
+      {
+        description: 'Big Mac',
+        options: [
+          {description: 'Big Mac'},
+          {description: 'Big Mac & Co'},
+          {description: 'McRoyal'},
+          {description: 'Hamburger'},
+          {description: 'Cheeseburger'},
+          {description: 'Double Cheeseburger'}
+        ]
+      },
+      {
+        description: 'Fried Potatoes',
+        options: [
+          {description: 'Fried Potatoes'},
+          {description: 'Fried Onions'}
+        ]
+      }
+    ],
+    firstNames = ['Ted', 'John', 'Macy', 'Rob', 'Gwen', 'Fiona', 'Mario',
+      'Ben', 'Kate', 'Kevin', 'Thomas', 'Frank'],
+    lastNames = ['Tired', 'Johnson', 'Moore', 'Rocket', 'Goodman', 'Farewell',
+      'Manson', 'Bentley', 'Kowalski', 'Schmidt', 'Tucker', 'Fancy'],
+    address = ['Turkey', 'Japan', 'Michigan', 'Russia', 'Greece', 'France', 'USA',
+      'Germany', 'Sweden', 'Denmark', 'Poland', 'Belgium'];
+
+  let items:Array<any> = [];
+
+  for (let i = 0; i < rows; i++) {
+    items.push({
+      id: i + 1,
+      name: {
+        first: firstNames[Math.floor(Math.random() * firstNames.length)],
+        last: lastNames[Math.floor(Math.random() * lastNames.length)]
+      },
+      date: `${Math.max(Math.round(Math.random() * 12), 1)} / ${Math.max(Math.round(Math.random() * 28), 1)} /
+      ${(Math.round(Math.random() * 80) + 1940)}`,
+      address: `${Math.floor(Math.random() * 100000)} ${address[Math.floor(Math.random() * address.length)]}`,
+      price: Math.floor(Math.random() * 100000) / 100,
+      isActive: Math.floor(Math.random() * products.length) / 2 === 0 ? 'Yes' : 'No',
+      product: products[Math.floor(Math.random() * products.length)]
+    });
+  }
+
+  return items;
+}
 
 @Component({
   selector: 'handsontable-demo'
@@ -18,31 +69,7 @@ let template = require('./handsontable-demo.html');
   directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class HandsontableDemo {
-  private data:Array<any> = [
-    {
-      id: 1,
-      name: {
-        first: 'John',
-        last: 'Schmidt'
-      },
-      address: '45024 France',
-      price: 760.41,
-      isActive: 'Yes',
-      product: {
-        description: 'Fried Potatoes',
-        options: [
-          {
-            description: 'Fried Potatoes',
-            image: '//a248.e.akamai.net/assets.github.com/images/icons/emoji/fries.png'
-          },
-          {
-            description: 'Fried Onions',
-            image: '//a248.e.akamai.net/assets.github.com/images/icons/emoji/fries.png'
-          }
-        ]
-      }
-    }
-  ];
+  private data:Array<any> = genData(100);
   private colHeaders:Array<string> = ['ID', 'First Name', 'Last Name', 'Address',
     'Favorite food', 'Price', 'Is active'];
   private columns:Array<any> = [
@@ -71,7 +98,7 @@ export class HandsontableDemo {
       data: 'isActive'
     }
   ];
-  private colWidths:Array<number> = [100, 300, 100, 100, 100, 100, 100];
+  private colWidths:Array<number> = [null, 300, 100, 100, 100, 100, 100];
 
 }
 
