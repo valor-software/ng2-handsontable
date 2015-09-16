@@ -1,0 +1,35 @@
+{
+    "version": "1.5.3",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "listFiles": false,
+        "noLib": false,
+        "noEmitOnError": false,
+        "noImplicitAny": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./components/handsontable/handsontable.ts",
+        "./components/index.ts",
+        "./components/module.ts",
+        "./components/ng2-handsontable-config.ts",
+        "./demo/components/handsontable-section.ts",
+        "./demo/components/handsontable/handsontable-demo.ts",
+        "./demo/index.ts",
+        "./dist/handsontable/handsontable.d.ts",
+        "./dist/index.d.ts",
+        "./dist/module.d.ts",
+        "./tsd.d.ts",
+        "./typings/es6-object.d.ts"
+    ]
+}

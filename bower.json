@@ -1,0 +1,14 @@
+{
+  "name": "ng2-handsontable",
+  "version": "0.0.1",
+  "authors": [
+    "Vyacheslav Chub <vyacheslav.chub@valor-software.com>"
+  ],
+  "description": "ng2-handsontable",
+  "main": "ng2-handsontable",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "handsontable": "~0.18.0"
+  }
+}
