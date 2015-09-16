@@ -57,7 +57,7 @@ export class HotTable {
       colWidths: this.colWidths
     });
 
-    this.inst = new Handsontable(this.view, htOptions);
+    this.inst = Handsontable(this.view, htOptions);
   }
 
   onDestroy() {
