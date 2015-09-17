@@ -1,4 +1,6 @@
 <hot-table [data]="data"
+           (after-change)="afterChange($event)"
+           (after-on-cell-mouse-down)="afterOnCellMouseDown($event)"
            [col-headers]="colHeaders"
            [columns]="columns"
            [col-widths]="colWidths"
