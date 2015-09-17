@@ -36,6 +36,32 @@ export class HotTable {
   constructor(private element:ElementRef) {
   }
 
+  parseAutoComplete(column, dataSet) {
+    let inst = this.inst;
+
+    if (typeof column.source === 'string') {
+      let relatedField:string = column.source;
+      column.source = function (query, process) {
+        let row = inst.getSelected()[0];
+        let data = dataSet[row];
+
+        if (!data) {
+          return;
+        }
+
+        let fieldParts:Array<string> = relatedField.split('.');
+        let o:any = data;
+        for (let i = 0; i < fieldParts.length; i++) {
+          o = o[fieldParts[i]];
+        }
+
+        process(o.map(item => {
+          return !column.optionField ? item : item[column.optionField];
+        }));
+      };
+    }
+  }
+
   onInit() {
     this.view = document.createElement('div');
     this.view.class = 'handsontable-container';
@@ -58,6 +84,10 @@ export class HotTable {
     });
 
     this.inst = Handsontable(this.view, htOptions);
+
+    this.columns.forEach((column) => {
+      this.parseAutoComplete(column, this.data);
+    });
   }
 
   onDestroy() {

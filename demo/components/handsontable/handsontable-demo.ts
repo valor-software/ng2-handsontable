@@ -41,8 +41,21 @@ function genData(rows:number = 10):Array<any> {
       'Germany', 'Sweden', 'Denmark', 'Poland', 'Belgium'];
 
   let items:Array<any> = [];
+  let product:any;
+  let newProduct;
 
   for (let i = 0; i < rows; i++) {
+    // clone expected product
+    product = products[Math.floor(Math.random() * products.length)];
+    newProduct = {
+      description: product.description,
+      options: []
+    };
+    product.options.forEach(function (p) {
+      newProduct.options.push({description: p.description});
+    });
+    /// clone expected product
+
     items.push({
       id: i + 1,
       name: {
@@ -54,7 +67,7 @@ function genData(rows:number = 10):Array<any> {
       address: `${Math.floor(Math.random() * 100000)} ${address[Math.floor(Math.random() * address.length)]}`,
       price: Math.floor(Math.random() * 100000) / 100,
       isActive: Math.floor(Math.random() * products.length) / 2 === 0 ? 'Yes' : 'No',
-      product: products[Math.floor(Math.random() * products.length)]
+      product: newProduct
     });
   }
 
@@ -89,7 +102,12 @@ export class HandsontableDemo {
       data: 'address'
     },
     {
-      data: 'product.description'
+      data: 'product.description',
+      source: 'product.options',
+      optionField: 'description',
+      type: 'autocomplete',
+      strict: false,
+      visibleRows: 4
     },
     {
       data: 'price'
@@ -98,8 +116,7 @@ export class HandsontableDemo {
       data: 'isActive'
     }
   ];
-  private colWidths:Array<number> = [null, 300, 100, 100, 100, 100, 100];
-
+  private colWidths:Array<number> = [null, null, null, null, 100, null, null];
 }
 
 /*<hot-column data="id" title="ID"></hot-column>
