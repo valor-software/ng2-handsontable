@@ -32,6 +32,7 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
     'colHeaders',
     'columns',
     'colWidths',
+    'options',
     'width',
     'height'
   ],
@@ -104,6 +105,7 @@ export class HotTable {
   private colHeaders:Array<string> = [];
   private columns:Array<any> = [];
   private colWidths:Array<number> = [];
+  private options:any = {};
   private width:number;
   private height:number;
 
@@ -159,11 +161,11 @@ export class HotTable {
       colHeaders: this.colHeaders,
       columns: this.columns,
       colWidths: this.colWidths
-    });
+    }, this.options);
 
     this.inst = Handsontable(this.view, htOptions);
 
-    this.columns.forEach((column) => {
+    this.columns.forEach(column => {
       this.parseAutoComplete(column, this.data);
     });
   }

@@ -122,6 +122,13 @@ export class HandsontableDemo {
     }
   ];
   private colWidths:Array<number> = [null, null, null, null, 100, 80, null];
+  private options:any = {
+    stretchH: 'all',
+    columnSorting: true,
+    contextMenu: [
+      'row_above', 'row_below', 'remove_row'
+    ]
+  };
 
   private afterChange(e:any) {
     console.log(e);
