@@ -92,9 +92,7 @@ export class HotTable {
     let htOptions:any = {
       data: this.data,
       width: this.width,
-      height: this.height,
-      stretchH: 'all',
-      columnSorting: true
+      height: this.height
     };
 
     eventNames.forEach(eventName => {
