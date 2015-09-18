@@ -2,7 +2,7 @@
 
 import {Component, View, CORE_DIRECTIVES, NgNonBindable} from 'angular2/angular2';
 
-// import {tabs} from '../../components/index';
+import {tabs} from 'ng2-bootstrap';
 import {HandsontableDemo} from './handsontable/handsontable-demo';
 
 let name = 'Handsontable';
@@ -36,7 +36,7 @@ let html = require('!!prismjs?lang=markup!./handsontable/handsontable-demo.html'
     <br>
 
     <div class="row">
-      <!--<tabset>
+      <tabset>
         <tab heading="Markup">
           <div class="card card-block panel panel-default panel-body">
             <pre class="language-html"><code class="language-html" ng-non-bindable>${html}</code></pre>
@@ -47,19 +47,18 @@ let html = require('!!prismjs?lang=markup!./handsontable/handsontable-demo.html'
             <pre class="language-typescript"><code class="language-typescript" ng-non-bindable>${ts}</code></pre>
           </div>
         </tab>
-      </tabset>-->
+      </tabset>
     </div>
 
     <br>
 
     <div class="row">
       <h2>API</h2>
-      <!--<div class="card card-block panel panel-default panel-body">${doc}</div>-->
+      <div class="card card-block panel panel-default panel-body">${doc}</div>
     </div>
   </section>
   `,
-  // directives: [HandsontableDemo, tabs, CORE_DIRECTIVES, NgNonBindable]
-  directives: [HandsontableDemo, CORE_DIRECTIVES, NgNonBindable]
+  directives: [HandsontableDemo, tabs, CORE_DIRECTIVES, NgNonBindable]
 })
 export class HandsontableSection {
 }

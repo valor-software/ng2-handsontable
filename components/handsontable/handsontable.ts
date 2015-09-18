@@ -48,8 +48,6 @@ export class HotTable {
   private columns:Array<any> = [];
   private colWidths:Array<number> = [];
   private options:any = {};
-  private width:number;
-  private height:number;
 
   constructor(private element:ElementRef) {
     // fill events dynamically
@@ -90,9 +88,7 @@ export class HotTable {
     this.element.nativeElement.appendChild(this.view);
 
     let htOptions:any = {
-      data: this.data,
-      width: this.width,
-      height: this.height
+      data: this.data
     };
 
     eventNames.forEach(eventName => {
