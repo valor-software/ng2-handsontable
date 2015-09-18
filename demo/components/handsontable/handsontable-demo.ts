@@ -82,7 +82,7 @@ function genData(rows:number = 10):Array<any> {
   directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class HandsontableDemo {
-  private data:Array<any> = genData(100);
+  private data:Array<any> = genData(10);
   private colHeaders:Array<string> = ['ID', 'First Name', 'Last Name', 'Address',
     'Favorite food', 'Price', 'Is active'];
   private columns:Array<any> = [
