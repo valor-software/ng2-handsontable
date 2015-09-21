@@ -16,6 +16,7 @@ npm-debug.log
 
 /demo/**/*.js
 /demo/**/*.js.map
+!/demo/external/**/*.js
 /components/**/*.js
 /components/**/*.js.map
 

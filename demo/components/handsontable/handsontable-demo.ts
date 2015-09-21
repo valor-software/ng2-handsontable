@@ -60,7 +60,7 @@ export class HandsontableDemo {
       uncheckedTemplate: 'No'
     }
   ];
-  private colWidths:Array<number> = [null, null, null, null, 100, 80, null];
+  private colWidths:Array<number> = [null, null, null, null, null, null, 30];
   private options:any = {
     stretchH: 'all',
     columnSorting: true,

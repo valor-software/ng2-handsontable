@@ -5,6 +5,7 @@ import {Component, View, CORE_DIRECTIVES, NgNonBindable} from 'angular2/angular2
 import {tabs} from 'ng2-bootstrap';
 import {HandsontableDemo} from './handsontable/handsontable-demo';
 import {SheetDemo} from './handsontable/sheet-demo';
+import {PersonalDemo} from './handsontable/personal-demo';
 
 let name = 'Handsontable';
 let src = 'https://github.com/valor-software/ng2-handsontable/blob/master/components/handsontable/handsontable.ts';
@@ -14,9 +15,10 @@ let titleDoc = require('../../components/handsontable/title.md');
 
 let tsBasic = require('!!prismjs?lang=typescript!./handsontable/handsontable-demo.ts');
 let htmlBasic = require('!!prismjs?lang=markup!./handsontable/handsontable-demo.html');
-
 let tsSheet = require('!!prismjs?lang=typescript!./handsontable/sheet-demo.ts');
 let htmlSheet = require('!!prismjs?lang=markup!./handsontable/sheet-demo.html');
+let tsPersonal = require('!!prismjs?lang=typescript!./handsontable/personal-demo.ts');
+let htmlPersonal = require('!!prismjs?lang=markup!./handsontable/personal-demo.html');
 
 @Component({
   selector: 'handsontable-section'
@@ -84,6 +86,31 @@ let htmlSheet = require('!!prismjs?lang=markup!./handsontable/sheet-demo.html');
           </div>
         </tab>
 
+        <tab heading="Personal" (select)="select($event)">
+          <div class="card card-block panel panel-default panel-body">
+
+
+            <personal-demo *ng-if="currentHeading === 'Personal'"></personal-demo>
+
+            <br>
+
+            <div class="row">
+              <tabset>
+                <tab heading="Markup">
+                  <div class="card card-block panel panel-default panel-body">
+                    <pre class="language-html"><code class="language-html" ng-non-bindable>${htmlPersonal}</code></pre>
+                  </div>
+                </tab>
+                <tab heading="TypeScript">
+                  <div class="card card-block panel panel-default panel-body">
+                    <pre class="language-typescript"><code class="language-typescript" ng-non-bindable>${tsPersonal}</code></pre>
+                  </div>
+                </tab>
+              </tabset>
+            </div>
+          </div>
+        </tab>
+
       </tabset>
     </div>
 
@@ -97,7 +124,7 @@ let htmlSheet = require('!!prismjs?lang=markup!./handsontable/sheet-demo.html');
     </div>
   </section>
   `,
-  directives: [HandsontableDemo, SheetDemo, tabs, CORE_DIRECTIVES, NgNonBindable]
+  directives: [HandsontableDemo, SheetDemo, PersonalDemo, tabs, CORE_DIRECTIVES, NgNonBindable]
 })
 export class HandsontableSection {
   private currentHeading:string = 'Basic';

@@ -99,7 +99,12 @@ export class HotTable {
       Object.assign(htOptions, {
         colHeaders: this.colHeaders
       });
+    }
 
+    if (this.colWidths) {
+      Object.assign(htOptions, {
+        colWidths: this.colWidths
+      });
     }
 
     if (this.columns) {

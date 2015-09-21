@@ -9,6 +9,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "handsontable": "~0.18.0"
+    "handsontable": "~0.18.0",
+    "ruleJS": "~0.0.5"
   }
 }
