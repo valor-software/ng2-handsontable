@@ -28,6 +28,7 @@
     "./demo/components/handsontable/advanced-demo.ts",
     "./demo/components/handsontable/sheet-demo.ts",
     "./demo/components/handsontable/personal-demo.ts",
+    "./demo/components/handsontable/finance-demo.ts",
     "./demo/components/handsontable/science-demo.ts",
     "./demo/components/handsontable/sport-demo.ts",
     "./demo/index.ts",
