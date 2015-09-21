@@ -32,9 +32,7 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
     'colHeaders',
     'columns',
     'colWidths',
-    'options',
-    'width',
-    'height'
+    'options'
   ],
   events: eventNames,
   lifecycle: [LifecycleEvent.onInit, LifecycleEvent.onDestroy]
@@ -44,10 +42,10 @@ export class HotTable {
   private view:any;
 
   private data:Array<any> = [];
-  private colHeaders:Array<string> = [];
-  private columns:Array<any> = [];
-  private colWidths:Array<number> = [];
-  private options:any = {};
+  private colHeaders:Array<string>;
+  private columns:Array<any>;
+  private colWidths:Array<number>;
+  private options:any;
 
   constructor(private element:ElementRef) {
     // fill events dynamically
@@ -97,17 +95,30 @@ export class HotTable {
       };
     });
 
-    Object.assign(htOptions, {
-      colHeaders: this.colHeaders,
-      columns: this.columns,
-      colWidths: this.colWidths
-    }, this.options);
+    if (this.colHeaders) {
+      Object.assign(htOptions, {
+        colHeaders: this.colHeaders
+      });
+
+    }
+
+    if (this.columns) {
+      Object.assign(htOptions, {
+        columns: this.columns
+      });
+    }
+
+    if (this.options) {
+      Object.assign(htOptions, this.options);
+    }
 
     this.inst = Handsontable(this.view, htOptions);
 
-    this.columns.forEach(column => {
-      this.parseAutoComplete(column, this.data);
-    });
+    if (this.columns && this.columns.length) {
+      this.columns.forEach(column => {
+        this.parseAutoComplete(column, this.data);
+      });
+    }
   }
 
   onDestroy() {

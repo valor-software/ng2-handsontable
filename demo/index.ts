@@ -25,7 +25,7 @@ let gettingStarted = require('./getting-started.md');
   <main class="bd-pageheader">
     <div class="container">
       <h1>ng2-handsontable</h1>
-      <p>Native Angular2 directives for Handsontable</p>
+      <p>Native Angular2 directive for Handsontable</p>
       <a class="btn btn-primary" href="https://github.com/valor-software/ng2-handsontable">View on GitHub</a>
       <div class="row">
         <!--<div class="col-lg-1"><iframe src="https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-bootstrap&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></div>
@@ -35,15 +35,6 @@ let gettingStarted = require('./getting-started.md');
   </main>
 
   <div class="container">
-    <div class="col-md-12 card card-block panel panel-default">
-      <selection>
-          <h1>ng2-handsontable available with:
-          <a class="btn btn-default btn-secondary btn-lg" [ng-class]="{active: isBs3}" href="./">Bootstrap 3</a>
-          <a class="btn btn-default btn-secondary btn-lg" [ng-class]="{active: !isBs3}" href="./index-bs4.html">Bootstrap 4</a>
-          </h1>
-      </selection>
-    </div>
-    <br>
     <section id="getting-started">${gettingStarted}</section>
 
     <handsontable-section class="col-md-12"></handsontable-section>

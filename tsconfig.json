@@ -25,6 +25,7 @@
         "./components/ng2-handsontable-config.ts",
         "./demo/components/handsontable-section.ts",
         "./demo/components/handsontable/handsontable-demo.ts",
+        "./demo/components/handsontable/sheet-demo.ts",
         "./demo/index.ts",
         "./dist/handsontable/handsontable.d.ts",
         "./dist/index.d.ts",
