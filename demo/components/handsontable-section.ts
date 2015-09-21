@@ -44,7 +44,7 @@ let htmlPersonal = require('!!prismjs?lang=markup!./handsontable/personal-demo.h
 
             <br>
 
-            <div class="row">
+            <div class="row" style="margin: 0px;">
               <tabset>
                 <tab heading="Markup">
                   <div class="card card-block panel panel-default panel-body">
@@ -69,7 +69,7 @@ let htmlPersonal = require('!!prismjs?lang=markup!./handsontable/personal-demo.h
 
             <br>
 
-            <div class="row">
+            <div class="row" style="margin: 0px;">
               <tabset>
                 <tab heading="Markup">
                   <div class="card card-block panel panel-default panel-body">
@@ -94,7 +94,7 @@ let htmlPersonal = require('!!prismjs?lang=markup!./handsontable/personal-demo.h
 
             <br>
 
-            <div class="row">
+            <div class="row" style="margin: 0px;">
               <tabset>
                 <tab heading="Markup">
                   <div class="card card-block panel panel-default panel-body">
@@ -113,8 +113,6 @@ let htmlPersonal = require('!!prismjs?lang=markup!./handsontable/personal-demo.h
 
       </tabset>
     </div>
-
-
 
     <br>
 
