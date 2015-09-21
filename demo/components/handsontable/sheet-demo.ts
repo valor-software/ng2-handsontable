@@ -6,7 +6,6 @@ import {
 } from 'angular2/angular2';
 
 import {handsontable} from '../../../components/index';
-import {genData} from './data';
 
 declare var Handsontable:any;
 
@@ -22,16 +21,17 @@ let template = require('./sheet-demo.html');
 })
 export class SheetDemo {
   private data:Array<any>;
-  private options:any = {
-    height: 396,
-    colHeaders: true,
-    rowHeaders: true,
-    stretchH: 'all',
-    columnSorting: true,
-    contextMenu: true
-  };
+  private options:any;
 
   constructor() {
     this.data = Handsontable.helper.createSpreadsheetData(100, 12);
+    this.options = {
+      height: 396,
+      colHeaders: true,
+      rowHeaders: true,
+      stretchH: 'all',
+      columnSorting: true,
+      contextMenu: true
+    };
   }
 }

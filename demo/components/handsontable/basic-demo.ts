@@ -11,16 +11,16 @@ import {genData} from './data';
 declare var Handsontable:Function;
 
 // webpack html imports
-let template = require('./handsontable-demo.html');
+let template = require('./basic-demo.html');
 
 @Component({
-  selector: 'handsontable-demo'
+  selector: 'basic-demo'
 })
 @View({
   template: template,
   directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
-export class HandsontableDemo {
+export class BasicDemo {
   private data:Array<any> = genData(10);
   private colHeaders:Array<string> = ['ID', 'First Name', 'Last Name', 'Address',
     'Favorite food', 'Price', 'Is active'];
