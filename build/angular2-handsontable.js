@@ -3,25 +3,25 @@ webpackJsonp([2],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(45);
+	module.exports = __webpack_require__(13);
 
 
 /***/ },
 
-/***/ 45:
+/***/ 13:
 /***/ function(module, exports, __webpack_require__) {
 
 	///<reference path="../tsd.d.ts"/>
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(80));
-	__export(__webpack_require__(81));
+	__export(__webpack_require__(84));
+	__export(__webpack_require__(85));
 	//# sourceMappingURL=index.js.map
 
 /***/ },
 
-/***/ 80:
+/***/ 84:
 /***/ function(module, exports, __webpack_require__) {
 
 	/// <reference path="../../tsd.d.ts" />
@@ -56,10 +56,6 @@ webpackJsonp([2],{
 	        var _this = this;
 	        this.element = element;
 	        this.data = [];
-	        this.colHeaders = [];
-	        this.columns = [];
-	        this.colWidths = [];
-	        this.options = {};
 	        eventNames.forEach(function (eventName) {
 	            _this[eventName] = new angular2_1.EventEmitter();
 	        });
@@ -98,15 +94,25 @@ webpackJsonp([2],{
 	                _this[eventName].next(data);
 	            };
 	        });
-	        Object.assign(htOptions, {
-	            colHeaders: this.colHeaders,
-	            columns: this.columns,
-	            colWidths: this.colWidths
-	        }, this.options);
-	        this.inst = Handsontable(this.view, htOptions);
-	        this.columns.forEach(function (column) {
-	            _this.parseAutoComplete(column, _this.data);
+	        var additionalFields = ['colHeaders', 'colWidths', 'columns'];
+	        additionalFields.forEach(function (field) {
+	            if (_this[field]) {
+	                Object.assign(htOptions, (_a = {},
+	                    _a[field] = _this[field],
+	                    _a
+	                ));
+	            }
+	            var _a;
 	        });
+	        if (this.options) {
+	            Object.assign(htOptions, this.options);
+	        }
+	        this.inst = Handsontable(this.view, htOptions);
+	        if (this.columns && this.columns.length) {
+	            this.columns.forEach(function (column) {
+	                _this.parseAutoComplete(column, _this.data);
+	            });
+	        }
 	    };
 	    HotTable.prototype.onDestroy = function () {
 	        if (this.view) {
@@ -121,12 +127,9 @@ webpackJsonp([2],{
 	                'colHeaders',
 	                'columns',
 	                'colWidths',
-	                'options',
-	                'width',
-	                'height'
+	                'options'
 	            ],
-	            events: eventNames,
-	            lifecycle: [angular2_1.LifecycleEvent.onInit, angular2_1.LifecycleEvent.onDestroy]
+	            events: eventNames
 	        }), 
 	        __metadata('design:paramtypes', [angular2_1.ElementRef])
 	    ], HotTable);
@@ -138,7 +141,7 @@ webpackJsonp([2],{
 
 /***/ },
 
-/***/ 81:
+/***/ 85:
 /***/ function(module, exports) {
 
 	(function (Ng2HandsontableTheme) {
