@@ -6,6 +6,7 @@ import {tabs} from 'ng2-bootstrap';
 import {BasicDemo} from './handsontable/basic-demo';
 import {SheetDemo} from './handsontable/sheet-demo';
 import {PersonalDemo} from './handsontable/personal-demo';
+import {FinanceDemo} from './handsontable/finance-demo';
 import {ScienceDemo} from './handsontable/science-demo';
 import {SportDemo} from './handsontable/sport-demo';
 import {AdvancedDemo} from './handsontable/advanced-demo';
@@ -22,6 +23,8 @@ let tsSheet = require('!!prismjs?lang=typescript!./handsontable/sheet-demo.ts');
 let htmlSheet = require('!!prismjs?lang=markup!./handsontable/sheet-demo.html');
 let tsPersonal = require('!!prismjs?lang=typescript!./handsontable/personal-demo.ts');
 let htmlPersonal = require('!!prismjs?lang=markup!./handsontable/personal-demo.html');
+let tsFinance = require('!!prismjs?lang=typescript!./handsontable/finance-demo.ts');
+let htmlFinance = require('!!prismjs?lang=markup!./handsontable/finance-demo.html');
 let tsScience = require('!!prismjs?lang=typescript!./handsontable/science-demo.ts');
 let htmlScience = require('!!prismjs?lang=markup!./handsontable/science-demo.html');
 let tsSport = require('!!prismjs?lang=typescript!./handsontable/sport-demo.ts');
@@ -155,6 +158,33 @@ let dataLink = `<p>All data completes that used in these examples are available 
           </div>
         </tab>
 
+        <tab heading="Finance" (select)="select($event)">
+          <div class="card card-block panel panel-default panel-body">
+
+            <finance-demo *ng-if="currentHeading === 'Finance'"></finance-demo>
+
+            <br>
+
+            <div class="row" style="margin: 0px;">
+              <tabset>
+                <tab heading="Markup">
+                  <div class="card card-block panel panel-default panel-body">
+                    <pre class="language-html"><code class="language-html" ng-non-bindable>${htmlFinance}</code></pre>
+                  </div>
+                </tab>
+                <tab heading="TypeScript">
+                  <div class="card card-block panel panel-default panel-body">
+                    <pre class="language-typescript"><code class="language-typescript" ng-non-bindable>${tsFinance}</code></pre>
+                  </div>
+                </tab>
+              </tabset>
+
+              ${dataLink}<br>
+              Source of data: <a href="https://www.quandl.com/c/markets/bitcoin-data" target="_blank">https://www.quandl.com/c/markets/bitcoin-data</a>
+            </div>
+          </div>
+        </tab>
+
         <tab heading="Science" (select)="select($event)">
           <div class="card card-block panel panel-default panel-body">
 
@@ -217,7 +247,7 @@ let dataLink = `<p>All data completes that used in these examples are available 
     </div>
   </section>
   `,
-  directives: [BasicDemo, AdvancedDemo, SheetDemo, PersonalDemo, ScienceDemo, SportDemo,
+  directives: [BasicDemo, AdvancedDemo, SheetDemo, PersonalDemo, FinanceDemo, ScienceDemo, SportDemo,
     tabs, CORE_DIRECTIVES, NgNonBindable]
 })
 export class HandsontableSection {

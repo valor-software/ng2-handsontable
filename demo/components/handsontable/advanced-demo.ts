@@ -27,25 +27,9 @@ function percentRenderer(instance, td, row, col, prop, value, cellProperties) {
 })
 export class AdvancedDemo {
   private data:Array<any>;
-  private colHeaders:Array<string> = ['Country', 'Level', 'Units', 'As Of', '1Y Chg', '5Y Ago', '10Y Ago', '25Y Ago'];
-  private columns:Array<any> = [
-    {data: 0, type: 'text'},
-    {data: 1, type: 'numeric', format: '0,0.00[0000]'},
-    {data: 2, type: 'text'},
-    {data: 3, type: 'numeric', format: '0'},
-    {data: 4, type: 'numeric', format: '0.00%', renderer: percentRenderer},
-    {data: 5, type: 'numeric', format: '0,0.00[0000]'},
-    {data: 6, type: 'numeric', format: '0,0.00[0000]'}
-  ];
-  private options:any = {
-    height: 396,
-    rowHeaders: true,
-    stretchH: 'all',
-    columnSorting: true,
-    contextMenu: true,
-    className: 'htCenter htMiddle',
-    readOnly: true
-  };
+  private colHeaders:Array<string>;
+  private columns:Array<any>;
+  private options:any;
 
   constructor() {
     this.data = getAdvancedData();
