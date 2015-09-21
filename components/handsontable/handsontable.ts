@@ -95,23 +95,14 @@ export class HotTable {
       };
     });
 
-    if (this.colHeaders) {
-      Object.assign(htOptions, {
-        colHeaders: this.colHeaders
-      });
-    }
-
-    if (this.colWidths) {
-      Object.assign(htOptions, {
-        colWidths: this.colWidths
-      });
-    }
-
-    if (this.columns) {
-      Object.assign(htOptions, {
-        columns: this.columns
-      });
-    }
+    let additionalFields:Array<string> = ['colHeaders', 'colWidths', 'columns'];
+    additionalFields.forEach(field => {
+      if (this[field]) {
+        Object.assign(htOptions, {
+          [field]: this[field]
+        });
+      }
+    });
 
     if (this.options) {
       Object.assign(htOptions, this.options);
