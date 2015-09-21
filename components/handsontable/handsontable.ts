@@ -1,7 +1,7 @@
 /// <reference path="../../tsd.d.ts" />
 
 import {
-  Component, View,
+  Component, View, onInit, onDestroy,
   Directive, LifecycleEvent,
   EventEmitter, ElementRef,
   CORE_DIRECTIVES, NgClass
@@ -34,8 +34,7 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
     'colWidths',
     'options'
   ],
-  events: eventNames,
-  lifecycle: [LifecycleEvent.onInit, LifecycleEvent.onDestroy]
+  events: eventNames
 })
 export class HotTable {
   private inst:any;
