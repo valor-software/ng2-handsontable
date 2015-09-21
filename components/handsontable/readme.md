@@ -35,3 +35,7 @@ All names of the events are same as native (in original solution).
 See 'Events' in [http://docs.handsontable.com/Hooks.html](http://docs.handsontable.com/Hooks.html).
 
 Parameter of these events is same for all of these events - the arguments from original event.
+
+### HotTable options
+
+All Handsontable [http://docs.handsontable.com/Options.html](options) described in documentation should be supported.

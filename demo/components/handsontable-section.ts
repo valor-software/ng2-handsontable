@@ -29,20 +29,23 @@ let htmlSport = require('!!prismjs?lang=markup!./handsontable/sport-demo.html');
 let tsAdvanced = require('!!prismjs?lang=typescript!./handsontable/advanced-demo.ts');
 let htmlAdvanced = require('!!prismjs?lang=markup!./handsontable/advanced-demo.html');
 
+let dataLink = `<p>All data completes that used in these examples are available in
+  <a href="https://github.com/valor-software/ng2-handsontable/blob/master/demo/components/handsontable/data.ts">next file</a>.</p>`;
+
 @Component({
   selector: 'handsontable-section'
 })
 @View({
   template: `
-  <br>
+  <!--<br>-->
   <section id="${name.toLowerCase()}">
-    <div class="row"><h1>${name}<small>(<a href="${src}">src</a>)</small></h1></div>
+    <!--<div class="row"><h1>${name}<small>(<a href="${src}">src</a>)</small></h1></div>
 
     <hr>
 
-    <!--<div class="row"><div class="col-md-12">${titleDoc}</div></div>-->
+    <div class="row"><div class="col-md-12">${titleDoc}</div></div>
 
-    <h2>Examples</h2>
+    <h2>Examples</h2>-->
 
     <div class="row">
       <tabset>
@@ -67,6 +70,8 @@ let htmlAdvanced = require('!!prismjs?lang=markup!./handsontable/advanced-demo.h
                   </div>
                 </tab>
               </tabset>
+
+              ${dataLink}
             </div>
           </div>
         </tab>
@@ -91,6 +96,9 @@ let htmlAdvanced = require('!!prismjs?lang=markup!./handsontable/advanced-demo.h
                   </div>
                 </tab>
               </tabset>
+
+              ${dataLink}<br>
+              Source of data: <a href="https://www.quandl.com/c/demography/total-population-by-country" target="_blank">https://www.quandl.com/c/demography/total-population-by-country</a>
             </div>
           </div>
         </tab>
@@ -115,6 +123,8 @@ let htmlAdvanced = require('!!prismjs?lang=markup!./handsontable/advanced-demo.h
                   </div>
                 </tab>
               </tabset>
+
+              ${dataLink}
             </div>
           </div>
         </tab>
@@ -139,6 +149,8 @@ let htmlAdvanced = require('!!prismjs?lang=markup!./handsontable/advanced-demo.h
                   </div>
                 </tab>
               </tabset>
+
+              ${dataLink}
             </div>
           </div>
         </tab>
@@ -163,6 +175,9 @@ let htmlAdvanced = require('!!prismjs?lang=markup!./handsontable/advanced-demo.h
                   </div>
                 </tab>
               </tabset>
+
+              ${dataLink}<br>
+              Source of data: <a href="https://plot.ly/~JStevens/0/an-age-distribution-for-scientific-genius" target="_blank">https://plot.ly/~JStevens/0/an-age-distribution-for-scientific-genius</a>
             </div>
           </div>
         </tab>
@@ -187,13 +202,14 @@ let htmlAdvanced = require('!!prismjs?lang=markup!./handsontable/advanced-demo.h
                   </div>
                 </tab>
               </tabset>
+
+              ${dataLink}<br>
+              Source of data: <a href="http://www.forbes.com/nba-valuations/list" target="_blank">http://www.forbes.com/nba-valuations/list</a>
             </div>
           </div>
         </tab>
       </tabset>
     </div>
-
-    <br>
 
     <div class="row">
       <h2>API</h2>
