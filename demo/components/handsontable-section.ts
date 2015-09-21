@@ -7,6 +7,7 @@ import {HandsontableDemo} from './handsontable/handsontable-demo';
 import {SheetDemo} from './handsontable/sheet-demo';
 import {PersonalDemo} from './handsontable/personal-demo';
 import {ScienceDemo} from './handsontable/science-demo';
+import {SportDemo} from './handsontable/sport-demo';
 
 let name = 'Handsontable';
 let src = 'https://github.com/valor-software/ng2-handsontable/blob/master/components/handsontable/handsontable.ts';
@@ -22,7 +23,8 @@ let tsPersonal = require('!!prismjs?lang=typescript!./handsontable/personal-demo
 let htmlPersonal = require('!!prismjs?lang=markup!./handsontable/personal-demo.html');
 let tsScience = require('!!prismjs?lang=typescript!./handsontable/science-demo.ts');
 let htmlScience = require('!!prismjs?lang=markup!./handsontable/science-demo.html');
-
+let tsSport = require('!!prismjs?lang=typescript!./handsontable/sport-demo.ts');
+let htmlSport = require('!!prismjs?lang=markup!./handsontable/sport-demo.html');
 
 @Component({
   selector: 'handsontable-section'
@@ -140,6 +142,31 @@ let htmlScience = require('!!prismjs?lang=markup!./handsontable/science-demo.htm
           </div>
         </tab>
 
+        <tab heading="Sport" (select)="select($event)">
+          <div class="card card-block panel panel-default panel-body">
+
+
+            <sport-demo *ng-if="currentHeading === 'Sport'"></sport-demo>
+
+            <br>
+
+            <div class="row" style="margin: 0px;">
+              <tabset>
+                <tab heading="Markup">
+                  <div class="card card-block panel panel-default panel-body">
+                    <pre class="language-html"><code class="language-html" ng-non-bindable>${htmlSport}</code></pre>
+                  </div>
+                </tab>
+                <tab heading="TypeScript">
+                  <div class="card card-block panel panel-default panel-body">
+                    <pre class="language-typescript"><code class="language-typescript" ng-non-bindable>${tsSport}</code></pre>
+                  </div>
+                </tab>
+              </tabset>
+            </div>
+          </div>
+        </tab>
+
       </tabset>
     </div>
 
@@ -151,7 +178,7 @@ let htmlScience = require('!!prismjs?lang=markup!./handsontable/science-demo.htm
     </div>
   </section>
   `,
-  directives: [HandsontableDemo, SheetDemo, PersonalDemo, ScienceDemo, tabs, CORE_DIRECTIVES, NgNonBindable]
+  directives: [HandsontableDemo, SheetDemo, PersonalDemo, ScienceDemo, SportDemo, tabs, CORE_DIRECTIVES, NgNonBindable]
 })
 export class HandsontableSection {
   private currentHeading:string = 'Basic';
