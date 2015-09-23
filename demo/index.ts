@@ -11,16 +11,14 @@ let gettingStarted = require('./getting-started.md');
 })
 @View({
   template: `
-  <!--<demo-header>Loading header</demo-header>-->
-
   <main class="bd-pageheader">
     <div class="container">
       <h1>ng2-handsontable</h1>
       <p>The Angular2 directive for <a href="https://github.com/handsontable/handsontable" target="_blank">Handsontable</a></p>
-      <a class="btn btn-primary" href="https://github.com/valor-software/ng2-handsontable">View on GitHub</a>
       <div class="row">
-        <!--<div class="col-lg-1"><iframe src="https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-bootstrap&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></div>
-        <div class="col-lg-1"><iframe src="https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-bootstrap&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></div>-->
+        <div class="col-lg-2"><a class="btn btn-primary" href="https://github.com/valor-software/ng2-handsontable">View on GitHub</a></div>
+        <div class="col-lg-1 btn"><iframe src="https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-handsontable&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></div>
+        <div class="col-lg-1 btn"><iframe src="https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-handsontable&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe></div>
       </div>
     </div>
   </main>
