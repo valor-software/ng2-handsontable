@@ -9,17 +9,23 @@ Native Angular2 directive for [Handsontable](https://github.com/handsontable/han
 ## Quick start
 
 1. A recommended way to install ***ng2-handsontable*** is through [npm](https://www.npmjs.com/search?q=ng2-handsontable) package manager using the following command:
+
   `npm i ng2-handsontable --save`
+
   Alternatively, you can [download it in a ZIP file](https://github.com/valor-software/ng2-handsontable/archive/master.zip).
 2. A recommended way to install Handsontable component is through [Bower](http://bower.io/search/?q=handsontable) package manager using the following command:
+
   `bower install handsontable --save`
+
   Alternatively, you can [download it in a ZIP file](https://github.com/handsontable/handsontable/archive/master.zip).
 3. After Handsontable component is downloaded, embed the code into your project.
+
   ```html
   <script src="bower_components/handsontable/dist/handsontable.full.js"></script>
   <link rel="stylesheet" media="screen" href="bower_components/handsontable/dist/handsontable.full.css">
   ```
-4. More information regarding using of ***ng2-handsontable*** is located in 
+
+4. More information regarding using of ***ng2-handsontable*** is located in
   [demo](http://valor-software.github.io/ng2-handsontable/) and [demo sources](https://github.com/valor-software/ng2-handsontable/tree/master/demo).
 
 ## API
