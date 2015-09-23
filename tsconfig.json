@@ -22,20 +22,7 @@
     "./components/handsontable/handsontable.ts",
     "./components/index.ts",
     "./components/module.ts",
-    "./components/ng2-handsontable-config.ts",
-    "./demo/components/handsontable-section.ts",
-    "./demo/components/handsontable/basic-demo.ts",
-    "./demo/components/handsontable/advanced-demo.ts",
-    "./demo/components/handsontable/sheet-demo.ts",
-    "./demo/components/handsontable/personal-demo.ts",
-    "./demo/components/handsontable/finance-demo.ts",
-    "./demo/components/handsontable/science-demo.ts",
-    "./demo/components/handsontable/sport-demo.ts",
-    "./demo/index.ts",
-    "./dist/handsontable/handsontable.d.ts",
-    "./dist/index.d.ts",
-    "./dist/module.d.ts",
-    "./tsd.d.ts",
-    "./typings/es6-object.d.ts"
+
+    "./typings/tsd.d.ts"
   ]
 }

@@ -1,14 +1,6 @@
 /// <reference path="../tsd.d.ts" />
 import {Component, View, bootstrap, NgClass} from 'angular2/angular2';
 
-import {Ng2HandsontableConfig, Ng2HandsontableTheme} from '../components/index';
-
-let w:any = window;
-if (w && w.__theme === 'bs4') {
-  Ng2HandsontableConfig.theme = Ng2HandsontableTheme.BS4;
-}
-
-
 import {HandsontableSection} from './components/handsontable-section';
 // import {DemoHeader} from './components/demo-header';
 
@@ -47,12 +39,10 @@ let gettingStarted = require('./getting-started.md');
   `,
   directives: [
     NgClass,
-    // DemoHeader,
     HandsontableSection
   ]
 })
 export class Demo {
-  private isBs3:boolean = Ng2HandsontableConfig.theme === Ng2HandsontableTheme.BS3;
 }
 
 bootstrap(Demo);

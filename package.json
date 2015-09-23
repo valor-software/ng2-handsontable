@@ -1,11 +1,11 @@
 {
   "name": "ng2-handsontable",
-  "version": "0.0.1",
+  "version": "0.37.0",
   "description": "angular2 handsontable components",
   "scripts": {
     "deploy": "NODE_ENV=production webpack -p --progress --color --optimize-minimize --optimize-dedupe --optimize-occurence-order",
     "prepublish": "gulp compile",
-    "prestart": "npm install",
+    "prestart": "npm install & bower install",
     "server": "webpack-dev-server --hot --inline --colors --display-error-details --display-cached",
     "start": "npm run server",
     "test": "gulp lint"

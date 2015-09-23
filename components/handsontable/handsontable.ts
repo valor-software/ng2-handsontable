@@ -1,12 +1,6 @@
-/// <reference path="../../tsd.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
-import {
-  Component, View, onInit, onDestroy,
-  Directive, LifecycleEvent,
-  EventEmitter, ElementRef,
-  CORE_DIRECTIVES, NgClass
-} from 'angular2/angular2';
-import ClassDefinition = ng.ClassDefinition;
+import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/angular2';
 
 declare var Handsontable:Function;
 
@@ -36,7 +30,7 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
   ],
   events: eventNames
 })
-export class HotTable {
+export class HotTable implements OnInit, OnDestroy{
   private inst:any;
   private view:any;
 
