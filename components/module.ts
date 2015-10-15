@@ -1,3 +1,3 @@
 declare module 'ng2-handsontable' {
-  export * from 'index';
+  export = require('index');
 }

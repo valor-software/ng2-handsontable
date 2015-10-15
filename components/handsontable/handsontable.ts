@@ -30,7 +30,7 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
   ],
   events: eventNames
 })
-export class HotTable implements OnInit, OnDestroy{
+export class HotTable implements OnInit, OnDestroy {
   private inst:any;
   private view:any;
 

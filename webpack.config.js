@@ -28,10 +28,16 @@ var absDest = path.join(__dirname, dest);
 var config = {
   // isProduction ? 'source-map' : 'evale',
   devtool: 'source-map',
-
   debug: true,
-  cache: false,
+  cache: true,
+
+  verbose: true,
+  displayErrorDetails: true,
   context: __dirname,
+  stats: {
+    colors: true,
+    reasons: true
+  },
 
   resolve: {
     root: __dirname,
@@ -42,11 +48,10 @@ var config = {
   entry: {
     angular2: [
       // Angular 2 Deps
-      'traceur-runtime',
       'zone.js',
       'reflect-metadata',
-      'rtts_assert/rtts_assert',
-      'angular2/angular2'
+      'angular2/angular2',
+      'angular2/core'
     ],
     'angular2-handsontable': ['components'],
     'angular2-handsontable-demo': 'demo'
@@ -67,6 +72,7 @@ var config = {
     contentBase: src,
     publicPath: dest
   },
+
   markdownLoader: {
     langPrefix: 'language-',
     highlight: function (code, lang) {
@@ -98,8 +104,21 @@ var config = {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loader: 'typescript-simple',
+        loader: 'ts',
+        query: {
+          ignoreDiagnostics: [
+            // TS2305 -> Module 'ng' has no exported member
+            2305,
+            // TS2307 ->  Cannot find external module
+            2307,
+            // TS2300 -> Duplicate identifier
+            2300,
+            // TS2309 -> An export assignment cannot be used in a module with other exported elements.
+            2309
+          ]
+        },
         exclude: [
+          /\.min\.js$/,
           /\.spec\.ts$/,
           /\.e2e\.ts$/,
           /web_modules/,
@@ -109,7 +128,8 @@ var config = {
       }
     ],
     noParse: [
-      /rtts_assert\/src\/rtts_assert/
+      /rtts_assert\/src\/rtts_assert/,
+      /reflect-metadata/
     ]
   },
 
@@ -151,9 +171,7 @@ var config = {
         minRatio: 0.8
       })
     ]);
-  },
-
-  stats: {colors: true, reasons: true}
+  }
 };
 
 config.pushPlugins();
