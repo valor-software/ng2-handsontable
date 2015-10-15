@@ -1,2 +1,144 @@
-webpackJsonp([2],{0:function(t,e,n){t.exports=n(14)},14:function(t,e,n){function r(t){for(var n in t)e.hasOwnProperty(n)||(e[n]=t[n])}r(n(84))},84:function(t,e,n){var r=this&&this.__decorate||function(t,e,n,r){if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)return Reflect.decorate(t,e,n,r);switch(arguments.length){case 2:return t.reduceRight(function(t,e){return e&&e(t)||t},e);case 3:return t.reduceRight(function(t,r){return void(r&&r(e,n))},void 0);case 4:return t.reduceRight(function(t,r){return r&&r(e,n,t)||t},r)}},i=this&&this.__metadata||function(t,e){return"object"==typeof Reflect&&"function"==typeof Reflect.metadata?Reflect.metadata(t,e):void 0},s=n(5),o=["afterCellMetaReset","afterChange","afterCreateCol","afterCreateRow","afterDeselect","afterDestroy","afterDocumentKeyDown","afterGetCellMeta","afterGetColHeader","afterGetRowHeader","afterInit","afterIsMultipleSelectionCheck","afterLoadData","afterMomentumScroll","afterOnCellCornerMouseDown","afterOnCellMouseDown","afterOnCellMouseOver","afterRemoveCol","afterRemoveRow","afterRender","afterRenderer","afterScrollHorizontally","afterScrollVertically","afterSelection","afterSelectionByProp","afterSelectionEnd","afterSelectionEndByProp","afterSetCellMeta","afterUpdateSettings","afterValidate","beforeAutofill","beforeCellAlignment","beforeChange","beforeChangeRender","beforeDrawBorders","beforeGetCellMeta","beforeInit","beforeInitWalkontable","beforeKeyDown","beforeOnCellMouseDown","beforeRemoveCol","beforeRemoveRow","beforeRender","beforeSetRangeEnd","beforeTouchScroll","beforeValidate","construct","init","modifyCol","modifyColWidth","modifyRow","modifyRowHeight","persistentStateLoad","persistentStateReset","persistentStateSave"],a=function(){function t(t){var e=this;this.element=t,this.data=[],o.forEach(function(t){e[t]=new s.EventEmitter})}return t.prototype.parseAutoComplete=function(t,e){var n=this.inst;if("string"==typeof t.source){var r=t.source;t.source=function(i,s){var o=n.getSelected()[0],a=e[o];if(a){for(var u=r.split("."),c=a,p=0;p<u.length;p++)c=c[u[p]];s(c.map(function(e){return t.optionField?e[t.optionField]:e}))}}}},t.prototype.onInit=function(){var t=this;this.view=document.createElement("div"),this.view["class"]="handsontable-container",this.element.nativeElement.appendChild(this.view);var e={data:this.data};o.forEach(function(n){e[n]=function(e){t[n].next(e)}});var n=["colHeaders","colWidths","columns"];n.forEach(function(n){t[n]&&Object.assign(e,(r={},r[n]=t[n],r));var r}),this.options&&Object.assign(e,this.options),this.inst=Handsontable(this.view,e),this.columns&&this.columns.length&&this.columns.forEach(function(e){t.parseAutoComplete(e,t.data)})},t.prototype.onDestroy=function(){this.view&&this.view.remove()},t=r([s.Directive({selector:"hot-table",properties:["data","colHeaders","columns","colWidths","options"],events:o}),i("design:paramtypes",[s.ElementRef])],t)}();e.HotTable=a,e.handsontable=[a]}});
+webpackJsonp([2],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(14);
+
+
+/***/ },
+
+/***/ 14:
+/***/ function(module, exports, __webpack_require__) {
+
+	///<reference path="../tsd.d.ts"/>
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(97));
+
+
+/***/ },
+
+/***/ 97:
+/***/ function(module, exports, __webpack_require__) {
+
+	/// <reference path="../../typings/tsd.d.ts" />
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
+	    switch (arguments.length) {
+	        case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
+	        case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
+	        case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
+	    }
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var angular2_1 = __webpack_require__(6);
+	var eventNames = ['afterCellMetaReset', 'afterChange',
+	    'afterCreateCol', 'afterCreateRow', 'afterDeselect',
+	    'afterDestroy', 'afterDocumentKeyDown', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetRowHeader',
+	    'afterInit', 'afterIsMultipleSelectionCheck', 'afterLoadData',
+	    'afterMomentumScroll', 'afterOnCellCornerMouseDown',
+	    'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterRemoveCol', 'afterRemoveRow', 'afterRender',
+	    'afterRenderer', 'afterScrollHorizontally', 'afterScrollVertically',
+	    'afterSelection', 'afterSelectionByProp',
+	    'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterUpdateSettings', 'afterValidate',
+	    'beforeAutofill', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeDrawBorders',
+	    'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown',
+	    'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeSetRangeEnd', 'beforeTouchScroll',
+	    'beforeValidate', 'construct', 'init', 'modifyCol', 'modifyColWidth', 'modifyRow', 'modifyRowHeight',
+	    'persistentStateLoad', 'persistentStateReset', 'persistentStateSave'];
+	var HotTable = (function () {
+	    function HotTable(element) {
+	        var _this = this;
+	        this.element = element;
+	        this.data = [];
+	        eventNames.forEach(function (eventName) {
+	            _this[eventName] = new angular2_1.EventEmitter();
+	        });
+	    }
+	    HotTable.prototype.parseAutoComplete = function (column, dataSet) {
+	        var inst = this.inst;
+	        if (typeof column.source === 'string') {
+	            var relatedField = column.source;
+	            column.source = function (query, process) {
+	                var row = inst.getSelected()[0];
+	                var data = dataSet[row];
+	                if (!data) {
+	                    return;
+	                }
+	                var fieldParts = relatedField.split('.');
+	                var o = data;
+	                for (var i = 0; i < fieldParts.length; i++) {
+	                    o = o[fieldParts[i]];
+	                }
+	                process(o.map(function (item) {
+	                    return !column.optionField ? item : item[column.optionField];
+	                }));
+	            };
+	        }
+	    };
+	    HotTable.prototype.onInit = function () {
+	        var _this = this;
+	        this.view = document.createElement('div');
+	        this.view.class = 'handsontable-container';
+	        this.element.nativeElement.appendChild(this.view);
+	        var htOptions = {
+	            data: this.data
+	        };
+	        eventNames.forEach(function (eventName) {
+	            htOptions[eventName] = function (data) {
+	                _this[eventName].next(data);
+	            };
+	        });
+	        var additionalFields = ['colHeaders', 'colWidths', 'columns'];
+	        additionalFields.forEach(function (field) {
+	            if (_this[field]) {
+	                Object.assign(htOptions, (_a = {},
+	                    _a[field] = _this[field],
+	                    _a
+	                ));
+	            }
+	            var _a;
+	        });
+	        if (this.options) {
+	            Object.assign(htOptions, this.options);
+	        }
+	        this.inst = Handsontable(this.view, htOptions);
+	        if (this.columns && this.columns.length) {
+	            this.columns.forEach(function (column) {
+	                _this.parseAutoComplete(column, _this.data);
+	            });
+	        }
+	    };
+	    HotTable.prototype.onDestroy = function () {
+	        if (this.view) {
+	            this.view.remove();
+	        }
+	    };
+	    HotTable = __decorate([
+	        angular2_1.Directive({
+	            selector: 'hot-table',
+	            properties: [
+	                'data',
+	                'colHeaders',
+	                'columns',
+	                'colWidths',
+	                'options'
+	            ],
+	            events: eventNames
+	        }), 
+	        __metadata('design:paramtypes', [angular2_1.ElementRef])
+	    ], HotTable);
+	    return HotTable;
+	})();
+	exports.HotTable = HotTable;
+	exports.handsontable = [HotTable];
+
+
+/***/ }
+
+});
 //# sourceMappingURL=angular2-handsontable.js.map
