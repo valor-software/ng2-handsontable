@@ -1,5 +1,3 @@
-/// <reference path="../../typings/tsd.d.ts" />
-
 import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/angular2';
 
 declare var Handsontable:Function;

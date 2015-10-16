@@ -1,5 +1,5 @@
 {
-  "version": "1.5.3",
+  "version": "1.6.2",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -14,15 +14,10 @@
     "noEmitOnError": false,
     "noImplicitAny": false
   },
-  "filesGlob": [
-    "./**/*.ts",
-    "!./node_modules/**/*.ts"
+  "exclude": [
+    "node_modules"
   ],
   "files": [
-    "./components/handsontable/handsontable.ts",
-    "./components/index.ts",
-    "./components/module.ts",
-
-    "./typings/tsd.d.ts"
+    "./components/index.ts"
   ]
 }

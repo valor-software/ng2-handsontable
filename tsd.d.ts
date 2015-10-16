@@ -1,2 +1,2 @@
-/// <reference path="typings/tsd.d.ts"/>
-/// <reference path="node_modules/angular2/bundles/typings/angular2/angular2.d.ts" />
+/// <reference path="typings-persist/es6-object.d.ts"/>
+/// <reference path="typings-persist/moment/moment.d.ts"/>
