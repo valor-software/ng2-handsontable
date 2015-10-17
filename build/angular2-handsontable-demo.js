@@ -25,7 +25,7 @@ webpackJsonp([1],[
 	            selector: 'app'
 	        }),
 	        angular2_1.View({
-	            template: "\n  <main class=\"bd-pageheader\">\n    <div class=\"container\">\n      <h1>ng2-handsontable</h1>\n      <p>The Angular2 directive for <a href=\"https://github.com/handsontable/handsontable\" target=\"_blank\">Handsontable</a></p>\n      <div class=\"row\">\n        <div class=\"col-lg-2\"><a class=\"btn btn-primary\" href=\"https://github.com/valor-software/ng2-handsontable\">View on GitHub</a></div>\n        <div class=\"col-lg-1 btn\"><iframe src=\"https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-handsontable&type=star&count=true\" frameborder=\"0\" scrolling=\"0\" width=\"170px\" height=\"20px\"></iframe></div>\n        <div class=\"col-lg-1 btn\"><iframe src=\"https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-handsontable&type=fork&count=true\" frameborder=\"0\" scrolling=\"0\" width=\"170px\" height=\"20px\"></iframe></div>\n      </div>\n    </div>\n  </main>\n\n  <div class=\"container\">\n    <section id=\"getting-started\">" + gettingStarted + "</section>\n\n    <handsontable-section class=\"col-md-12\"></handsontable-section>\n  </div>\n\n  <footer class=\"footer\">\n    <div class=\"container\">\n      <p class=\"text-muted text-center\"><a href=\"https://github.com/valor-software/ng2-handsontable\">ng2-handsontable</a> is maintained by <a href=\"https://github.com/valor-software\">valor-software</a>.</p>\n    </div>\n  </footer>\n  ",
+	            template: "\n  <main class=\"bd-pageheader\">\n    <div class=\"container\">\n      <h1>ng2-handsontable</h1>\n      <p>The Angular2 directive for <a href=\"https://github.com/handsontable/handsontable\" target=\"_blank\">Handsontable</a></p>\n      <a class=\"btn btn-primary\" href=\"https://github.com/valor-software/ng2-handsontable\">View on GitHub</a>\n      <div class=\"row\">\n        <div class=\"col-lg-1\"><iframe src=\"https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-handsontable&type=star&count=true\" frameborder=\"0\" scrolling=\"0\" width=\"170px\" height=\"20px\"></iframe></div>\n        <div class=\"col-lg-1\"><iframe src=\"https://ghbtns.com/github-btn.html?user=valor-software&repo=ng2-handsontable&type=fork&count=true\" frameborder=\"0\" scrolling=\"0\" width=\"170px\" height=\"20px\"></iframe></div>\n      </div>\n    </div>\n  </main>\n\n  <div class=\"container\">\n    <section id=\"getting-started\">" + gettingStarted + "</section>\n\n    <handsontable-section class=\"col-md-12\"></handsontable-section>\n  </div>\n\n  <footer class=\"footer\">\n    <div class=\"container\">\n      <p class=\"text-muted text-center\"><a href=\"https://github.com/valor-software/ng2-handsontable\">ng2-handsontable</a> is maintained by <a href=\"https://github.com/valor-software\">valor-software</a>.</p>\n    </div>\n  </footer>\n  ",
 	            directives: [
 	                angular2_1.NgClass,
 	                handsontable_section_1.HandsontableSection
@@ -3256,7 +3256,6 @@ webpackJsonp([1],[
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	///<reference path="../tsd.d.ts"/>
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
@@ -3307,7 +3306,7 @@ webpackJsonp([1],[
 	    return Ng2BootstrapConfig;
 	})();
 	exports.Ng2BootstrapConfig = Ng2BootstrapConfig;
-	//# sourceMappingURL=../components/dist/ng2-bootstrap-config.js.map
+	//# sourceMappingURL=ng2-bootstrap-config.js.map
 
 /***/ },
 /* 31 */
@@ -4066,7 +4065,7 @@ webpackJsonp([1],[
 	    return DatePickerInner;
 	})();
 	exports.DatePickerInner = DatePickerInner;
-	//# sourceMappingURL=../../components/dist/datepicker/datepicker-inner.js.map
+	//# sourceMappingURL=datepicker-inner.js.map
 
 /***/ },
 /* 56 */
@@ -4205,13 +4204,12 @@ webpackJsonp([1],[
 	    return Dropdown;
 	})();
 	exports.Dropdown = Dropdown;
-	//# sourceMappingURL=../../components/dist/dropdown/dropdown.js.map
+	//# sourceMappingURL=dropdown.js.map
 
 /***/ },
 /* 57 */
 /***/ function(module, exports) {
 
-	/// <reference path="../tsd.d.ts" />
 	var PositionService = (function () {
 	    function PositionService() {
 	    }
@@ -4340,7 +4338,7 @@ webpackJsonp([1],[
 	})();
 	exports.PositionService = PositionService;
 	exports.positionService = new PositionService();
-	//# sourceMappingURL=../components/dist/position.js.map
+	//# sourceMappingURL=position.js.map
 
 /***/ },
 /* 58 */,
@@ -4390,7 +4388,6 @@ webpackJsonp([1],[
 /* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/// <reference path="../../typings/tsd.d.ts" />
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
 	    switch (arguments.length) {
@@ -12704,7 +12701,7 @@ webpackJsonp([1],[
 	    return Collapse;
 	})();
 	exports.Collapse = Collapse;
-	//# sourceMappingURL=../../components/dist/collapse/collapse.js.map
+	//# sourceMappingURL=collapse.js.map
 
 /***/ },
 /* 243 */
@@ -12754,7 +12751,7 @@ webpackJsonp([1],[
 	    return NgTransclude;
 	})();
 	exports.NgTransclude = NgTransclude;
-	//# sourceMappingURL=../components/dist/common.js.map
+	//# sourceMappingURL=common.js.map
 
 /***/ },
 /* 244 */
@@ -12845,7 +12842,7 @@ webpackJsonp([1],[
 	    return DatePicker;
 	})();
 	exports.DatePicker = DatePicker;
-	//# sourceMappingURL=../../components/dist/datepicker/datepicker.js.map
+	//# sourceMappingURL=datepicker.js.map
 
 /***/ },
 /* 245 */
@@ -12887,7 +12884,7 @@ webpackJsonp([1],[
 	    return DropdownMenu;
 	})();
 	exports.DropdownMenu = DropdownMenu;
-	//# sourceMappingURL=../../components/dist/dropdown/dropdown-menu.js.map
+	//# sourceMappingURL=dropdown-menu.js.map
 
 /***/ },
 /* 246 */
@@ -12955,7 +12952,7 @@ webpackJsonp([1],[
 	})();
 	exports.DropdownService = DropdownService;
 	exports.dropdownService = new DropdownService();
-	//# sourceMappingURL=../../components/dist/dropdown/dropdown-service.js.map
+	//# sourceMappingURL=dropdown-service.js.map
 
 /***/ },
 /* 247 */
@@ -13019,7 +13016,7 @@ webpackJsonp([1],[
 	    return DropdownToggle;
 	})();
 	exports.DropdownToggle = DropdownToggle;
-	//# sourceMappingURL=../../components/dist/dropdown/dropdown-toggle.js.map
+	//# sourceMappingURL=dropdown-toggle.js.map
 
 /***/ },
 /* 248 */,
@@ -13292,7 +13289,6 @@ webpackJsonp([1],[
 /* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/// <reference path="../../tsd.d.ts" />
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
 	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
 	    switch (arguments.length) {
@@ -13431,7 +13427,7 @@ webpackJsonp([1],[
 	})();
 	exports.AccordionHeading = AccordionHeading;
 	exports.accordion = [Accordion, AccordionGroup, AccordionHeading];
-	//# sourceMappingURL=../../components/dist/accordion/accordion.js.map
+	//# sourceMappingURL=accordion.js.map
 
 /***/ },
 /* 317 */
@@ -13500,7 +13496,7 @@ webpackJsonp([1],[
 	    return Alert;
 	})();
 	exports.Alert = Alert;
-	//# sourceMappingURL=../../components/dist/alert/alert.js.map
+	//# sourceMappingURL=alert.js.map
 
 /***/ },
 /* 318 */
@@ -13580,7 +13576,7 @@ webpackJsonp([1],[
 	    return ButtonCheckbox;
 	})();
 	exports.ButtonCheckbox = ButtonCheckbox;
-	//# sourceMappingURL=../../components/dist/buttons/button-checkbox.js.map
+	//# sourceMappingURL=button-checkbox.js.map
 
 /***/ },
 /* 319 */
@@ -13666,7 +13662,7 @@ webpackJsonp([1],[
 	    return ButtonRadio;
 	})();
 	exports.ButtonRadio = ButtonRadio;
-	//# sourceMappingURL=../../components/dist/buttons/button-radio.js.map
+	//# sourceMappingURL=button-radio.js.map
 
 /***/ },
 /* 320 */
@@ -13868,7 +13864,7 @@ webpackJsonp([1],[
 	exports.Slide = Slide;
 	exports.carousel = [Carousel, Slide];
 	var _a;
-	//# sourceMappingURL=../../components/dist/carousel/carousel.js.map
+	//# sourceMappingURL=carousel.js.map
 
 /***/ },
 /* 321 */
@@ -13884,7 +13880,7 @@ webpackJsonp([1],[
 	    return DateFormatter;
 	})();
 	exports.DateFormatter = DateFormatter;
-	//# sourceMappingURL=../../components/dist/datepicker/date-formatter.js.map
+	//# sourceMappingURL=date-formatter.js.map
 
 /***/ },
 /* 322 */
@@ -14052,7 +14048,7 @@ webpackJsonp([1],[
 	    return DatePickerPopup;
 	})();
 	exports.DatePickerPopup = DatePickerPopup;
-	//# sourceMappingURL=../../components/dist/datepicker/datepicker-popup.js.map
+	//# sourceMappingURL=datepicker-popup.js.map
 
 /***/ },
 /* 323 */
@@ -14169,7 +14165,7 @@ webpackJsonp([1],[
 	})();
 	exports.DayPicker = DayPicker;
 	var _a;
-	//# sourceMappingURL=../../components/dist/datepicker/daypicker.js.map
+	//# sourceMappingURL=daypicker.js.map
 
 /***/ },
 /* 324 */
@@ -14179,7 +14175,7 @@ webpackJsonp([1],[
 	var datepicker_popup_1 = __webpack_require__(322);
 	var datepicker_1 = __webpack_require__(244);
 	exports.datepicker = [datepicker_1.DatePicker, datepicker_popup_1.DatePickerPopup];
-	//# sourceMappingURL=../../components/dist/datepicker/index.js.map
+	//# sourceMappingURL=index.js.map
 
 /***/ },
 /* 325 */
@@ -14250,7 +14246,7 @@ webpackJsonp([1],[
 	    return MonthPicker;
 	})();
 	exports.MonthPicker = MonthPicker;
-	//# sourceMappingURL=../../components/dist/datepicker/monthpicker.js.map
+	//# sourceMappingURL=monthpicker.js.map
 
 /***/ },
 /* 326 */
@@ -14321,7 +14317,7 @@ webpackJsonp([1],[
 	    return YearPicker;
 	})();
 	exports.YearPicker = YearPicker;
-	//# sourceMappingURL=../../components/dist/datepicker/yearpicker.js.map
+	//# sourceMappingURL=yearpicker.js.map
 
 /***/ },
 /* 327 */
@@ -14331,13 +14327,12 @@ webpackJsonp([1],[
 	var dropdown_menu_1 = __webpack_require__(245);
 	var dropdown_toggle_1 = __webpack_require__(247);
 	exports.dropdown = [dropdown_1.Dropdown, dropdown_menu_1.DropdownMenu, dropdown_toggle_1.DropdownToggle];
-	//# sourceMappingURL=../../components/dist/dropdown/index.js.map
+	//# sourceMappingURL=index.js.map
 
 /***/ },
 /* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
-	///<reference path="../tsd.d.ts"/>
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
@@ -14363,7 +14358,7 @@ webpackJsonp([1],[
 	__export(__webpack_require__(57));
 	__export(__webpack_require__(243));
 	__export(__webpack_require__(30));
-	//# sourceMappingURL=../components/dist/index.js.map
+	//# sourceMappingURL=index.js.map
 
 /***/ },
 /* 329 */
@@ -14609,7 +14604,7 @@ webpackJsonp([1],[
 	})(Pagination);
 	exports.Pager = Pager;
 	exports.pagination = [Pagination, Pager];
-	//# sourceMappingURL=../../components/dist/pagination/pagination.js.map
+	//# sourceMappingURL=pagination.js.map
 
 /***/ },
 /* 330 */
@@ -14747,7 +14742,7 @@ webpackJsonp([1],[
 	})();
 	exports.Progressbar = Progressbar;
 	exports.progressbar = [Progress, Bar, Progressbar];
-	//# sourceMappingURL=../../components/dist/progressbar/progressbar.js.map
+	//# sourceMappingURL=progressbar.js.map
 
 /***/ },
 /* 331 */
@@ -14863,7 +14858,7 @@ webpackJsonp([1],[
 	    return Rating;
 	})();
 	exports.Rating = Rating;
-	//# sourceMappingURL=../../components/dist/rating/rating.js.map
+	//# sourceMappingURL=rating.js.map
 
 /***/ },
 /* 332 */
@@ -15009,7 +15004,7 @@ webpackJsonp([1],[
 	})();
 	exports.TabHeading = TabHeading;
 	exports.tabs = [Tab, TabHeading, Tabset];
-	//# sourceMappingURL=../../components/dist/tabs/tabs.js.map
+	//# sourceMappingURL=tabs.js.map
 
 /***/ },
 /* 333 */
@@ -15302,7 +15297,7 @@ webpackJsonp([1],[
 	    return Timepicker;
 	})();
 	exports.Timepicker = Timepicker;
-	//# sourceMappingURL=../../components/dist/timepicker/timepicker.js.map
+	//# sourceMappingURL=timepicker.js.map
 
 /***/ },
 /* 334 */
@@ -15421,7 +15416,7 @@ webpackJsonp([1],[
 	})();
 	exports.Tooltip = Tooltip;
 	exports.tooltip = [Tooltip, TooltipContainer];
-	//# sourceMappingURL=../../components/dist/tooltip/tooltip.js.map
+	//# sourceMappingURL=tooltip.js.map
 
 /***/ },
 /* 335 */
@@ -15751,7 +15746,7 @@ webpackJsonp([1],[
 	exports.Typeahead = Typeahead;
 	exports.typeahead = [Typeahead];
 	var _a;
-	//# sourceMappingURL=../../components/dist/typeahead/typeahead.js.map
+	//# sourceMappingURL=typeahead.js.map
 
 /***/ },
 /* 336 */
