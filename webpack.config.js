@@ -4,7 +4,6 @@ var webpack = require('webpack');
 
 var Clean = require('clean-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
-var TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 // marked renderer hack
 marked.Renderer.prototype.code = function (code, lang) {
@@ -142,10 +141,6 @@ var config = {
       minChunks: Infinity,
       filename: 'angular2.js'
     }),
-    new TransferWebpackPlugin([
-      {from: 'demo/external'},
-      {from: 'demo/lib'}
-    ]),
     new webpack.optimize.DedupePlugin({
       __isProduction: isProduction
     }),
