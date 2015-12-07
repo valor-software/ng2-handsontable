@@ -2,7 +2,7 @@
 
 import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
 
-import {tabs} from 'ng2-bootstrap';
+import {tabs} from 'ng2-bootstrap/ng2-bootstrap';
 import {BasicDemo} from './handsontable/basic-demo';
 import {SheetDemo} from './handsontable/sheet-demo';
 import {PersonalDemo} from './handsontable/personal-demo';
