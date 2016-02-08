@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "bootstrap": "3.3.6",
-    "ng2-bootstrap": "0.46.0",
+    "ng2-bootstrap": "1.0.3",
     "clean-webpack-plugin": "0.1.8",
     "compression-webpack-plugin": "0.3.0",
     "eslint": "1.10.3",
