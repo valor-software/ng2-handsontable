@@ -1,5 +1,5 @@
-/// <reference path='../../../tsd.d.ts' />
-/// <reference path="/node_modules/angular2/typings/browser.d.ts"/>
+/// <reference path="../../../node_modules/angular2/typings/browser.d.ts"/>
+/// <reference path="../../../tsd.d.ts" />
 
 import { Component } from 'angular2/core';
 

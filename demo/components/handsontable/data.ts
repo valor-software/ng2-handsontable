@@ -1,8 +1,10 @@
-/// <reference path="/node_modules/angular2/typings/browser.d.ts"/>
+/// <reference path="../../../node_modules/angular2/typings/browser.d.ts"/>
+/// <reference path="../../../tsd.d.ts" />
 
 declare var Handsontable:Function;
 
 export function genData(rows:number = 10):Array<any> {
+  //noinspection TsLint
   let products:Array<any> = [
       {
         description: 'Big Mac',

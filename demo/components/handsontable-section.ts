@@ -1,3 +1,4 @@
+/// <reference path="../../node_modules/angular2/typings/browser.d.ts"/>
 /// <reference path="../../tsd.d.ts" />
 
 import {Component} from 'angular2/core';
@@ -76,7 +77,7 @@ tabDesc.forEach(desc => {
           <tab heading="${desc.heading}" (select)="select($event)">
           <div class="card card-block panel panel-default panel-body">
 
-            <${desc.heading.toLowerCase()}-demo *ng-if="currentHeading === '${desc.heading}'"></${desc.heading.toLowerCase()}-demo>
+            <${desc.heading.toLowerCase()}-demo *ngIf="currentHeading === '${desc.heading}'"></${desc.heading.toLowerCase()}-demo>
 
             <br>
 

@@ -1,5 +1,8 @@
+/// <reference path="../node_modules/angular2/typings/browser.d.ts"/>
 /// <reference path="../tsd.d.ts" />
-import {Component, View, bootstrap, NgClass} from 'angular2/angular2';
+
+import {Component} from 'angular2/core';
+import {bootstrap}    from 'angular2/platform/browser';
 
 import {HandsontableSection} from './components/handsontable-section';
 // import {DemoHeader} from './components/demo-header';
@@ -7,9 +10,7 @@ import {HandsontableSection} from './components/handsontable-section';
 let gettingStarted = require('./getting-started.md');
 
 @Component({
-  selector: 'app'
-})
-@View({
+  selector: 'app',
   template: `
   <main class="bd-pageheader">
     <div class="container">
@@ -36,7 +37,6 @@ let gettingStarted = require('./getting-started.md');
   </footer>
   `,
   directives: [
-    NgClass,
     HandsontableSection
   ]
 })

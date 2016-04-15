@@ -3,21 +3,29 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "dist",
-    "sourceMap": true,
+    "moduleResolution": "node",
+    "sourceMap": false,
     "declaration": true,
-    "removeComments": true,
+    "removeComments": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noImplicitAny": true,
     "listFiles": false,
-    "noLib": false,
-    "noEmitOnError": false,
-    "noImplicitAny": false
+    "noLib": false
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts"
   ],
   "files": [
-    "./components/index.ts"
+    "./components/index.ts",
+    "./demo/components/handsontable/advanced-demo.ts",
+    "./demo/components/handsontable/sport-demo.ts",
+    "./demo/components/handsontable/science-demo.ts",
+    "./demo/components/handsontable/personal-demo.ts",
+    "./demo/components/handsontable-section.ts",
+    "./demo/components/handsontable/data.ts",
+    "./components/handsontable/handsontable.ts"
   ]
 }

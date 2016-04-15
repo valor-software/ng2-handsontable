@@ -71,7 +71,7 @@ export class HotTable implements OnInit, OnDestroy {
     }
   }
 
-  onInit() {
+  ngOnInit() {
     this.view = document.createElement('div');
     this.view.class = 'handsontable-container';
     this.element.nativeElement.appendChild(this.view);
@@ -108,7 +108,7 @@ export class HotTable implements OnInit, OnDestroy {
     }
   }
 
-  onDestroy() {
+  ngOnDestroy() {
     if (this.view) {
       this.view.remove();
     }

@@ -48,10 +48,10 @@ var config = {
   entry: {
     angular2: [
       // Angular 2 Deps
+      'angular2/bundles/angular2-polyfills',
+      'rxjs',
       'es6-shim',
-      'es6-promise',
-      'zone.js',
-      'reflect-metadata',
+      'angular2/platform/browser',
       'angular2/common',
       'angular2/core'
     ],
