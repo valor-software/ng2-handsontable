@@ -1,9 +1,7 @@
 /// <reference path="../../../tsd.d.ts" />
+/// <reference path="/node_modules/angular2/typings/browser.d.ts"/>
 
-import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import {handsontable} from '../../../components/index';
 import {getSportData} from './data';
@@ -14,11 +12,9 @@ declare var Handsontable:any;
 let template = require('./sheet-demo.html');
 
 @Component({
-  selector: 'sport-demo'
-})
-@View({
+  selector: 'sport-demo',
   template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  directives: [handsontable]
 })
 export class SportDemo {
   private data:Array<any>;

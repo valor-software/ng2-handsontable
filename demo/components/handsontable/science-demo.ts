@@ -1,9 +1,7 @@
 /// <reference path="../../../tsd.d.ts" />
+/// <reference path="/node_modules/angular2/typings/browser.d.ts"/>
 
-import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import {handsontable} from '../../../components/index';
 import {getScienceData} from './data';
@@ -54,11 +52,9 @@ function heatmapRenderer(instance, td, row, col, prop, value, cellProperties) {
 }
 
 @Component({
-  selector: 'science-demo'
-})
-@View({
+  selector: 'science-demo',
   template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  directives: [handsontable]
 })
 export class ScienceDemo {
   private data:Array<any>;

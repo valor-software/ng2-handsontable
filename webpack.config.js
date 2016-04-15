@@ -48,9 +48,11 @@ var config = {
   entry: {
     angular2: [
       // Angular 2 Deps
+      'es6-shim',
+      'es6-promise',
       'zone.js',
       'reflect-metadata',
-      'angular2/angular2',
+      'angular2/common',
       'angular2/core'
     ],
     'angular2-handsontable': ['components'],

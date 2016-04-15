@@ -1,3 +1,5 @@
+/// <reference path="/node_modules/angular2/typings/browser.d.ts"/>
+
 declare var Handsontable:Function;
 
 export function genData(rows:number = 10):Array<any> {

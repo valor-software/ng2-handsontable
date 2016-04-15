@@ -1,4 +1,4 @@
-import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/angular2';
+import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/core';
 
 declare var Handsontable:Function;
 
