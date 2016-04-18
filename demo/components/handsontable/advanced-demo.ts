@@ -11,7 +11,7 @@ declare var Handsontable:any;
 // webpack html imports
 let template = require('./advanced-demo.html');
 
-function percentRenderer(instance, td, row, col, prop, value, cellProperties) {
+function percentRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.renderers.NumericRenderer.apply(this, arguments);
   td.style.color = (value < 0) ? 'red' : 'green';
 }

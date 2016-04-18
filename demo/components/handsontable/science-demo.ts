@@ -13,10 +13,10 @@ declare var chroma:any;
 let template = require('./sheet-demo.html');
 
 
-let heatmapScale = chroma.scale(['#17F556', '#ED6D47']);
-let heatmap = [];
+let heatmapScale:any = chroma.scale(['#17F556', '#ED6D47']);
+let heatmap:any = [];
 
-function updateHeatmap(change, source) {
+function updateHeatmap(change:any, source:any) {
   if (change) {
     heatmap[change[0][1]] = generateHeatmapData(this, change[0][1]);
   } else {
@@ -28,11 +28,11 @@ function updateHeatmap(change, source) {
   }
 }
 
-function point(min, max, value) {
+function point(min:any, max:any, value:any) {
   return (value - min) / (max - min);
 }
 
-function generateHeatmapData(context:any, colId) {
+function generateHeatmapData(context:any, colId:any) {
   let values = context.getDataAtCol(colId);
 
   return {
@@ -41,7 +41,7 @@ function generateHeatmapData(context:any, colId) {
   };
 }
 
-function heatmapRenderer(instance, td, row, col, prop, value, cellProperties) {
+function heatmapRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.renderers.TextRenderer.apply(this, arguments);
 
   if (heatmap[col]) {

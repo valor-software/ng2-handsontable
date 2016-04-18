@@ -42,7 +42,7 @@ export class SportDemo {
         {data: 6, type: 'numeric', format: '$0,0.00'},
         {data: 7, type: 'numeric', format: '$0,0.00'}
       ],
-      cells: function (row, col, prop) {
+      cells: function () {
         let cellProperties:any = {};
         cellProperties.className = 'htMiddle htCenter';
         return cellProperties;

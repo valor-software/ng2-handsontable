@@ -34,7 +34,7 @@ export function genData(rows:number = 10):Array<any> {
 
   let items:Array<any> = [];
   let product:any;
-  let newProduct;
+  let newProduct:any;
 
   for (let i = 0; i < rows; i++) {
     // clone expected product
@@ -43,7 +43,7 @@ export function genData(rows:number = 10):Array<any> {
       description: product.description,
       options: []
     };
-    product.options.forEach(function (p) {
+    product.options.forEach(function (p:any) {
       newProduct.options.push({description: p.description});
     });
     /// clone expected product

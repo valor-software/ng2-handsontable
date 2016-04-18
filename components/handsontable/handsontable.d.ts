@@ -1,9 +1,9 @@
-/// <reference path="../../node_modules/angular2/typings/browser.d.ts" />
 import { OnInit, OnDestroy, ElementRef } from 'angular2/core';
 export declare class HotTable implements OnInit, OnDestroy {
     private element;
     private inst;
     private view;
+    [key: string]: any;
     private data;
     private colHeaders;
     private columns;

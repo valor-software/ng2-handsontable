@@ -126,7 +126,7 @@ tabDesc.forEach(desc => {
 export class HandsontableSection {
   private currentHeading:string = 'Basic';
 
-  private select(e) {
+  private select(e:any) {
     if (e.heading) {
       this.currentHeading = e.heading;
     }
