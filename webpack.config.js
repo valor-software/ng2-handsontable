@@ -1,21 +1,11 @@
+'use strict';
+
+/*eslint no-var:0 */
 var path = require('path');
 var marked = require('marked');
 var webpack = require('webpack');
-
 var Clean = require('clean-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
-
-// marked renderer hack
-marked.Renderer.prototype.code = function (code, lang) {
-  var out = this.options.highlight(code, lang);
-
-  if (!lang) {
-    return '<pre><code>' + out + '\n</code></pre>';
-  }
-
-  var classMap = this.options.langPrefix + lang;
-  return '<pre class="' + classMap + '"><code class="' + classMap + '">' + out + '\n</code></pre>\n';
-};
 
 /*eslint no-process-env:0, camelcase:0*/
 var isProduction = (process.env.NODE_ENV || 'development') === 'production';
@@ -48,9 +38,11 @@ var config = {
   entry: {
     angular2: [
       // Angular 2 Deps
-      'zone.js',
-      'reflect-metadata',
-      'angular2/angular2',
+      'angular2/bundles/angular2-polyfills',
+      'rxjs',
+      'es6-shim',
+      'angular2/platform/browser',
+      'angular2/common',
       'angular2/core'
     ],
     'angular2-handsontable': ['components'],
@@ -75,8 +67,10 @@ var config = {
 
   markdownLoader: {
     langPrefix: 'language-',
-    highlight: function (code, lang) {
+    highlight: function highlight(code, lang) {
+      /* eslint-disable */
       var language = !lang || lang === 'html' ? 'markup' : lang;
+
       if (!global.Prism) {
         global.Prism = require('prismjs');
       }
@@ -84,47 +78,31 @@ var config = {
       if (!Prism.languages[language]) {
         require('prismjs/components/prism-' + language + '.js');
       }
+      /* eslint-enable */
       return Prism.highlight(code, Prism.languages[language]);
     }
   },
   module: {
     loaders: [
       // support markdown
-      {test: /\.md$/, loader: 'html!markdown'},
-
+      {test: /\.md$/, loader: 'html?minimize=false!markdown'},
       // Support for *.json files.
       {test: /\.json$/, loader: 'json'},
-
       // Support for CSS as raw text
       {test: /\.css$/, loader: 'raw'},
-
       // support for .html as raw text
       {test: /\.html$/, loader: 'raw'},
-
       // Support for .ts files.
       {
         test: /\.ts$/,
         loader: 'ts',
         query: {
-          ignoreDiagnostics: [
-            6053,
-            // TS2305 -> Module 'ng' has no exported member
-            2305,
-            // TS2307 ->  Cannot find external module
-            2307,
-            // TS2300 -> Duplicate identifier
-            2300,
-            // TS2309 -> An export assignment cannot be used in a module with other exported elements.
-            2309
-          ]
+          compilerOptions: {
+            removeComments: true,
+            noEmitHelpers: false
+          }
         },
-        exclude: [
-          /\.min\.js$/,
-          /\.spec\.ts$/,
-          /\.e2e\.ts$/,
-          /web_modules/,
-          /test/
-        ]
+        exclude: [/\.(spec|e2e)\.ts$/]
       }
     ],
     noParse: [
@@ -146,12 +124,12 @@ var config = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin()
   ],
-  pushPlugins: function () {
+  pushPlugins: function pushPlugins() {
     if (!isProduction) {
       return;
     }
 
-    this.plugins.push.apply(this.plugins, [
+    this.plugins.push([
       //production only
       new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -174,6 +152,19 @@ var config = {
   }
 };
 
+// marked renderer hack
+/* eslint-disable */
+marked.Renderer.prototype.code = function (code, lang) {
+  var out = this.options.highlight(code, lang);
+
+  if (!lang) {
+    return '<pre><code>' + out + '\n</code></pre>';
+  }
+
+  var classMap = this.options.langPrefix + lang;
+  return '<pre class="' + classMap + '"><code class="' + classMap + '">' + out + '\n</code></pre>\n';
+};
+/* eslint-enable */
 config.pushPlugins();
 
 module.exports = config;

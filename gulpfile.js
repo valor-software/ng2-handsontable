@@ -1,9 +1,13 @@
+'use strict';
+/* eslint-disable */
 var gulp = require('gulp');
+/* eslint-enable */
 
 gulp.paths = {
   tssrc: [
     '**/*.ts',
     '!node_modules/**/*',
+    '!bundles/**/*',
     '!dist/**/*',
     '!typings/**/*',
     '!typings-persist/**/*',
@@ -12,18 +16,26 @@ gulp.paths = {
     '*.js',
     '!angular2-handsontable.js',
     'gulp-tasks/*.js',
+    '!bundles/*.js',
     '!node_modules',
     '!**/*.{ts,coffee}.js']
 };
 
 require('require-dir')('./gulp-tasks');
 
+/* eslint-disable */
 var clean = require('gulp-clean');
-gulp.task('clean', function () {
+/* eslint-enable */
+
+gulp.task('clean', cleanDist);
+
+gulp.task('default', defaultTask);
+
+function cleanDist() {
   return gulp.src('dist', {read: false})
     .pipe(clean());
-});
+}
 
-gulp.task('default', function () {
+function defaultTask() {
   gulp.start('lint');
-});
+}

@@ -1,9 +1,4 @@
-/// <reference path='../../../tsd.d.ts' />
-
-import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import {handsontable} from '../../../components/index';
 import {getFinanceData} from './data';
@@ -14,11 +9,9 @@ declare var Handsontable:any;
 let template = require('./finance-demo.html');
 
 @Component({
-  selector: 'finance-demo'
-})
-@View({
+  selector: 'finance-demo',
   template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  directives: [handsontable]
 })
 export class FinanceDemo {
   private data:Array<any>;

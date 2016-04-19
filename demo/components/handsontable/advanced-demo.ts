@@ -1,9 +1,4 @@
-/// <reference path='../../../tsd.d.ts' />
-
-import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import {handsontable} from '../../../components/index';
 import {getAdvancedData} from './data';
@@ -13,17 +8,15 @@ declare var Handsontable:any;
 // webpack html imports
 let template = require('./advanced-demo.html');
 
-function percentRenderer(instance, td, row, col, prop, value, cellProperties) {
+function percentRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.renderers.NumericRenderer.apply(this, arguments);
   td.style.color = (value < 0) ? 'red' : 'green';
 }
 
 @Component({
-  selector: 'advanced-demo'
-})
-@View({
+  selector: 'advanced-demo',
   template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  directives: [handsontable]
 })
 export class AdvancedDemo {
   private data:Array<any>;
