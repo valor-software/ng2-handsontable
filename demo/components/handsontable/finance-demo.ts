@@ -3,8 +3,6 @@ import { Component } from 'angular2/core';
 import {handsontable} from '../../../components/index';
 import {getFinanceData} from './data';
 
-declare var Handsontable:any;
-
 // webpack html imports
 let template = require('./finance-demo.html');
 

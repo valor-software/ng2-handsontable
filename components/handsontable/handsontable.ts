@@ -1,6 +1,8 @@
 import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/core';
 
-declare var Handsontable:Function;
+const Handsontable = require('../../node_modules/handsontable/dist/handsontable.full.min.js');
+
+// const formula = require('../../demo/external/handsontable.formula')(Handsontable);
 
 let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
   'afterCreateCol', 'afterCreateRow', 'afterDeselect',

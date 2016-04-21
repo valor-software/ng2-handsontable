@@ -1,25 +1,35 @@
+/* eslint global-require: 0 */
 'use strict';
 
-/*eslint no-var:0 */
-var path = require('path');
-var marked = require('marked');
-var webpack = require('webpack');
-var Clean = require('clean-webpack-plugin');
-var CompressionPlugin = require('compression-webpack-plugin');
+const path = require('path');
+const marked = require('marked');
+const webpack = require('webpack');
+const reqPrism = require('prismjs');
+const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// marked renderer hack
+marked.Renderer.prototype.code = function renderCode(code, lang) {
+  const out = this.options.highlight(code, lang);
+  const classMap = this.options.langPrefix + lang;
+
+  if (!lang) {
+    return `<pre><code>${out}\n</code></pre>`;
+  }
+  return `<pre class="${classMap}"><code class="${classMap}">${out}\n</code></pre>\n`;
+};
 
 /*eslint no-process-env:0, camelcase:0*/
-var isProduction = (process.env.NODE_ENV || 'development') === 'production';
+const isProduction = (process.env.NODE_ENV || 'development') === 'production';
+const devtool = process.env.NODE_ENV === 'test' ? 'inline-source-map' : 'source-map';
+const dest = 'demo-build';
+const absDest = root(dest);
 
-var src = 'demo';
-//var absSrc = path.join(__dirname, src);
-var dest = '/build';
-var absDest = path.join(__dirname, dest);
-
-var config = {
+const config = {
   // isProduction ? 'source-map' : 'evale',
-  devtool: 'source-map',
-  debug: true,
-  cache: true,
+  devtool,
+  debug: false,
 
   verbose: true,
   displayErrorDetails: true,
@@ -30,22 +40,22 @@ var config = {
   },
 
   resolve: {
+    cache: false,
     root: __dirname,
-    extensions: ['', '.ts', '.js', '.json'],
-    alias: {}
+    extensions: ['', '.ts', '.js', '.json']
   },
 
   entry: {
     angular2: [
       // Angular 2 Deps
-      'angular2/bundles/angular2-polyfills',
-      'rxjs',
       'es6-shim',
-      'angular2/platform/browser',
+      'es6-promise',
+      'zone.js',
+      'reflect-metadata',
       'angular2/common',
       'angular2/core'
     ],
-    'angular2-handsontable': ['components'],
+    'angular2-handsontable': ['ng2-handsontable'],
     'angular2-handsontable-demo': 'demo'
   },
 
@@ -61,24 +71,21 @@ var config = {
     inline: true,
     colors: true,
     historyApiFallback: true,
-    contentBase: src,
-    publicPath: dest
+    contentBase: dest,
+    //publicPath: dest,
+    outputPath: dest,
+    watchOptions: {aggregateTimeout: 300, poll: 1000}
   },
 
   markdownLoader: {
     langPrefix: 'language-',
-    highlight: function highlight(code, lang) {
-      /* eslint-disable */
-      var language = !lang || lang === 'html' ? 'markup' : lang;
+    highlight(code, lang) {
+      const language = !lang || lang === 'html' ? 'markup' : lang;
+      const Prism = global.Prism || reqPrism;
 
-      if (!global.Prism) {
-        global.Prism = require('prismjs');
-      }
-      var Prism = global.Prism;
       if (!Prism.languages[language]) {
-        require('prismjs/components/prism-' + language + '.js');
+        require(`prismjs/components/prism-${language}.js`);
       }
-      /* eslint-enable */
       return Prism.highlight(code, Prism.languages[language]);
     }
   },
@@ -107,39 +114,50 @@ var config = {
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/,
-      /reflect-metadata/
+      /reflect-metadata/,
+      /zone\.js\/dist\/zone-microtask/
     ]
   },
 
   plugins: [
-    new Clean(['build']),
+    //new Clean([dest]),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'angular2',
       minChunks: Infinity,
       filename: 'angular2.js'
     }),
-    new webpack.optimize.DedupePlugin({
-      __isProduction: isProduction
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin()
+    // static assets
+    new CopyWebpackPlugin([{from: 'demo/favicon.ico', to: 'favicon.ico'}]),
+    new CopyWebpackPlugin([{from: 'demo/assets', to: 'assets'}]),
+    new CopyWebpackPlugin([{from: 'node_modules/handsontable/dist/moment/moment.js', to: 'libs/moment.js'}]),
+    new CopyWebpackPlugin([{from: 'node_modules/handsontable/dist/pikaday/pikaday.js', to: 'libs/pikaday.js'}]),
+    new CopyWebpackPlugin([{
+      from: 'node_modules/handsontable/dist/zeroclipboard/ZeroClipboard.js',
+      to: 'libs/ZeroClipboard.js'
+    }]),
+    // generating html
+    new HtmlWebpackPlugin({template: 'demo/index.html'})
   ],
-  pushPlugins: function pushPlugins() {
+  pushPlugins() {
     if (!isProduction) {
       return;
     }
-
-    this.plugins.push([
+    const plugins = [
       //production only
       new webpack.optimize.UglifyJsPlugin({
+        beautify: false,
+        mangle: false,
+        comments: false,
         compress: {
-          warnings: false,
-          drop_debugger: false
-        },
-        output: {
-          comments: false
-        },
-        beautify: false
+          screw_ie8: true
+          //warnings: false,
+          //drop_debugger: false
+        }
+        //verbose: true,
+        //beautify: false,
+        //quote_style: 3
       }),
       new CompressionPlugin({
         asset: '{file}.gz',
@@ -148,23 +166,19 @@ var config = {
         threshold: 10240,
         minRatio: 0.8
       })
-    ]);
+    ];
+
+    this
+      .plugins
+      .push
+      .apply(plugins);
   }
 };
 
-// marked renderer hack
-/* eslint-disable */
-marked.Renderer.prototype.code = function (code, lang) {
-  var out = this.options.highlight(code, lang);
-
-  if (!lang) {
-    return '<pre><code>' + out + '\n</code></pre>';
-  }
-
-  var classMap = this.options.langPrefix + lang;
-  return '<pre class="' + classMap + '"><code class="' + classMap + '">' + out + '\n</code></pre>\n';
-};
-/* eslint-enable */
 config.pushPlugins();
 
 module.exports = config;
+
+function root(partialPath) {
+  return path.join(__dirname, partialPath);
+}

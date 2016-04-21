@@ -3,7 +3,9 @@ import { Component } from 'angular2/core';
 import {handsontable} from '../../../components/index';
 import {genData} from './data';
 
-declare var Handsontable:Function;
+require('../../../node_modules/moment/moment');
+require('../../../node_modules/pikaday/pikaday');
+require('../../../node_modules/zeroclipboard/dist/ZeroClipboard');
 
 // webpack html imports
 let template = require('./basic-demo.html');

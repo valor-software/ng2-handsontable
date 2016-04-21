@@ -18,6 +18,6 @@
   ],
   "files": [
     "./typings/browser.d.ts",
-    "./components/index.ts"
+    "./ng2-handsontable.ts"
   ]
 }

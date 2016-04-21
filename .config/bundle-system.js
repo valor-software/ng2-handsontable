@@ -75,7 +75,7 @@ function buildSystemJs(options) {
     console.log('Bundling system.js file:', fileName, options);
     builder.config(config);
     return builder
-      .bundle([name, 'components/index'].join('/'), dest, options)
+      .bundle([name, name].join('/'), dest, options)
       .then(() => cb())
       .catch(cb);
   };

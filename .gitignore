@@ -1,7 +1,6 @@
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 /node_modules
-/demo/lib
 npm-debug.log
 
 # type script artifacts
@@ -13,6 +12,7 @@ npm-debug.log
 # ignore build and dist for now
 /bundles
 /build
+/demo-build
 /dist
 
 /demo/**/*.js

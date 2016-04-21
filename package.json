@@ -39,7 +39,7 @@
   "homepage": "https://github.com/valor-software/ng2-handsontable#readme",
   "dependencies": {
     "angular2": "2.0.0-beta.15",
-    "moment": "2.12.0"
+    "moment": "^2.13.0"
   },
   "peerDependencies": {
     "angular2": "2.0.0-beta.15"
@@ -48,6 +48,7 @@
     "async": "1.5.2",
     "balanced-match": "^0.4.0",
     "bootstrap": "3.3.6",
+    "chroma-js": "^1.1.1",
     "clean-webpack-plugin": "0.1.8",
     "compression-webpack-plugin": "0.3.1",
     "copy-webpack-plugin": "^2.1.1",
@@ -66,11 +67,11 @@
     "gulp-eslint": "2.0.0",
     "gulp-size": "2.1.0",
     "gulp-tslint": "4.3.5",
+    "handsontable": "^0.24.2",
     "html-loader": "0.4.3",
     "html-webpack-plugin": "^2.16.0",
     "markdown-loader": "0.1.7",
     "marked": "0.3.5",
-    "moment": "2.12.0",
     "ng2-bootstrap": "^1.0.13",
     "pre-commit": "1.1.2",
     "prismjs": "valorkin/prism",
@@ -78,15 +79,16 @@
     "raw-loader": "0.5.1",
     "reflect-metadata": "0.1.2",
     "require-dir": "0.3.0",
+    "ruleJS": "https://github.com/handsontable/ruleJS",
     "rxjs": "5.0.0-beta.2",
     "source-map-loader": "^0.1.5",
     "systemjs-builder": "0.15.15",
     "ts-loader": "0.8.2",
-    "tslint-config-valorsoft": "0.0.4",
+    "tslint-config-valorsoft": "0.0.6",
     "typescript": "1.8.10",
-    "typings": "0.7.12",
-    "webpack": "1.12.15",
+    "typings": "^0.8.1",
+    "webpack": "^1.13.0",
     "webpack-dev-server": "1.14.1",
-    "zone.js": "0.6.11"
+    "zone.js": "^0.6.12"
   }
 }

@@ -6,6 +6,8 @@ import {HandsontableSection} from './components/handsontable-section';
 
 let gettingStarted = require('./getting-started.md');
 
+require('handsontable/dist/handsontable.min.css');
+
 @Component({
   selector: 'app',
   template: `

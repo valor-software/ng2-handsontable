@@ -3,8 +3,11 @@ import { Component } from 'angular2/core';
 import {handsontable} from '../../../components/index';
 import {getScienceData} from './data';
 
-declare var Handsontable:any;
-declare var chroma:any;
+require('../../../node_modules/moment/moment');
+require('../../../node_modules/pikaday/pikaday');
+require('../../../node_modules/zeroclipboard/dist/ZeroClipboard');
+const Handsontable = require('handsontable');
+const chroma = require('chroma-js');
 
 // webpack html imports
 let template = require('./sheet-demo.html');

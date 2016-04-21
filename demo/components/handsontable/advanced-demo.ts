@@ -3,7 +3,10 @@ import { Component } from 'angular2/core';
 import {handsontable} from '../../../components/index';
 import {getAdvancedData} from './data';
 
-declare var Handsontable:any;
+require('../../../node_modules/moment/moment');
+require('../../../node_modules/pikaday/pikaday');
+require('../../../node_modules/zeroclipboard/dist/ZeroClipboard');
+const Handsontable = require('handsontable');
 
 // webpack html imports
 let template = require('./advanced-demo.html');
