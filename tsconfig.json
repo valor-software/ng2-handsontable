@@ -3,21 +3,21 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "dist",
-    "sourceMap": true,
+    "moduleResolution": "node",
+    "sourceMap": false,
     "declaration": true,
-    "removeComments": true,
+    "removeComments": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noImplicitAny": true,
     "listFiles": false,
-    "noLib": false,
-    "noEmitOnError": false,
-    "noImplicitAny": false
+    "noLib": false
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "./components/index.ts"
+    "./typings/browser.d.ts",
+    "./ng2-handsontable.ts"
   ]
 }

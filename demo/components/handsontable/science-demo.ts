@@ -1,24 +1,22 @@
-/// <reference path="../../../tsd.d.ts" />
-
-import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import {handsontable} from '../../../components/index';
 import {getScienceData} from './data';
 
-declare var Handsontable:any;
-declare var chroma:any;
+require('../../../node_modules/moment/moment');
+require('../../../node_modules/pikaday/pikaday');
+require('../../../node_modules/zeroclipboard/dist/ZeroClipboard');
+const Handsontable = require('handsontable');
+const chroma = require('chroma-js');
 
 // webpack html imports
 let template = require('./sheet-demo.html');
 
 
-let heatmapScale = chroma.scale(['#17F556', '#ED6D47']);
-let heatmap = [];
+let heatmapScale:any = chroma.scale(['#17F556', '#ED6D47']);
+let heatmap:any = [];
 
-function updateHeatmap(change, source) {
+function updateHeatmap(change:any, source:any) {
   if (change) {
     heatmap[change[0][1]] = generateHeatmapData(this, change[0][1]);
   } else {
@@ -30,11 +28,11 @@ function updateHeatmap(change, source) {
   }
 }
 
-function point(min, max, value) {
+function point(min:any, max:any, value:any) {
   return (value - min) / (max - min);
 }
 
-function generateHeatmapData(context:any, colId) {
+function generateHeatmapData(context:any, colId:any) {
   let values = context.getDataAtCol(colId);
 
   return {
@@ -43,7 +41,7 @@ function generateHeatmapData(context:any, colId) {
   };
 }
 
-function heatmapRenderer(instance, td, row, col, prop, value, cellProperties) {
+function heatmapRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.renderers.TextRenderer.apply(this, arguments);
 
   if (heatmap[col]) {
@@ -54,11 +52,9 @@ function heatmapRenderer(instance, td, row, col, prop, value, cellProperties) {
 }
 
 @Component({
-  selector: 'science-demo'
-})
-@View({
+  selector: 'science-demo',
   template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  directives: [handsontable]
 })
 export class ScienceDemo {
   private data:Array<any>;

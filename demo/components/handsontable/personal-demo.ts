@@ -1,38 +1,36 @@
-/// <reference path="../../../tsd.d.ts" />
-
-import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+import { Component } from 'angular2/core';
 
 import {handsontable} from '../../../components/index';
 import {getPersonalData} from './data';
 
-declare var Handsontable:any;
+require('../../../node_modules/moment/moment');
+require('../../../node_modules/pikaday/pikaday');
+require('../../../node_modules/zeroclipboard/dist/ZeroClipboard');
+const Handsontable = require('handsontable');
 
 // webpack html imports
 let template = require('./personal-demo.html');
 
-function headerRenderer(instance, td, row, col, prop, value, cellProperties) {
+function headerRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.renderers.TextRenderer.apply(this, arguments);
   td.style.fontWeight = 'bold';
   td.style.textAlign = 'center';
 }
 
-function diffRenderer(instance, td, row, col, prop, value, cellProperties) {
+function diffRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.cellTypes.formula.renderer.apply(this, arguments);
   td.style.backgroundColor = '#c3f89c';
   td.style.fontWeight = (col === 13 ? 'bold' : 'normal');
 }
 
-function incomeOrExpensesRenderer(instance, td, row, col, prop, value, cellProperties) {
+function incomeOrExpensesRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.renderers.TextRenderer.apply(this, arguments);
   td.style.fontWeight = 'bold';
   td.style.textAlign = 'left';
   td.style.backgroundColor = '#BDD7EE';
 }
 
-function boldAndAlignRenderer(instance, td, row, col, prop, value, cellProperties) {
+function boldAndAlignRenderer(instance:any, td:any, row:any, col:any, prop:any, value:any, cellProperties:any) {
   Handsontable.renderers.TextRenderer.apply(this, arguments);
   td.style.fontWeight = 'bold';
   td.style.verticalAlign = 'middle';
@@ -40,11 +38,9 @@ function boldAndAlignRenderer(instance, td, row, col, prop, value, cellPropertie
 }
 
 @Component({
-  selector: 'personal-demo'
-})
-@View({
+  selector: 'personal-demo',
   template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  directives: [handsontable]
 })
 export class PersonalDemo {
   private data:Array<any>;
@@ -62,7 +58,7 @@ export class PersonalDemo {
       formulas: true,
       comments: true,
       colWidths: [200, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
-      cells: function (row, col, prop):any {
+      cells: function (row:any, col:any, prop:any):any {
         let cellProperties:any = {};
 
         if (row === 0) {
@@ -87,7 +83,7 @@ export class PersonalDemo {
           cellProperties.readOnly = true;
         }
 
-        let a42 = Array.apply(0, Array(42)).map((x, y) => { return y + 1; });
+        let a42 = Array.apply(0, Array(42)).map((x:any, y:any) => { return y + 1; });
         if (a42.indexOf(row) !== -1 && col >= 1) {
           cellProperties.type = 'numeric';
           cellProperties.format = '$0,0.00';

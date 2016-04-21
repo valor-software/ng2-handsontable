@@ -1,8 +1,7 @@
-/// <reference path="../../tsd.d.ts" />
 
-import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 
-import {tabs} from 'ng2-bootstrap/ng2-bootstrap';
+import {Tabset} from 'ng2-bootstrap/ng2-bootstrap';
 import {BasicDemo} from './handsontable/basic-demo';
 import {SheetDemo} from './handsontable/sheet-demo';
 import {PersonalDemo} from './handsontable/personal-demo';
@@ -65,23 +64,23 @@ let tabDesc:Array<any> = [
 let dataLink = `<p>All data completes that used in these examples are available in
   <a href="https://github.com/valor-software/ng2-handsontable/blob/master/demo/components/handsontable/data.ts">next file</a>.</p>`;
 
-let tabsContent:string = ``;
+let TabsetContent:string = ``;
 tabDesc.forEach(desc => {
   let source = '';
   if (desc.source) {
     source = `Source of data: <a href="${desc.source}" target="_blank">${desc.source}</a><br>`;
   }
 
-  tabsContent += `
+  TabsetContent += `
           <tab heading="${desc.heading}" (select)="select($event)">
           <div class="card card-block panel panel-default panel-body">
 
-            <${desc.heading.toLowerCase()}-demo *ng-if="currentHeading === '${desc.heading}'"></${desc.heading.toLowerCase()}-demo>
+            <${desc.heading.toLowerCase()}-demo *ngIf="currentHeading === '${desc.heading}'"></${desc.heading.toLowerCase()}-demo>
 
             <br>
 
             <div class="row" style="margin: 0px;">
-              <tabset>
+              <Tabsetet>
                 <tab heading="Markup">
                   <div class="card card-block panel panel-default panel-body">
                     <pre class="language-html"><code class="language-html" ng-non-bindable>${desc.html}</code></pre>
@@ -92,7 +91,7 @@ tabDesc.forEach(desc => {
                     <pre class="language-typescript"><code class="language-typescript" ng-non-bindable>${desc.ts}</code></pre>
                   </div>
                 </tab>
-              </tabset>
+              </Tabsetet>
               ${source}
               ${dataLink}
             </div>
@@ -102,17 +101,15 @@ tabDesc.forEach(desc => {
 });
 
 @Component({
-  selector: 'handsontable-section'
-})
-@View({
+  selector: 'handsontable-section',
   template: `
   <section id="${name.toLowerCase()}">
     <div class="row">
-      <tabset>
+      <Tabsetet>
 
-        ${tabsContent}
+        ${TabsetContent}
 
-      </tabset>
+      </Tabsetet>
     </div>
 
     <div class="row">
@@ -122,12 +119,12 @@ tabDesc.forEach(desc => {
   </section>
   `,
   directives: [BasicDemo, AdvancedDemo, SheetDemo, PersonalDemo, FinanceDemo, ScienceDemo, SportDemo,
-    tabs, CORE_DIRECTIVES]
+    Tabset]
 })
 export class HandsontableSection {
   private currentHeading:string = 'Basic';
 
-  private select(e) {
+  private select(e:any) {
     if (e.heading) {
       this.currentHeading = e.heading;
     }

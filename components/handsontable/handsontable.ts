@@ -1,6 +1,8 @@
-import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/angular2';
+import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/core';
 
-declare var Handsontable:Function;
+const Handsontable = require('../../node_modules/handsontable/dist/handsontable.full.min.js');
+
+// const formula = require('../../demo/external/handsontable.formula')(Handsontable);
 
 let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
   'afterCreateCol', 'afterCreateRow', 'afterDeselect',
@@ -31,7 +33,7 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
 export class HotTable implements OnInit, OnDestroy {
   private inst:any;
   private view:any;
-
+  [key: string]: any;
   private data:Array<any> = [];
   private colHeaders:Array<string>;
   private columns:Array<any>;
@@ -45,12 +47,12 @@ export class HotTable implements OnInit, OnDestroy {
     });
   }
 
-  parseAutoComplete(column, dataSet) {
+  parseAutoComplete(column:any, dataSet:any) {
     let inst = this.inst;
 
     if (typeof column.source === 'string') {
       let relatedField:string = column.source;
-      column.source = function (query, process) {
+      column.source = function (query:any, process:any) {
         let row:number = inst.getSelected()[0];
         let data:any = dataSet[row];
 
@@ -64,14 +66,14 @@ export class HotTable implements OnInit, OnDestroy {
           o = o[fieldParts[i]];
         }
 
-        process(o.map(item => {
+        process(o.map((item:any) => {
           return !column.optionField ? item : item[column.optionField];
         }));
       };
     }
   }
 
-  onInit() {
+  ngOnInit() {
     this.view = document.createElement('div');
     this.view.class = 'handsontable-container';
     this.element.nativeElement.appendChild(this.view);
@@ -81,16 +83,17 @@ export class HotTable implements OnInit, OnDestroy {
     };
 
     eventNames.forEach(eventName => {
-      htOptions[eventName] = data => {
+      htOptions[eventName] = (data:any) => {
         this[eventName].next(data);
       };
     });
 
-    let additionalFields:Array<string> = ['colHeaders', 'colWidths', 'columns'];
-    additionalFields.forEach(field => {
-      if (this[field]) {
+    let additionalFields:string[] = ['colHeaders', 'colWidths', 'columns'];
+    additionalFields.forEach((field:string) => {
+      let newField:any = this[field];
+      if (newField) {
         Object.assign(htOptions, {
-          [field]: this[field]
+          [field]: newField
         });
       }
     });
@@ -108,7 +111,7 @@ export class HotTable implements OnInit, OnDestroy {
     }
   }
 
-  onDestroy() {
+  ngOnDestroy() {
     if (this.view) {
       this.view.remove();
     }
