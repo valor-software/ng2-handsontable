@@ -35,7 +35,7 @@
     "angular2": "2.0.0-alpha.46",
     "reflect-metadata": "0.1.2",
     "ts-loader": "0.8.2",
-    "zone.js": "0.6.6"
+    "zone.js": "0.6.11"
   },
   "devDependencies": {
     "bootstrap": "3.3.6",
