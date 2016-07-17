@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 
 gulp.paths = {
@@ -7,7 +9,8 @@ gulp.paths = {
     '!dist/**/*',
     '!typings/**/*',
     '!typings-persist/**/*',
-    '!**/*.{ts,coffee}.js'],
+    '!**/*.{ts,coffee}.js',
+    '!demo/lib/**/*'],
   jssrc: [
     '*.js',
     '!angular2-handsontable.js',

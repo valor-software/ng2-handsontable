@@ -1,10 +1,10 @@
 /// <reference path="../../../tsd.d.ts" />
 
 import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
+} from '@angular/common';
 
+import {Component} from '@angular/core';
 import {handsontable} from '../../../components/index';
 import {genData} from './data';
 
@@ -14,9 +14,7 @@ declare var Handsontable:Function;
 let template = require('./basic-demo.html');
 
 @Component({
-  selector: 'basic-demo'
-})
-@View({
+  selector: 'basic-demo',
   template: template,
   directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })

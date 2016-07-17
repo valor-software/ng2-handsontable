@@ -1,9 +1,10 @@
+'use strict';
+
 var path = require('path');
 var marked = require('marked');
 var webpack = require('webpack');
 
 var Clean = require('clean-webpack-plugin');
-var CompressionPlugin = require('compression-webpack-plugin');
 
 // marked renderer hack
 marked.Renderer.prototype.code = function (code, lang) {
@@ -49,9 +50,7 @@ var config = {
     angular2: [
       // Angular 2 Deps
       'zone.js',
-      'reflect-metadata',
-      'angular2/angular2',
-      'angular2/core'
+      'reflect-metadata'
     ],
     'angular2-handsontable': ['components'],
     'angular2-handsontable-demo': 'demo'
@@ -162,13 +161,6 @@ var config = {
           comments: false
         },
         beautify: false
-      }),
-      new CompressionPlugin({
-        asset: '{file}.gz',
-        algorithm: 'gzip',
-        regExp: /\.js$|\.html|\.css|.map$/,
-        threshold: 10240,
-        minRatio: 0.8
       })
     ]);
   }
