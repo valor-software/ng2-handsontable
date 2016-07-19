@@ -1,6 +1,5 @@
-import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from 'angular2/angular2';
-
-declare var Handsontable:Function;
+import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from '@angular/core';
+import Handsontable = require('handsontable/dist/handsontable.full.js');
 
 let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
   'afterCreateCol', 'afterCreateRow', 'afterDeselect',
@@ -71,7 +70,7 @@ export class HotTable implements OnInit, OnDestroy {
     }
   }
 
-  onInit() {
+  ngOnInit() {
     this.view = document.createElement('div');
     this.view.class = 'handsontable-container';
     this.element.nativeElement.appendChild(this.view);
@@ -108,7 +107,7 @@ export class HotTable implements OnInit, OnDestroy {
     }
   }
 
-  onDestroy() {
+  ngOnDestroy() {
     if (this.view) {
       this.view.remove();
     }

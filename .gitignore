@@ -4,9 +4,6 @@
 /demo/lib
 npm-debug.log
 
-# type script artifacts
-/typings/
-
 # WebStorm
 .idea
 

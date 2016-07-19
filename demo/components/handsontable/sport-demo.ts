@@ -1,9 +1,10 @@
 /// <reference path="../../../tsd.d.ts" />
 
 import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
+} from '@angular/common';
+
+import {Component} from '@angular/core';
 
 import {handsontable} from '../../../components/index';
 import {getSportData} from './data';
@@ -14,9 +15,7 @@ declare var Handsontable:any;
 let template = require('./sheet-demo.html');
 
 @Component({
-  selector: 'sport-demo'
-})
-@View({
+  selector: 'sport-demo',
   template: template,
   directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })

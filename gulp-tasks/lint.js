@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var esLint = require('gulp-eslint');
 var tslint = require('gulp-tslint');
@@ -13,8 +15,10 @@ gulp.task('eslint', function() {
 
 gulp.task('tslint', function() {
   return gulp.src(paths.tssrc)
-    .pipe(tslint())
-    .pipe(tslint.report('verbose', {
+    .pipe(tslint({
+      formatter: 'verbose'
+    }))
+    .pipe(tslint.report({
       emitError: true,
       reportLimit: 0
     }));

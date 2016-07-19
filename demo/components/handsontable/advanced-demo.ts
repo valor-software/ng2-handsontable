@@ -1,9 +1,10 @@
 /// <reference path='../../../tsd.d.ts' />
 
 import {
-  Component, View,
-  CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from 'angular2/angular2';
+   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
+} from '@angular/common';
+
+import {Component} from '@angular/core';
 
 import {handsontable} from '../../../components/index';
 import {getAdvancedData} from './data';
@@ -19,9 +20,7 @@ function percentRenderer(instance, td, row, col, prop, value, cellProperties) {
 }
 
 @Component({
-  selector: 'advanced-demo'
-})
-@View({
+  selector: 'advanced-demo',
   template: template,
   directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })

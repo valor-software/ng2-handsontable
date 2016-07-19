@@ -1,8 +1,9 @@
 /// <reference path="../../tsd.d.ts" />
 
-import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
+import {CORE_DIRECTIVES} from '@angular/common';
+import {Component} from '@angular/core';
 
-import {tabs} from 'ng2-bootstrap/ng2-bootstrap';
+import {TAB_DIRECTIVES} from 'ng2-bootstrap';
 import {BasicDemo} from './handsontable/basic-demo';
 import {SheetDemo} from './handsontable/sheet-demo';
 import {PersonalDemo} from './handsontable/personal-demo';
@@ -76,7 +77,7 @@ tabDesc.forEach(desc => {
           <tab heading="${desc.heading}" (select)="select($event)">
           <div class="card card-block panel panel-default panel-body">
 
-            <${desc.heading.toLowerCase()}-demo *ng-if="currentHeading === '${desc.heading}'"></${desc.heading.toLowerCase()}-demo>
+            <${desc.heading.toLowerCase()}-demo *ngIf="currentHeading === '${desc.heading}'"></${desc.heading.toLowerCase()}-demo>
 
             <br>
 
@@ -102,9 +103,7 @@ tabDesc.forEach(desc => {
 });
 
 @Component({
-  selector: 'handsontable-section'
-})
-@View({
+  selector: 'handsontable-section',
   template: `
   <section id="${name.toLowerCase()}">
     <div class="row">
@@ -122,7 +121,7 @@ tabDesc.forEach(desc => {
   </section>
   `,
   directives: [BasicDemo, AdvancedDemo, SheetDemo, PersonalDemo, FinanceDemo, ScienceDemo, SportDemo,
-    tabs, CORE_DIRECTIVES]
+    TAB_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class HandsontableSection {
   private currentHeading:string = 'Basic';
