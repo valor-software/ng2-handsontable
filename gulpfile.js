@@ -10,7 +10,9 @@ gulp.paths = {
     '!typings/**/*',
     '!typings-persist/**/*',
     '!**/*.{ts,coffee}.js',
-    '!demo/lib/**/*'],
+    '!demo/lib/**/*',
+    '!tsd.d.ts'
+  ],
   jssrc: [
     '*.js',
     '!angular2-handsontable.js',

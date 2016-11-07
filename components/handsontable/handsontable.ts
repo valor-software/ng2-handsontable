@@ -1,5 +1,5 @@
-import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef} from '@angular/core';
-import Handsontable = require('handsontable/dist/handsontable.full.js');
+import {OnInit, OnDestroy, Directive, EventEmitter, ElementRef, Input} from '@angular/core';
+import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 
 let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
   'afterCreateCol', 'afterCreateRow', 'afterDeselect',
@@ -18,24 +18,17 @@ let eventNames:Array<string> = ['afterCellMetaReset', 'afterChange',
 
 @Directive({
   selector: 'hot-table',
-  properties: [
-    'data',
-    'colHeaders',
-    'columns',
-    'colWidths',
-    'options'
-  ],
-  events: eventNames
+  outputs: eventNames
 })
 export class HotTable implements OnInit, OnDestroy {
   private inst:any;
   private view:any;
 
-  private data:Array<any> = [];
-  private colHeaders:Array<string>;
-  private columns:Array<any>;
-  private colWidths:Array<number>;
-  private options:any;
+  @Input() private data:Array<any> = [];
+  @Input('col-headers') private colHeaders:Array<string>;
+  @Input() private columns:Array<any>;
+  @Input('col-widths') private colWidths:Array<number>;
+  @Input() private options:any;
 
   constructor(private element:ElementRef) {
     // fill events dynamically

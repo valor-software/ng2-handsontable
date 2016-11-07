@@ -1,23 +1,14 @@
 /// <reference path="../../../tsd.d.ts" />
 
-import {
-   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from '@angular/common';
-
 import {Component} from '@angular/core';
 
 import {handsontable} from '../../../components/index';
 import {getSportData} from './data';
 
-declare var Handsontable:any;
-
-// webpack html imports
-let template = require('./sheet-demo.html');
 
 @Component({
   selector: 'sport-demo',
-  template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  template: require('./sport-demo.html')
 })
 export class SportDemo {
   private data:Array<any>;

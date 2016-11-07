@@ -43,7 +43,9 @@ var config = {
   resolve: {
     root: __dirname,
     extensions: ['', '.ts', '.js', '.json'],
-    alias: {}
+    alias: {
+      'handsontable-formula': path.resolve(src, 'external/handsontable.formula.js')
+    }
   },
 
   entry: {
@@ -52,8 +54,8 @@ var config = {
       'zone.js',
       'reflect-metadata'
     ],
-    'angular2-handsontable': ['components'],
-    'angular2-handsontable-demo': 'demo'
+    'angular2-handsontable': [path.resolve('components')],
+    'angular2-handsontable-demo': [path.resolve('demo')]
   },
 
   output: {
@@ -88,6 +90,12 @@ var config = {
   },
   module: {
     loaders: [
+      // Provide Handsontable
+      {
+        test: /\/handsontable\.formula\.js$/,
+        loader: 'imports?Handsontable=handsontable/dist/handsontable.full.js'
+      },
+
       // support markdown
       {test: /\.md$/, loader: 'html!markdown'},
 
@@ -139,11 +147,12 @@ var config = {
       minChunks: Infinity,
       filename: 'angular2.js'
     }),
-    new webpack.optimize.DedupePlugin({
-      __isProduction: isProduction
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin()
+    // Deactivated for now due to https://github.com/webpack/webpack/issues/2644
+    // new webpack.optimize.DedupePlugin({
+    //   __isProduction: isProduction
+    // }),
+    new webpack.optimize.OccurrenceOrderPlugin()
+    //new webpack.optimize.DedupePlugin()
   ],
   pushPlugins: function () {
     if (!isProduction) {

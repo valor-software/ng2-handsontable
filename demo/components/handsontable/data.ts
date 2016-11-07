@@ -1,5 +1,3 @@
-declare var Handsontable:Function;
-
 export function genData(rows:number = 10):Array<any> {
   let products:Array<any> = [
       {
