@@ -1,5 +1,3 @@
-/// <reference path='../../../tsd.d.ts' />
-
 import {Component} from '@angular/core';
 import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 

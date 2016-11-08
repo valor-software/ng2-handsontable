@@ -1,4 +1,4 @@
-/// <reference path="../tsd.d.ts" />
+
 import {Component} from '@angular/core';
 import {HandsontableSection} from './components/handsontable-section';
 // import {DemoHeader} from './components/demo-header';

@@ -12,12 +12,17 @@
     "listFiles": false,
     "noLib": false,
     "noEmitOnError": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "lib": ["es6", "dom"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "./components/index.ts"
+    "./components/index.ts",
+    "./tsd.d.ts"
   ]
 }
