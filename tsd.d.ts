@@ -1,3 +1,4 @@
-declare module 'handsontable/dist/handsontable.full.js';
+/// <reference path="./handsontable.d.ts" />
+
 declare var chroma: any;
 declare var require: any;

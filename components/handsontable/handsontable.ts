@@ -32,7 +32,7 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Input('col-headers') private colHeaders: Array<string>;
   @Input() private columns: Array<any>;
   @Input('col-widths') private colWidths: Array<number>;
-  @Input() private options: any;
+  @Input() private options: ht.GridOptions;
 
   constructor(private element: ElementRef) {
     // fill events dynamically
