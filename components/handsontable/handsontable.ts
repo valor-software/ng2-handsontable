@@ -1,5 +1,5 @@
 import {OnInit, OnDestroy, OnChanges, SimpleChanges, Directive, EventEmitter,
-  ElementRef, Input} from '@angular/core';
+  ElementRef, Input, NgZone} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 
@@ -32,9 +32,9 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Input('col-headers') private colHeaders: Array<string>;
   @Input() private columns: Array<any>;
   @Input('col-widths') private colWidths: Array<number>;
-  @Input() private options: ht.GridOptions;
+  @Input() private options: any;
 
-  constructor(private element: ElementRef) {
+  constructor(private element: ElementRef, private ngZone: NgZone) {
     // fill events dynamically
     eventNames.forEach(eventName => {
       this[eventName] = new EventEmitter();
@@ -82,7 +82,9 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
 
     const options = this.getCurrentOptions();
 
-    this.inst = new Handsontable(this.view, options);
+    this.ngZone.runOutsideAngular(() => {
+      this.inst = new Handsontable(this.view, options);
+    });
 
     this.parseAutoComplete(options);
 
