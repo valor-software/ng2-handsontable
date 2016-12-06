@@ -12,7 +12,7 @@ function headerRenderer(instance, td, row, col, prop, value, cellProperties) {
 }
 
 function diffRenderer(instance, td, row, col, prop, value, cellProperties) {
-  Handsontable.cellTypes.formula.renderer.apply(this, arguments);
+  Handsontable.cellTypes['formula'].renderer.apply(this, arguments); // tslint:disable-line:no-string-literal
   td.style.backgroundColor = '#c3f89c';
   td.style.fontWeight = (col === 13 ? 'bold' : 'normal');
 }

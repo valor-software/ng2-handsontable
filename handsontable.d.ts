@@ -371,6 +371,17 @@ declare module 'handsontable/dist/handsontable.full.js' {
     (element: Element, options: ht.GridOptions): ht.Instance;
     new (element: Element, options: ht.GridOptions): ht.Instance;
     renderers: ht.Renderers;
+    cellTypes: {[name: string]: {
+      renderer: ht.Renderer;
+      editor: Function;
+      validator?: Function;
+      dataType?: string;
+      copyable?: boolean;
+    }};
+    helper: {
+      KEY_CODES: any;
+      [name: string]: Function;
+    };
   };
   export = Handsontable;
 }

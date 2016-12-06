@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {TabsModule} from 'ng2-bootstrap/ng2-bootstrap';
 
-import {HotTable} from '../components';
+import {HotTableModule} from '../components';
 import {DemoComponent} from './components/demo.component';
 import {HandsontableSection} from './components/handsontable-section';
 import {BasicDemo} from './components/handsontable/basic-demo';
@@ -16,7 +16,6 @@ import {AdvancedDemo} from './components/handsontable/advanced-demo';
 
 @NgModule({
   declarations: [
-    HotTable,
     DemoComponent,
     HandsontableSection,
     BasicDemo,
@@ -29,6 +28,7 @@ import {AdvancedDemo} from './components/handsontable/advanced-demo';
   ],
   imports: [
     BrowserModule,
+    HotTableModule,
     TabsModule
   ],
   providers: [],

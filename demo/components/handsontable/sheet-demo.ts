@@ -13,7 +13,7 @@ export class SheetDemo {
   private options:any;
 
   constructor() {
-    this.data = Handsontable.helper.createSpreadsheetData(100, 12);
+    this.data = Handsontable.helper['createSpreadsheetData'](100, 12); // tslint:disable-line:no-string-literal
     this.options = {
       height: 396,
       colHeaders: true,

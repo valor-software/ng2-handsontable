@@ -29,11 +29,11 @@ var absDest = path.join(__dirname, dest);
 var config = {
   // isProduction ? 'source-map' : 'evale',
   devtool: 'source-map',
-  debug: true,
+  // debug: true,
   cache: true,
 
-  verbose: true,
-  displayErrorDetails: true,
+  // verbose: true,
+  // displayErrorDetails: true,
   context: __dirname,
   stats: {
     colors: true,
@@ -41,8 +41,7 @@ var config = {
   },
 
   resolve: {
-    root: __dirname,
-    extensions: ['', '.ts', '.js', '.json'],
+    extensions: ['.ts', '.js', '.json'],
     alias: {
       'handsontable-formula': path.resolve(src, 'external/handsontable.formula.js')
     }
@@ -68,50 +67,36 @@ var config = {
   // our Development Server configs
   devServer: {
     inline: true,
-    colors: true,
+    // colors: true,
     historyApiFallback: true,
     contentBase: src,
     publicPath: dest
   },
 
-  markdownLoader: {
-    langPrefix: 'language-',
-    highlight: function (code, lang) {
-      var language = !lang || lang === 'html' ? 'markup' : lang;
-      if (!global.Prism) {
-        global.Prism = require('prismjs');
-      }
-      var Prism = global.Prism;
-      if (!Prism.languages[language]) {
-        require('prismjs/components/prism-' + language + '.js');
-      }
-      return Prism.highlight(code, Prism.languages[language]);
-    }
-  },
   module: {
     loaders: [
       // Provide Handsontable
       {
         test: /\/handsontable\.formula\.js$/,
-        loader: 'imports?Handsontable=handsontable/dist/handsontable.full.js'
+        loader: 'imports-loader?Handsontable=handsontable/dist/handsontable.full.js'
       },
 
       // support markdown
-      {test: /\.md$/, loader: 'html!markdown'},
+      {test: /\.md$/, loader: 'html-loader!markdown-loader'},
 
       // Support for *.json files.
-      {test: /\.json$/, loader: 'json'},
+      {test: /\.json$/, loader: 'json-loader'},
 
       // Support for CSS as raw text
-      {test: /\.css$/, loader: 'raw'},
+      {test: /\.css$/, loader: 'raw-loader'},
 
       // support for .html as raw text
-      {test: /\.html$/, loader: 'raw'},
+      {test: /\.html$/, loader: 'raw-loader'},
 
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loader: 'ts',
+        loader: 'ts-loader',
         query: {
           ignoreDiagnostics: [
             6053,
@@ -151,30 +136,44 @@ var config = {
     // new webpack.optimize.DedupePlugin({
     //   __isProduction: isProduction
     // }),
-    new webpack.optimize.OccurrenceOrderPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin(),
     //new webpack.optimize.DedupePlugin()
-  ],
-  pushPlugins: function () {
-    if (!isProduction) {
-      return;
-    }
-
-    this.plugins.push.apply(this.plugins, [
-      //production only
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-          drop_debugger: false
-        },
-        output: {
-          comments: false
-        },
-        beautify: false
-      })
-    ]);
-  }
+    new webpack.LoaderOptionsPlugin({
+      test: /\.md$/,
+      options: {
+        markdownLoader: {
+          langPrefix: 'language-',
+          highlight: function (code, lang) {
+            var language = !lang || lang === 'html' ? 'markup' : lang;
+            if (!global.Prism) {
+              global.Prism = require('prismjs');
+            }
+            var Prism = global.Prism;
+            if (!Prism.languages[language]) {
+              require('prismjs/components/prism-' + language + '.js');
+            }
+            return Prism.highlight(code, Prism.languages[language]);
+          }
+        }
+      }
+    })
+  ]
 };
 
-config.pushPlugins();
+//production only
+if (isProduction) {
+  config.plugins.push.apply(config.plugins, [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_debugger: false
+      },
+      output: {
+        comments: false
+      },
+      beautify: false
+    })
+  ]);
+}
 
 module.exports = config;

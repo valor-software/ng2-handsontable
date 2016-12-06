@@ -8,45 +8,45 @@ let doc = require('../../components/handsontable/readme.md');
 let tabDesc:Array<any> = [
   {
     heading: 'Basic',
-    ts: require('!!prismjs?lang=typescript!./handsontable/basic-demo.ts'),
-    html: require('!!prismjs?lang=markup!./handsontable/basic-demo.html')
+    ts: require('!!prismjs-loader?lang=typescript!./handsontable/basic-demo.ts'),
+    html: require('!!prismjs-loader?lang=markup!./handsontable/basic-demo.html')
   },
   {
     heading: 'Advanced',
-    ts: require('!!prismjs?lang=typescript!./handsontable/advanced-demo.ts'),
-    html: require('!!prismjs?lang=markup!./handsontable/advanced-demo.html'),
+    ts: require('!!prismjs-loader?lang=typescript!./handsontable/advanced-demo.ts'),
+    html: require('!!prismjs-loader?lang=markup!./handsontable/advanced-demo.html'),
     source: 'https://www.quandl.com/c/demography/total-population-by-country'
 
   },
   {
     heading: 'Sheet',
-    ts: require('!!prismjs?lang=typescript!./handsontable/sheet-demo.ts'),
-    html: require('!!prismjs?lang=markup!./handsontable/sheet-demo.html')
+    ts: require('!!prismjs-loader?lang=typescript!./handsontable/sheet-demo.ts'),
+    html: require('!!prismjs-loader?lang=markup!./handsontable/sheet-demo.html')
 
   }
   ,
   {
     heading: 'Personal',
-    ts: require('!!prismjs?lang=typescript!./handsontable/personal-demo.ts'),
-    html: require('!!prismjs?lang=markup!./handsontable/personal-demo.html')
+    ts: require('!!prismjs-loader?lang=typescript!./handsontable/personal-demo.ts'),
+    html: require('!!prismjs-loader?lang=markup!./handsontable/personal-demo.html')
 
   },
   {
     heading: 'Finance',
-    ts: require('!!prismjs?lang=typescript!./handsontable/finance-demo.ts'),
-    html: require('!!prismjs?lang=markup!./handsontable/finance-demo.html'),
+    ts: require('!!prismjs-loader?lang=typescript!./handsontable/finance-demo.ts'),
+    html: require('!!prismjs-loader?lang=markup!./handsontable/finance-demo.html'),
     source: 'https://www.quandl.com/c/markets/bitcoin-data'
   },
   {
     heading: 'Science',
-    ts: require('!!prismjs?lang=typescript!./handsontable/science-demo.ts'),
-    html: require('!!prismjs?lang=markup!./handsontable/science-demo.html'),
+    ts: require('!!prismjs-loader?lang=typescript!./handsontable/science-demo.ts'),
+    html: require('!!prismjs-loader?lang=markup!./handsontable/science-demo.html'),
     source: 'https://plot.ly/~JStevens/0/an-age-distribution-for-scientific-genius'
   },
   {
     heading: 'Sport',
-    ts: require('!!prismjs?lang=typescript!./handsontable/sport-demo.ts'),
-    html: require('!!prismjs?lang=markup!./handsontable/sport-demo.html'),
+    ts: require('!!prismjs-loader?lang=typescript!./handsontable/sport-demo.ts'),
+    html: require('!!prismjs-loader?lang=markup!./handsontable/sport-demo.html'),
     source: 'http://www.forbes.com/nba-valuations/list'
   }
 ];

@@ -5,6 +5,7 @@ var gulp = require('gulp');
 gulp.paths = {
   tssrc: [
     '**/*.ts',
+    '!**/*.ngfactory.ts',
     '!node_modules/**/*',
     '!dist/**/*',
     '!typings/**/*',
