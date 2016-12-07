@@ -18,3 +18,7 @@ npm-debug.log
 /components/**/*.js.map
 
 /logs
+
+# AoT generated files
+/**/*.metadata.json
+/**/*.ngfactory.ts
