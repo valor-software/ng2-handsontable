@@ -70,7 +70,7 @@
     "require-dir": "0.3.0",
     "tslint": "3.13.0",
     "typescript": "1.8.10",
-    "webpack": "1.13.1",
+    "webpack": "1.14.0",
     "webpack-dev-server": "1.14.1"
   }
 }
