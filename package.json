@@ -11,7 +11,6 @@
     "test": "gulp lint"
   },
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "components",
@@ -35,13 +34,13 @@
   },
   "homepage": "https://github.com/valor-software/ng2-handsontable#readme",
   "dependencies": {
-    "@angular/common": "2.2.3",
-    "@angular/compiler": "2.2.3",
-    "@angular/compiler-cli": "2.2.3",
-    "@angular/core": "2.2.3",
-    "@angular/forms": "2.2.3",
-    "@angular/platform-browser": "2.2.3",
-    "@angular/platform-browser-dynamic": "2.2.3",
+    "@angular/common": "^2.2.3",
+    "@angular/compiler": "^2.2.3",
+    "@angular/compiler-cli": "^2.2.3",
+    "@angular/core": "^2.2.3",
+    "@angular/forms": "^2.2.3",
+    "@angular/platform-browser": "^2.2.3",
+    "@angular/platform-browser-dynamic": "^2.2.3",
     "handsontable": "^0.26.0",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "0.6.25"
