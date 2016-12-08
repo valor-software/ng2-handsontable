@@ -106,6 +106,9 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     if (this.pagedDataSubscription) {
       this.pagedDataSubscription.unsubscribe();
     }
+    if (this.inst) {
+      this.inst.destroy();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
