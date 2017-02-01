@@ -112,13 +112,12 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if ('options' in changes && this.inst) {
+      this.inst.updateSettings(this.getCurrentOptions());
+    }
     // tslint:disable-next-line:no-string-literal
     if (changes['data'] && !changes['data'].isFirstChange()) {
       this.inst.loadData(this.data);
-    }
-
-    if ('options' in changes && this.inst) {
-      this.inst.updateSettings(this.getCurrentOptions());
     }
   }
 
