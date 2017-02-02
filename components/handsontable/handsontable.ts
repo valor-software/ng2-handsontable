@@ -23,16 +23,18 @@ let eventNames: Array<string> = ['afterCellMetaReset', 'afterChange',
   outputs: eventNames
 })
 export class HotTable implements OnInit, OnDestroy, OnChanges {
-  private inst: any;
-  private view: any;
-  private pagedDataSubscription: Subscription;
-
   @Input() private data: Array<any> = [];
   @Input('pagedData') private pagedData$: Observable<Array<any>>;
   @Input('col-headers') private colHeaders: Array<string>;
   @Input() private columns: Array<any>;
   @Input('col-widths') private colWidths: Array<number>;
   @Input() private options: any;
+
+  private inst: any;
+  private view: any;
+  private pagedDataSubscription: Subscription;
+  private zoneQueue: (() => void)[] = [];
+  private zoneQueueTimeout: number = 0;
 
   constructor(private element: ElementRef, private ngZone: NgZone) {
     // fill events dynamically
@@ -59,7 +61,7 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
             }
 
             let fieldParts: Array<string> = relatedField.split('.');
-            let o:any = data;
+            let o: any = data;
             for (let i = 0; i < fieldParts.length; i++) {
               o = o[fieldParts[i]];
             }
@@ -141,9 +143,23 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     };
 
     eventNames.forEach(eventName => {
-      htOptions[eventName] = data => {
-        this[eventName].emit(data);
-      };
+      // Only register the event if the emitter has an observer (i.e., if the output is actually being used)
+      if (<EventEmitter<any[]>>this[eventName].observers.length) {
+        htOptions[eventName] = (...args) => {
+          let data: any[] = [];
+          // Handsontable event handlers are always called with 6 arguments. Cut off any trailing undefined values.
+          for (let index = args.length; index >= 0; index--) {
+            if (args[index] !== void 0) {
+              data = args.slice(0, index + 1);
+              break;
+            }
+          }
+          // Queue all emissions to only cause 1 Zone.run() call per tick.
+          this.queueForRunningInZone(() => {
+            this[eventName].emit(data);
+          });
+        };
+      }
     });
 
     let additionalFields: Array<string> = ['colHeaders', 'colWidths', 'columns'];
@@ -160,6 +176,20 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     }
 
     return htOptions;
+  }
+
+  private queueForRunningInZone(fn: () => void): void {
+    if (this.zoneQueueTimeout) {
+      clearTimeout(this.zoneQueueTimeout);
+    }
+    this.zoneQueue.push(fn);
+    this.zoneQueueTimeout = setTimeout(() => {
+      this.ngZone.run(() => {
+        this.zoneQueue.forEach(f => f());
+      });
+      this.zoneQueue = [];
+      this.zoneQueueTimeout = 0;
+    });
   }
 }
 
