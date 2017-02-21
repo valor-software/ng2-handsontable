@@ -25,9 +25,9 @@ let eventNames: Array<string> = ['afterCellMetaReset', 'afterChange',
 export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Input() private data: Array<any> = [];
   @Input('pagedData') private pagedData$: Observable<Array<any>>;
-  @Input('col-headers') private colHeaders: Array<string>;
-  @Input() private columns: Array<any>;
-  @Input('col-widths') private colWidths: Array<number>;
+  @Input('col-headers') protected colHeaders: Array<string>;
+  @Input() protected columns: Array<any>;
+  @Input('col-widths') protected colWidths: Array<number>;
   @Input() private options: any;
 
   private inst: any;
@@ -52,7 +52,7 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
       columns.forEach(column => {
         if (typeof column.source === 'string') {
           let relatedField: string = column.source;
-          column.source = function (query, process) {
+          column.source = function (_query, process) {
             let row: number = inst.getSelected()[0];
             let data: any = dataSet[row];
 
