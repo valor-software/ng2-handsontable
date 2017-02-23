@@ -4,8 +4,9 @@
 /demo/lib
 npm-debug.log
 
-# WebStorm
-.idea
+# IDEs
+/.idea
+/.vscode
 
 # ignore build and dist for now
 /build
@@ -18,3 +19,7 @@ npm-debug.log
 /components/**/*.js.map
 
 /logs
+
+# AoT generated files
+/**/*.metadata.json
+/**/*.ngfactory.ts

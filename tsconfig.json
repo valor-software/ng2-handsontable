@@ -1,5 +1,4 @@
 {
-  "version": "1.6.2",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -12,12 +11,19 @@
     "listFiles": false,
     "noLib": false,
     "noEmitOnError": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "lib": ["es6", "dom"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "./components/index.ts"
+    "./components/index.ts",
+    "./tsd.d.ts"
   ]
 }

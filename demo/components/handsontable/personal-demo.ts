@@ -1,18 +1,9 @@
-/// <reference path="../../../tsd.d.ts" />
-
-import {
-   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from '@angular/common';
-
 import {Component} from '@angular/core';
+import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 
 import {handsontable} from '../../../components/index';
 import {getPersonalData} from './data';
 
-declare var Handsontable:any;
-
-// webpack html imports
-let template = require('./personal-demo.html');
 
 function headerRenderer(instance, td, row, col, prop, value, cellProperties) {
   Handsontable.renderers.TextRenderer.apply(this, arguments);
@@ -21,7 +12,7 @@ function headerRenderer(instance, td, row, col, prop, value, cellProperties) {
 }
 
 function diffRenderer(instance, td, row, col, prop, value, cellProperties) {
-  Handsontable.cellTypes.formula.renderer.apply(this, arguments);
+  Handsontable.cellTypes['formula'].renderer.apply(this, arguments); // tslint:disable-line:no-string-literal
   td.style.backgroundColor = '#c3f89c';
   td.style.fontWeight = (col === 13 ? 'bold' : 'normal');
 }
@@ -42,8 +33,7 @@ function boldAndAlignRenderer(instance, td, row, col, prop, value, cellPropertie
 
 @Component({
   selector: 'personal-demo',
-  template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  template: require('./personal-demo.html')
 })
 export class PersonalDemo {
   private data:Array<any>;

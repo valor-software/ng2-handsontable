@@ -5,12 +5,15 @@ var gulp = require('gulp');
 gulp.paths = {
   tssrc: [
     '**/*.ts',
+    '!**/*.ngfactory.ts',
     '!node_modules/**/*',
     '!dist/**/*',
     '!typings/**/*',
     '!typings-persist/**/*',
     '!**/*.{ts,coffee}.js',
-    '!demo/lib/**/*'],
+    '!demo/lib/**/*',
+    '!tsd.d.ts'
+  ],
   jssrc: [
     '*.js',
     '!angular2-handsontable.js',

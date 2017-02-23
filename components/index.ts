@@ -1,2 +1,2 @@
-/// <reference path="../tsd.d.ts" />
 export * from './handsontable/handsontable';
+export * from './handsontable/handsontable.module';

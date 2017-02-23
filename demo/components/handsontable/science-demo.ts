@@ -1,26 +1,14 @@
-/// <reference path="../../../tsd.d.ts" />
-
-import {
-   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from '@angular/common';
-
 import {Component} from '@angular/core';
+import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 
 import {handsontable} from '../../../components/index';
 import {getScienceData} from './data';
-
-declare var Handsontable:any;
-declare var chroma:any;
-
-// webpack html imports
-let template = require('./sheet-demo.html');
-
 
 let heatmapScale = chroma.scale(['#17F556', '#ED6D47']);
 let heatmap = [];
 
 function updateHeatmap(change, source) {
-  if (change) {
+  if (change && change.length) {
     heatmap[change[0][1]] = generateHeatmapData(this, change[0][1]);
   } else {
     heatmap = [];
@@ -56,8 +44,7 @@ function heatmapRenderer(instance, td, row, col, prop, value, cellProperties) {
 
 @Component({
   selector: 'science-demo',
-  template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  template: require('./science-demo.html')
 })
 export class ScienceDemo {
   private data:Array<any>;

@@ -1,18 +1,9 @@
-/// <reference path='../../../tsd.d.ts' />
-
-import {
-   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from '@angular/common';
-
 import {Component} from '@angular/core';
+import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 
 import {handsontable} from '../../../components/index';
 import {getAdvancedData} from './data';
 
-declare var Handsontable:any;
-
-// webpack html imports
-let template = require('./advanced-demo.html');
 
 function percentRenderer(instance, td, row, col, prop, value, cellProperties) {
   Handsontable.renderers.NumericRenderer.apply(this, arguments);
@@ -21,8 +12,7 @@ function percentRenderer(instance, td, row, col, prop, value, cellProperties) {
 
 @Component({
   selector: 'advanced-demo',
-  template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  template: require('./advanced-demo.html')
 })
 export class AdvancedDemo {
   private data:Array<any>;

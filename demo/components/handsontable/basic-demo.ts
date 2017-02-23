@@ -1,22 +1,13 @@
-/// <reference path="../../../tsd.d.ts" />
-
-import {
-   CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass
-} from '@angular/common';
-
 import {Component} from '@angular/core';
+import * as Handsontable from 'handsontable/dist/handsontable.full.js';
+
 import {handsontable} from '../../../components/index';
 import {genData} from './data';
 
-declare var Handsontable:Function;
-
-// webpack html imports
-let template = require('./basic-demo.html');
 
 @Component({
   selector: 'basic-demo',
-  template: template,
-  directives: [handsontable, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  template: require('./basic-demo.html')
 })
 export class BasicDemo {
   private data:Array<any> = genData(10);
