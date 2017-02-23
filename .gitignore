@@ -4,8 +4,9 @@
 /demo/lib
 npm-debug.log
 
-# WebStorm
-.idea
+# IDEs
+/.idea
+/.vscode
 
 # ignore build and dist for now
 /build
