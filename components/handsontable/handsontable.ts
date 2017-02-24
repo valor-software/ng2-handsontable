@@ -102,8 +102,8 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy() {
-    if (this.view) {
-      this.view.remove();
+    if (this.view && this.view.parentElement) {
+      this.view.parentElement.removeChild(this.view);
     }
     if (this.pagedDataSubscription) {
       this.pagedDataSubscription.unsubscribe();
