@@ -49,7 +49,7 @@
     "bootstrap": "3.3.7",
     "clean-webpack-plugin": "0.1.9",
     "eslint": "3.9.1",
-    "exports-loader": "0.6.3",
+    "exports-loader": "0.6.4",
     "file-loader": "0.9.0",
     "gulp": "3.9.1",
     "gulp-clean": "0.3.2",
