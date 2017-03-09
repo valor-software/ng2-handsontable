@@ -21,7 +21,6 @@ Native Angular2 directive for [Handsontable](https://github.com/handsontable/han
 3. After Handsontable component is downloaded, embed the code into your project.
 
   ```html
-  <script src="bower_components/handsontable/dist/handsontable.full.js"></script>
   <link rel="stylesheet" media="screen" href="bower_components/handsontable/dist/handsontable.full.css">
   ```
 
