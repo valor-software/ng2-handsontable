@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { getSportData } from './data';
 
 @Component({

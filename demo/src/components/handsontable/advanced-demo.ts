@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
+import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 import {getAdvancedData} from './data';
-
 
 
 @Component({
