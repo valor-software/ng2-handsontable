@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 let name = 'Handsontable';
 // webpack html imports
-let doc = require('html-loader!markdown-loader!../../../components/handsontable/readme.md');
+let doc = require('html-loader!markdown-loader!../../../readme.md');
 
 let tabDesc:Array<any> = [
   {
@@ -102,7 +102,7 @@ tabDesc.forEach(desc => {
     </div>
 
     <div class="row">
-      <h2>API</h2>
+      <h2>Documentation</h2>
       <div class="card card-block panel panel-default panel-body" ngNonBindable>${escape(doc)}</div>
     </div>
   </section>
