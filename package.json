@@ -1,7 +1,7 @@
 {
   "name": "ng2-handsontable",
-  "version": "0.47.2",
-  "description": "angular handsontable components",
+  "version": "0.48.0",
+  "description": "angular2 handsontable components",
   "private": true,
   "scripts": {
     "lite-server": "lite-server -c demo/bs-config.js",
