@@ -25,6 +25,7 @@ let tabDesc:Array<any> = [
   }
   ,
   // Requires Handsontable Pro: http://docs.handsontable.com/pro/1.10.1/demo-formula-support.html
+  // See ./external
   // {
   //   heading: 'Personal',
   //   ts: require('!!prismjs-loader?lang=typescript!./handsontable/personal-demo.ts'),

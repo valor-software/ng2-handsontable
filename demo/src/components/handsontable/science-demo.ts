@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 import {getScienceData} from './data';
 
 let heatmapScale = chroma.scale(['#17F556', '#ED6D47']);
