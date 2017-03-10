@@ -24,12 +24,13 @@ let tabDesc:Array<any> = [
 
   }
   ,
-  {
-    heading: 'Personal',
-    ts: require('!!prismjs-loader?lang=typescript!./handsontable/personal-demo.ts'),
-    html: require('!!prismjs-loader?lang=markup!./handsontable/personal-demo.html')
+  // Requires Handsontable Pro: http://docs.handsontable.com/pro/1.10.1/demo-formula-support.html
+  // {
+  //   heading: 'Personal',
+  //   ts: require('!!prismjs-loader?lang=typescript!./handsontable/personal-demo.ts'),
+  //   html: require('!!prismjs-loader?lang=markup!./handsontable/personal-demo.html')
 
-  },
+  // },
   {
     heading: 'Finance',
     ts: require('!!prismjs-loader?lang=typescript!./handsontable/finance-demo.ts'),
