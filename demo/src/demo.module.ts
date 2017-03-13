@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {TabsModule} from 'ng2-bootstrap';
-import {HotTableModule} from 'ng2-handsontable';
+import {HotTableModule} from '../../src';
 
 import {DemoComponent} from './components/demo.component';
 import {HandsontableSection} from './components/handsontable-section';
