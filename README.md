@@ -11,7 +11,9 @@ Native Angular2 directive for the [Handsontable](https://github.com/handsontable
 
 1. Add ***ng2-handsontable*** to your package.json or install with `npm i ng2-handsontable --save`.
 
-2. Import the `HotTableModule` into your module. Here's a TypeScript example:
+2. If you are using SystemJS, add the ng2-handsontable path to your SystemJS.config.js: `'ng2-handsontable': 'node_modules/ng2-handsontable/bundles/ng2-handsontable.umd.js'`. Webpack (used by Angular-CLI) picks up the path automatically.
+
+3. Import the `HotTableModule` into your module. Here's a TypeScript example:
 
 ```typescript
 import {HotTableModule} from 'ng2-handsontable';
@@ -28,7 +30,7 @@ export class MyModule {
 }
 ```
 
-3. Use the `hot-table` directive in your template. The following example displays the supported attributes:
+4. Use the `hot-table` directive in your template. The following example displays the supported attributes:
 
 ```html
 <hot-table [data]="data"
@@ -50,7 +52,7 @@ export class MyModule {
 
 The free version of Handsontable is used by default, but the pro-version could be used as a drop-in replacement.
 
-4. See the [demo](http://valor-software.github.io/ng2-handsontable/) and the [demo sources](https://github.com/valor-software/ng2-handsontable/tree/master/demo/src) for further details.
+5. See the [demo](http://valor-software.github.io/ng2-handsontable/) and the [demo sources](https://github.com/valor-software/ng2-handsontable/tree/master/demo/src) for further details.
 
 
 ## Troubleshooting
