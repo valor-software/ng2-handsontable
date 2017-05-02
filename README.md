@@ -1,5 +1,7 @@
 # ng2-handsontable
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/valor-software/ng2-handsontable.svg)](https://greenkeeper.io/)
+
 Native Angular2 directive for the [Handsontable](https://github.com/handsontable/handsontable) component.
 
 [Handsontable](https://github.com/handsontable/handsontable) is a data grid component with an Excel-like appearance. Built in JavaScript, it integrates with any data source and comes with [features](http://docs.handsontable.com/tutorial-features.html) like data validation, sorting, grouping, data binding or column ordering. Actively supported by the Handsoncode team and the GitHub community.
