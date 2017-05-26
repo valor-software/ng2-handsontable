@@ -1,4 +1,4 @@
-import {Injectable, TemplateRef} from '@angular/core';
+import { Injectable, TemplateRef } from '@angular/core';
 
 /**
  * A service to open modals

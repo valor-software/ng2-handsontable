@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+// tslint:disable:no-empty
+import { Component, Input, OnInit } from '@angular/core';
 
 /**
  * Foo doc
@@ -8,11 +9,10 @@ import {Component, Input, OnInit} from '@angular/core';
   template: '<button (click)="forTemplateOnly()">{{buttonTxt}}</button>',
   exportAs: 'foo'
 })
-export class Foo implements OnInit {
+export class FooComponent implements OnInit {
   @Input() buttonTxt;
 
-  constructor() {
-  }
+  constructor() {}
 
   /**
    * Only used in a template
@@ -23,9 +23,8 @@ export class Foo implements OnInit {
     console.log('I was clicked!');
   }
 
-  ngOnInit() {
-  }
-  
-  private _dontSerialize() {
-  }
+  ngOnInit() {}
+
+  // tslint:disable-next-line:prefer-function-over-method
+  private _dontSerialize() {}
 }

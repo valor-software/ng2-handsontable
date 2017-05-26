@@ -1,4 +1,4 @@
-import {Directive, Output, EventEmitter} from '@angular/core';
+import { Directive, Output, EventEmitter } from '@angular/core';
 
 @Directive({
   selector: '[foo]'
