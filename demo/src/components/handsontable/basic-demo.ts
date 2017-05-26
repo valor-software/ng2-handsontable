@@ -1,3 +1,4 @@
+/* tslint:disable:no-any no-magic-numbers prefer-function-over-method */
 import { Component } from '@angular/core';
 import { genData } from './data';
 
@@ -5,11 +6,11 @@ import { genData } from './data';
   selector: 'basic-demo',
   template: require('./basic-demo.html')
 })
-export class BasicDemo {
-  private data: Array<any> = genData(10);
-  private colHeaders: Array<string> = ['ID', 'First Name', 'Last Name', 'Address',
+export class BasicDemoComponent {
+  private data: any[] = genData(10);
+  private colHeaders: string[] = ['ID', 'First Name', 'Last Name', 'Address',
     'Favorite food', 'Price', 'Is active'];
-  private columns: Array<any> = [
+  private columns: any[] = [
     {
       data: 'id'
     },
@@ -45,7 +46,7 @@ export class BasicDemo {
       uncheckedTemplate: 'No'
     }
   ];
-  private colWidths: Array<number> = [null, null, null, null, null, null, 30];
+  private colWidths: number[] = [null, null, null, null, null, null, 30];
   private options: any = {
     stretchH: 'all',
     columnSorting: true,

@@ -16,7 +16,7 @@ Native Angular2 directive for the [Handsontable](https://github.com/handsontable
 3. Import the `HotTableModule` into your module. Here's a TypeScript example:
 
 ```typescript
-import {HotTableModule} from 'ng2-handsontable';
+import { HotTableModule } from 'ng2-handsontable';
 ...
 
 @NgModule({
@@ -35,8 +35,8 @@ export class MyModule {
 ```html
 <hot-table [data]="data"
            [columns]="columns"
-           [col-headers]="colHeaders"
-           [col-widths]="colHeaders"
+           [colHeaders]="colHeaders"
+           [colWidths]="colHeaders"
            [options]="options"
            (HANDSONTABLE_EVENT)="eventHandler">
 </hot-table>
@@ -45,8 +45,8 @@ export class MyModule {
 - `data: any[]` - data source for this `HotTable`
 - `pageData: Observable<any[]>` - observable data source for this `HotTable` for paged data
 - `columns?: any[]` - descriptors of columns that contains information regarding type, format, source, ... of particular column
-- `col-headers?: string[]` - array of column headers, default column headers will be shown (or not be shown, it depends on other settings) if this parameter is undefined
-- `col-widths?: number[]` - array of column sizes, default column size will be applied if this parameter is undefined
+- `colHeaders?: string[]` - array of column headers, default column headers will be shown (or not be shown, it depends on other settings) if this parameter is undefined
+- `colWidths?: number[]` - array of column sizes, default column size will be applied if this parameter is undefined
 - `options?: any` - any of the [Handsontable options](http://docs.handsontable.com/pro/Options.html)
 - 'HANDSONTABLE_EVENT' - all [Handsontable events](http://docs.handsontable.com/pro/Hooks.html#event:afterAddChild) are implemented as EventEmitters, e.g. `(beforeInit)="onBeforeInit"`.
 

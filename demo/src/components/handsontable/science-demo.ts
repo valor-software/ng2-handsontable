@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+// tslint:disable:no-any no-invalid-this
+import { Component } from '@angular/core';
 import * as Handsontable from 'handsontable/dist/handsontable.full.js';
-import {getScienceData} from './data';
+import { getScienceData } from './data';
 
-let heatmapScale = chroma.scale(['#17F556', '#ED6D47']);
+const heatmapScale = chroma.scale(['#17F556', '#ED6D47']);
 let heatmap = [];
 
 function updateHeatmap(change, source) {
@@ -11,7 +12,8 @@ function updateHeatmap(change, source) {
   } else {
     heatmap = [];
 
-    for (let i = 1, colCount = this.countCols(); i < colCount; i++) {
+    const colCount = this.countCols();
+    for (let i = 1; i < colCount; i++) {
       heatmap[i] = generateHeatmapData(this, i);
     }
   }
@@ -21,8 +23,8 @@ function point(min, max, value) {
   return (value - min) / (max - min);
 }
 
-function generateHeatmapData(context:any, colId) {
-  let values = context.getDataAtCol(colId);
+function generateHeatmapData(context: any, colId) {
+  const values = context.getDataAtCol(colId);
 
   return {
     min: Math.min.apply(null, values),
@@ -44,9 +46,9 @@ function heatmapRenderer(instance, td, row, col, prop, value, cellProperties) {
   selector: 'science-demo',
   template: require('./science-demo.html')
 })
-export class ScienceDemo {
-  private data:Array<any>;
-  private options:any;
+export class ScienceDemoComponent {
+  private data: any[];
+  private options: any;
 
   constructor() {
     this.data = getScienceData();

@@ -1,27 +1,32 @@
-import {OnInit, OnDestroy, OnChanges, SimpleChanges, Directive, EventEmitter,
-  ElementRef, Input, NgZone} from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
+/* tslint:disable:no-any */
+import { OnInit, OnDestroy, OnChanges, SimpleChanges, Directive, EventEmitter,
+  ElementRef, Input, NgZone } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 
-let eventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'afterCellMetaReset', 'afterChange', 'afterChangesObserved', 'afterColumnMove', 'afterColumnResize', 'afterColumnSort', 'afterContextMenuDefaultOptions', 'afterContextMenuHide', 'afterContextMenuShow', 'afterCopy', 'afterCopyLimit', 'afterCreateCol', 'afterCreateRow', 'afterCut', 'afterDeselect', 'afterDestroy', 'afterDetachChild', 'afterDocumentKeyDown', 'afterDropdownMenuDefaultOptions', 'afterDropdownMenuHide', 'afterDropdownMenuShow', 'afterePaste', 'afterFilter', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetColumnHeaderRenderers', 'afterGetRowHeader', 'afterGetRowHeaderRenderers', 'afterInit', 'afterLoadData', 'afterModifyTransformEnd', 'afterModifyTransformStart', 'afterMomentumScroll', 'afterOnCellCornerDblClick', 'afterOnCellCornerMouseDown', 'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterOnCellMouseOver', 'afterPluginsInitialized', 'afterRedo', 'afterRemoveCol', 'afterRemoveRow', 'afterRender', 'afterRenderer', 'afterRowMove', 'afterRowResize', 'afterScrollHorizontally', 'afterScrollVertically', 'afterSelection', 'afterSelectionByProp', 'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterSetDataAtCell', 'afterSetDataAtRowProp', 'afterTrimRow', 'afterUndo', 'afterUntrimRow', 'afterUpdateSettings', 'afterValidate', 'afterViewportColumnCalculatorOverride', 'afterViewportRowCalculatorOverride', 'beforeAddChild', 'beforeAutofill', 'beforeAutofillInsidePopulate', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeColumnMove', 'beforeColumnResize', 'beforeColumnSort', 'beforeContextMenuSetItems', 'beforeCopy', 'beforeCreateCol', 'beforeCreateRow', 'beforeCut', 'beforeDetachChild', 'beforeDrawBorders', 'beforeDropdownMenuSetItems', 'beforeFilter', 'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown', 'beforeOnCellMouseOut', 'beforeOnCellMouseOver', 'beforePaste', 'beforeRedo', 'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeRenderer', 'beforeRowMove', 'beforeRowResize', 'beforeSetRangeEnd', 'beforeSetRangeStart', 'beforeStretchingColumnWidth', 'beforeTouchScroll', 'beforeUndo', 'beforeValidate', 'beforeValueRender', 'beforeValueRender', 'construct', 'hiddenColumn', 'hiddenRow', 'init', 'manualRowHeights', 'modifyAutofillRange', 'modifyCol', 'modifyColHeader', 'modifyColumnHeaderHeight', 'modifyColWidth', 'modifyCopyableRange', 'modifyData', 'modifyRow', 'modifyRowHeader', 'modifyRowHeaderWidth', 'modifyRowHeight', 'modifyRowSourceData', 'modifyTransformEnd', 'modifyTransformStart', 'persistentStateLoad', 'persistentStateReset', 'persistentStateSave', 'skipLengthCache', 'unmodifyCol', 'unmodifyRow'];
+// tslint:disable-next-line:max-line-length
+const eventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'afterCellMetaReset', 'afterChange', 'afterChangesObserved', 'afterColumnMove', 'afterColumnResize', 'afterColumnSort', 'afterContextMenuDefaultOptions', 'afterContextMenuHide', 'afterContextMenuShow', 'afterCopy', 'afterCopyLimit', 'afterCreateCol', 'afterCreateRow', 'afterCut', 'afterDeselect', 'afterDestroy', 'afterDetachChild', 'afterDocumentKeyDown', 'afterDropdownMenuDefaultOptions', 'afterDropdownMenuHide', 'afterDropdownMenuShow', 'afterePaste', 'afterFilter', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetColumnHeaderRenderers', 'afterGetRowHeader', 'afterGetRowHeaderRenderers', 'afterInit', 'afterLoadData', 'afterModifyTransformEnd', 'afterModifyTransformStart', 'afterMomentumScroll', 'afterOnCellCornerDblClick', 'afterOnCellCornerMouseDown', 'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterOnCellMouseOver', 'afterPluginsInitialized', 'afterRedo', 'afterRemoveCol', 'afterRemoveRow', 'afterRender', 'afterRenderer', 'afterRowMove', 'afterRowResize', 'afterScrollHorizontally', 'afterScrollVertically', 'afterSelection', 'afterSelectionByProp', 'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterSetDataAtCell', 'afterSetDataAtRowProp', 'afterTrimRow', 'afterUndo', 'afterUntrimRow', 'afterUpdateSettings', 'afterValidate', 'afterViewportColumnCalculatorOverride', 'afterViewportRowCalculatorOverride', 'beforeAddChild', 'beforeAutofill', 'beforeAutofillInsidePopulate', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeColumnMove', 'beforeColumnResize', 'beforeColumnSort', 'beforeContextMenuSetItems', 'beforeCopy', 'beforeCreateCol', 'beforeCreateRow', 'beforeCut', 'beforeDetachChild', 'beforeDrawBorders', 'beforeDropdownMenuSetItems', 'beforeFilter', 'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown', 'beforeOnCellMouseOut', 'beforeOnCellMouseOver', 'beforePaste', 'beforeRedo', 'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeRenderer', 'beforeRowMove', 'beforeRowResize', 'beforeSetRangeEnd', 'beforeSetRangeStart', 'beforeStretchingColumnWidth', 'beforeTouchScroll', 'beforeUndo', 'beforeValidate', 'beforeValueRender', 'beforeValueRender', 'construct', 'hiddenColumn', 'hiddenRow', 'init', 'manualRowHeights', 'modifyAutofillRange', 'modifyCol', 'modifyColHeader', 'modifyColumnHeaderHeight', 'modifyColWidth', 'modifyCopyableRange', 'modifyData', 'modifyRow', 'modifyRowHeader', 'modifyRowHeaderWidth', 'modifyRowHeight', 'modifyRowSourceData', 'modifyTransformEnd', 'modifyTransformStart', 'persistentStateLoad', 'persistentStateReset', 'persistentStateSave', 'skipLengthCache', 'unmodifyCol', 'unmodifyRow'];
 
 @Directive({
   selector: 'hot-table',
+  // tslint:disable-next-line:use-output-property-decorator
   outputs: eventNames
 })
+// tslint:disable-next-line:directive-class-suffix
 export class HotTable implements OnInit, OnDestroy, OnChanges {
-  @Input() private data: Array<any> = [];
-  @Input('pagedData') private pagedData$: Observable<Array<any>>;
-  @Input('col-headers') protected colHeaders: Array<string>;
-  @Input() protected columns: Array<any>;
-  @Input('col-widths') protected colWidths: Array<number>;
+  @Input() private data: any[] = [];
+  @Input() private pagedData: Observable<any[]>;
+  @Input() private colHeaders: string[];
+  @Input() private columns: any[];
+  @Input() private colWidths: number[];
   @Input() private options: any;
 
   private inst: any;
   private view: any;
   private pagedDataSubscription: Subscription;
   private zoneQueue: (() => void)[] = [];
-  private zoneQueueTimeout: number = 0;
+  private zoneQueueTimeout = 0;
 
   constructor(private element: ElementRef, private ngZone: NgZone) {
     // fill events dynamically
@@ -31,29 +36,29 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   }
 
   private parseAutoComplete(options: any) {
-    let inst = this.inst;
+    const inst = this.inst;
     const columns = this.columns || options.columns;
     const dataSet = options.data;
 
     if (columns) {
-      columns.forEach((column:any) => {
+      columns.forEach((column: any) => {
         if (typeof column.source === 'string') {
-          let relatedField: string = column.source;
-          column.source = function (_query:any, process:any) {
-            let row: number = inst.getSelected()[0];
-            let data: any = dataSet[row];
+          const relatedField: string = column.source;
+          column.source = (_query: any, process: any) => {
+            const row: number = inst.getSelected()[0];
+            const data: any = dataSet[row];
 
             if (!data) {
               return;
             }
 
-            let fieldParts: Array<string> = relatedField.split('.');
+            const fieldParts: string[] = relatedField.split('.');
             let o: any = data;
-            for (let i = 0; i < fieldParts.length; i++) {
-              o = o[fieldParts[i]];
+            for (const part of fieldParts) {
+              o = o[part];
             }
 
-            process(o.map((item:any) => {
+            process(o.map((item: any) => {
               return !column.optionField ? item : item[column.optionField];
             }));
           };
@@ -77,9 +82,9 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
 
     this.parseAutoComplete(options);
 
-    if (this.pagedData$) {
+    if (this.pagedData) {
       this.data = [];
-      this.pagedDataSubscription = this.pagedData$.subscribe((newPagedData: any) => {
+      this.pagedDataSubscription = this.pagedData.subscribe((newPagedData: any) => {
         Array.prototype.push.apply(this.data, newPagedData);
         this.inst.loadData(this.data);
         this.parseAutoComplete(options);
@@ -111,27 +116,29 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   }
 
   private checkInputs(): boolean {
-    const dataCount = Number(!!this.pagedData$) + Number(!!this.data) +
+    const dataCount = Number(!!this.pagedData) + Number(!!this.data) +
       Number(!!(this.options && this.options.data));
     if (dataCount > 1) {
       console.error('[pagedData], [data] and [options.data] are all mutually' +
        ' exclusive');
+
       return false;
     } else if (dataCount === 0) {
       console.error('One of [pagedData], [data] and [options.data] needs' +
         ' to be provided');
+
       return false;
     }
   }
 
   private getCurrentOptions(): any {
-    let htOptions: any = {
+    const htOptions: any = {
       data: this.data || null
     };
 
     eventNames.forEach(eventName => {
       // Only register the event if the emitter has an observer (i.e., if the output is actually being used)
-      if (<EventEmitter<any[]>>(this as any)[eventName].observers.length) {
+      if ((this as any)[eventName].observers.length) {
         htOptions[eventName] = (...args: any[]) => {
           let data: any[] = [];
           // Handsontable event handlers are always called with 6 arguments. Cut off any trailing undefined values.
@@ -149,7 +156,7 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
       }
     });
 
-    let additionalFields: Array<string> = ['colHeaders', 'colWidths', 'columns'];
+    const additionalFields: string[] = ['colHeaders', 'colWidths', 'columns'];
     additionalFields.forEach(field => {
       if ((this as any)[field]) {
         Object.assign(htOptions, {

@@ -1,4 +1,4 @@
-import {Directive, Input, OnInit} from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 
 /**
  * Foo doc

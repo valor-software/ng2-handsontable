@@ -1,21 +1,24 @@
-import {Component} from '@angular/core';
+// tslint:disable:no-any no-magic-numbers
+import { Component } from '@angular/core';
 import * as Handsontable from 'handsontable/dist/handsontable.full.js';
-import {getPersonalData} from './data';
-
+import { getPersonalData } from './data';
 
 function headerRenderer(instance, td, row, col, prop, value, cellProperties) {
+  // tslint:disable-next-line:no-invalid-this
   Handsontable.renderers.TextRenderer.apply(this, arguments);
   td.style.fontWeight = 'bold';
   td.style.textAlign = 'center';
 }
 
 function diffRenderer(instance, td, row, col, prop, value, cellProperties) {
+  // tslint:disable-next-line:no-invalid-this
   Handsontable.cellTypes['formula'].renderer.apply(this, arguments); // tslint:disable-line:no-string-literal
   td.style.backgroundColor = '#c3f89c';
   td.style.fontWeight = (col === 13 ? 'bold' : 'normal');
 }
 
 function incomeOrExpensesRenderer(instance, td, row, col, prop, value, cellProperties) {
+  // tslint:disable-next-line:no-invalid-this
   Handsontable.renderers.TextRenderer.apply(this, arguments);
   td.style.fontWeight = 'bold';
   td.style.textAlign = 'left';
@@ -23,6 +26,7 @@ function incomeOrExpensesRenderer(instance, td, row, col, prop, value, cellPrope
 }
 
 function boldAndAlignRenderer(instance, td, row, col, prop, value, cellProperties) {
+  // tslint:disable-next-line:no-invalid-this
   Handsontable.renderers.TextRenderer.apply(this, arguments);
   td.style.fontWeight = 'bold';
   td.style.verticalAlign = 'middle';
@@ -33,10 +37,10 @@ function boldAndAlignRenderer(instance, td, row, col, prop, value, cellPropertie
   selector: 'personal-demo',
   template: require('./personal-demo.html')
 })
-export class PersonalDemo {
-  private data:Array<any>;
-  private colWidths:Array<number>;
-  private options:any;
+export class PersonalDemoComponent {
+  private data: any[];
+  private colWidths: number[];
+  private options: any;
 
   constructor() {
     this.data = getPersonalData();
@@ -49,8 +53,8 @@ export class PersonalDemo {
       formulas: true,
       comments: true,
       colWidths: [200, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85],
-      cells: function (row, col, prop):any {
-        let cellProperties:any = {};
+      cells: (row, col, prop): any => {
+        const cellProperties: any = {};
 
         if (row === 0) {
           Object.assign(cellProperties, {renderer: headerRenderer});
@@ -74,7 +78,7 @@ export class PersonalDemo {
           cellProperties.readOnly = true;
         }
 
-        let a42 = Array.apply(0, Array(42)).map((x, y) => { return y + 1; });
+        const a42 = Array.apply(0, Array(42)).map((x, y) => y + 1);
         if (a42.indexOf(row) !== -1 && col >= 1) {
           cellProperties.type = 'numeric';
           cellProperties.format = '$0,0.00';

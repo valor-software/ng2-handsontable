@@ -1,15 +1,16 @@
-import {Component} from '@angular/core';
-import {getFinanceData} from './data';
+// tslint:disable:no-any
+import { Component } from '@angular/core';
+import { getFinanceData } from './data';
 
 @Component({
   selector: 'finance-demo',
   template: require('./finance-demo.html')
 })
-export class FinanceDemo {
-  private data:Array<any>;
-  private colHeaders:Array<string>;
-  private columns:Array<any>;
-  private options:any;
+export class FinanceDemoComponent {
+  private data: any[];
+  private colHeaders: string[];
+  private columns: any[];
+  private options: any;
 
   constructor() {
     this.data = getFinanceData();
