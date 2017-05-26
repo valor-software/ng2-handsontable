@@ -62,7 +62,7 @@ module.exports = function (config) {
     configuration.reporters.push('saucelabs');
     configuration.sauceLabs = {
       verbose: true,
-      testName: 'ng2-bootstrap unit tests',
+      testName: 'ng2-handsontable unit tests',
       recordScreenshots: false,
       username: process.env.SAUCE_USERNAME,
       accessKey: process.env.SAUCE_ACCESS_KEY,

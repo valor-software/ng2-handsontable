@@ -1,4 +1,4 @@
-import {Component, Directive} from '@angular/core';
+import { Component, Directive } from '@angular/core';
 
 /**
  * Foo doc

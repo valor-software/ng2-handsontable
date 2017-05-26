@@ -1,3 +1,4 @@
+/* tslint:disable:no-any */
 import { Component } from '@angular/core';
 import { getSportData } from './data';
 
@@ -5,9 +6,9 @@ import { getSportData } from './data';
   selector: 'sport-demo',
   template: require('./sport-demo.html')
 })
-export class SportDemo {
-  private data: Array<any>;
-  private colHeaders: Array<string>;
+export class SportDemoComponent {
+  private data: any[];
+  private colHeaders: string[];
   private options: any;
 
   constructor() {
@@ -31,9 +32,10 @@ export class SportDemo {
         {data: 6, type: 'numeric', format: '$0,0.00'},
         {data: 7, type: 'numeric', format: '$0,0.00'}
       ],
-      cells: function (row, col, prop) {
-        let cellProperties: any = {};
+      cells: (row, col, prop) => {
+        const cellProperties: any = {};
         cellProperties.className = 'htMiddle htCenter';
+
         return cellProperties;
       }
     };

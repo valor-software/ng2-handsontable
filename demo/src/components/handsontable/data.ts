@@ -1,5 +1,6 @@
-export function genData(rows:number = 10):Array<any> {
-  let products:Array<any> = [
+/* tslint:disable:no-any no-magic-numbers max-file-line-count*/
+export function genData(rows = 10): any[] {
+  const products: any[] = [
       {
         description: 'Big Mac',
         options: [
@@ -18,16 +19,16 @@ export function genData(rows:number = 10):Array<any> {
           {description: 'Fried Onions'}
         ]
       }
-    ],
-    firstNames = ['Ted', 'John', 'Macy', 'Rob', 'Gwen', 'Fiona', 'Mario',
-      'Ben', 'Kate', 'Kevin', 'Thomas', 'Frank'],
-    lastNames = ['Tired', 'Johnson', 'Moore', 'Rocket', 'Goodman', 'Farewell',
-      'Manson', 'Bentley', 'Kowalski', 'Schmidt', 'Tucker', 'Fancy'],
-    address = ['Turkey', 'Japan', 'Michigan', 'Russia', 'Greece', 'France', 'USA',
+    ];
+  const firstNames = ['Ted', 'John', 'Macy', 'Rob', 'Gwen', 'Fiona', 'Mario',
+      'Ben', 'Kate', 'Kevin', 'Thomas', 'Frank'];
+  const lastNames = ['Tired', 'Johnson', 'Moore', 'Rocket', 'Goodman', 'Farewell',
+      'Manson', 'Bentley', 'Kowalski', 'Schmidt', 'Tucker', 'Fancy'];
+  const address = ['Turkey', 'Japan', 'Michigan', 'Russia', 'Greece', 'France', 'USA',
       'Germany', 'Sweden', 'Denmark', 'Poland', 'Belgium'];
 
-  let items:Array<any> = [];
-  let product:any;
+  const items: any[] = [];
+  let product: any;
   let newProduct;
 
   for (let i = 0; i < rows; i++) {
@@ -37,7 +38,7 @@ export function genData(rows:number = 10):Array<any> {
       description: product.description,
       options: []
     };
-    product.options.forEach(function (p) {
+    product.options.forEach(p => {
       newProduct.options.push({description: p.description});
     });
     /// clone expected product
@@ -58,9 +59,9 @@ export function genData(rows:number = 10):Array<any> {
   }
 
   return items;
-};
+}
 
-export function getAdvancedData():Array<any> {
+export function getAdvancedData(): any[] {
   return [
     ['Afghanistan', '30.552', '1000s', '2013', '0.0244', '27.708', '24.019', '11.215'],
     ['Albania', '2.774', '1000s', '2013', '-0.0100', '2.884', '3.015', '3.228'],
@@ -252,14 +253,19 @@ export function getAdvancedData():Array<any> {
     ['Zimbabwe', '14.15', '1000s', '2013', '0.0310', '12.889', '12.693', '10.167'],
     ['Zimbabwe', '14.15', '1000s', '2013', '0.0310', '12.889', '12.693', '10.167']
   ];
-};
+}
 
 export function getPersonalData() {
   return [
     ['', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'Total'],
-    ['Total Incomes', '=SUM(B7:B12)', '=SUM(C7:C12)', '=SUM(D7:D12)', '=SUM(E7:E12)', '=SUM(F7:F12)', '=SUM(G7:G12)', '=SUM(H7:H12)', '=SUM(I7:I12)', '=SUM(J7:J12)', '=SUM(K7:K12)', '=SUM(L7:L12)', '=SUM(M7:M12)', '=SUM(B2:M2)'],
-    ['Total Expenses', '=SUM(B17:B43)', '=SUM(C17:C43)', '=SUM(D17:D43)', '=SUM(E17:E43)', '=SUM(F17:F43)', '=SUM(G17:G43)', '=SUM(H17:H43)', '=SUM(I17:I43)', '=SUM(J17:J43)', '=SUM(K17:K43)', '=SUM(L17:L43)', '=SUM(M17:M43)', '=SUM(B3:M3)'],
-    ['NET (Income - Expenses)', '=B2-B3', '=C2-C3', '=D2-D3', '=E2-E3', '=F2-F3', '=G2-G3', '=H2-H3', '=I2-I3', '=J2-J3', '=K2-K3', '=L2-L3', '=M2-M3', '=N2-N3', ''],
+    ['Total Incomes', '=SUM(B7:B12)', '=SUM(C7:C12)', '=SUM(D7:D12)', '=SUM(E7:E12)', '=SUM(F7:F12)',
+      '=SUM(G7:G12)', '=SUM(H7:H12)', '=SUM(I7:I12)', '=SUM(J7:J12)', '=SUM(K7:K12)', '=SUM(L7:L12)',
+      '=SUM(M7:M12)', '=SUM(B2:M2)'],
+    ['Total Expenses', '=SUM(B17:B43)', '=SUM(C17:C43)', '=SUM(D17:D43)', '=SUM(E17:E43)',
+      '=SUM(F17:F43)', '=SUM(G17:G43)', '=SUM(H17:H43)', '=SUM(I17:I43)', '=SUM(J17:J43)',
+      '=SUM(K17:K43)', '=SUM(L17:L43)', '=SUM(M17:M43)', '=SUM(B3:M3)'],
+    ['NET (Income - Expenses)', '=B2-B3', '=C2-C3', '=D2-D3', '=E2-E3', '=F2-F3', '=G2-G3',
+      '=H2-H3', '=I2-I3', '=J2-J3', '=K2-K3', '=L2-L3', '=M2-M3', '=N2-N3', ''],
     ['', '', '', '', '', '', '', '', '', '', '', '', '', ''],
     ['Income', '', '', '', '', '', '', '', '', '', '', '', '', ''],
     ['Salary', 11370, 11370, 11370, 11370, 11370, 11370, 11370, 11370, 11370, 11370, 11370, 11370, ''],
@@ -300,10 +306,11 @@ export function getPersonalData() {
     ['Retirement', 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, 800, ''],
     ['Other', 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, '']
   ];
-};
+}
 
 export function getScienceData() {
   return [
+    // tslint:disable-next-line:max-line-length
     ['<div><a href="https://plot.ly/~JStevens/0/" target="_blank" title="An Age Distribution for Scientific Genius" style="display: block; text-align: center;"><img src="https://plot.ly/~JStevens/0.png" alt="An Age Distribution for Scientific Genius" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src="\'https://plot.ly/404.png\'";" /></a><script data-plotly="JStevens:0" src="https://plot.ly/embed.js" async/></div>', 0.0008686210640608003, 18.235294117647058, 0.0015472312703583065, 18.235294117647058],
     ['', 0.0013436482084690554, 18.96551724137931, 0.002219055374592834, 18.843813387423936],
     ['', 0.0019408251900108608, 19.69574036511156, 0.0031867535287730727, 19.391480730223122],
@@ -415,7 +422,7 @@ export function getScienceData() {
     ['', 0.0005157437567861012, 73.24543610547667, null, null],
     ['', 0.0004275244299674336, 73.85395537525355, null, null]
   ];
-};
+}
 
 export function getSportData() {
   return [
@@ -449,7 +456,7 @@ export function getSportData() {
     [29, 'Minnesota Timberwolves', '<img src="assets/images/timberwolves.gif">', '625', '0.45', '0.016', '128', '6.9'],
     [30, 'Milwaukee Bucks', '<img src="assets/images/bucks.gif">', '600', '0.48', '0.029', '110', '11.5']
   ];
-};
+}
 
 export function getFinanceData() {
   return [
@@ -469,4 +476,4 @@ export function getFinanceData() {
     ['1310.00', '24/02/2015', '-0.01812', '-0.3310', '0'],
     ['1497.50', '24/02/2015', '0.0051', '-0.2309', '160']
   ];
-};
+}

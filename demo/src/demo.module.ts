@@ -1,30 +1,30 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {TabsModule} from 'ng2-bootstrap';
-import {HotTableModule} from '../../src';
+import { TabsModule } from 'ngx-bootstrap';
+import { HotTableModule } from '../../src';
 
-import {DemoComponent} from './components/demo.component';
-import {HandsontableSection} from './components/handsontable-section';
-import {BasicDemo} from './components/handsontable/basic-demo';
-import {SheetDemo} from './components/handsontable/sheet-demo';
-import {PersonalDemo} from './components/handsontable/personal-demo';
-import {FinanceDemo} from './components/handsontable/finance-demo';
-import {ScienceDemo} from './components/handsontable/science-demo';
-import {SportDemo} from './components/handsontable/sport-demo';
-import {AdvancedDemo} from './components/handsontable/advanced-demo';
+import { DemoComponent } from './components/demo.component';
+import { HandsontableSectionComponent } from './components/handsontable-section';
+import { BasicDemoComponent } from './components/handsontable/basic-demo';
+import { SheetDemoComponent } from './components/handsontable/sheet-demo';
+import { PersonalDemoComponent } from './components/handsontable/personal-demo';
+import { FinanceDemoComponent } from './components/handsontable/finance-demo';
+import { ScienceDemoComponent } from './components/handsontable/science-demo';
+import { SportDemoComponent } from './components/handsontable/sport-demo';
+import { AdvancedDemoComponent } from './components/handsontable/advanced-demo';
 
 @NgModule({
   declarations: [
     DemoComponent,
-    HandsontableSection,
-    BasicDemo,
-    SheetDemo,
-    PersonalDemo,
-    FinanceDemo,
-    ScienceDemo,
-    SportDemo,
-    AdvancedDemo
+    HandsontableSectionComponent,
+    BasicDemoComponent,
+    SheetDemoComponent,
+    PersonalDemoComponent,
+    FinanceDemoComponent,
+    ScienceDemoComponent,
+    SportDemoComponent,
+    AdvancedDemoComponent
   ],
   imports: [
     BrowserModule,

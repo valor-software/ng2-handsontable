@@ -1,10 +1,13 @@
-import {Component} from '@angular/core';
+/* tslint:disable:max-line-length */
+import { Component } from '@angular/core';
 
-let name = 'Handsontable';
+const name = 'Handsontable';
 // webpack html imports
-let doc = require('html-loader!markdown-loader!../../../readme.md');
+/* tslint:disable-next-line:no-var-requires */
+const doc = require('html-loader!markdown-loader!../../../readme.md');
 
-let tabDesc:Array<any> = [
+/* tslint:disable-next-line:no-any */
+const tabDesc: any[] = [
   {
     heading: 'Basic',
     ts: require('!!prismjs-loader?lang=typescript!./handsontable/basic-demo.ts'),
@@ -52,10 +55,12 @@ let tabDesc:Array<any> = [
   }
 ];
 
-let dataLink = `<p>All data completes that used in these examples are available in
-  <a href="https://github.com/valor-software/ng2-handsontable/blob/master/demo/components/handsontable/data.ts">next file</a>.</p>`;
+const dataLink = `<p>
+  All data completes that used in these examples are available in
+  <a href="https://github.com/valor-software/ng2-handsontable/blob/master/demo/components/handsontable/data.ts">next
+  file</a>.</p>`;
 
-let tabsContent:string = ``;
+let tabsContent = ``;
 tabDesc.forEach(desc => {
   let source = '';
   if (desc.source) {
@@ -110,8 +115,8 @@ tabDesc.forEach(desc => {
   </section>
   `
 })
-export class HandsontableSection {
-  private currentHeading:string = 'Basic';
+export class HandsontableSectionComponent {
+  private currentHeading = 'Basic';
 
   private select(e) {
     if (e.heading) {

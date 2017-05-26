@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+// tslint:disable:no-any no-magic-numbers
+import { Component } from '@angular/core';
 import * as Handsontable from 'handsontable/dist/handsontable.full.js';
 
 @Component({
   selector: 'sheet-demo',
   template: require('./sheet-demo.html')
 })
-export class SheetDemo {
-  private data:Array<any>;
-  private options:any;
+export class SheetDemoComponent {
+  private data: any[];
+  private options: any;
 
   constructor() {
     this.data = Handsontable.helper['createSpreadsheetData'](100, 12); // tslint:disable-line:no-string-literal
