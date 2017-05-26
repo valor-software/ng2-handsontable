@@ -30,16 +30,16 @@ export class MyModule {
 }
 ```
 
-4. Use the `hot-table` directive in your template. The following example displays the supported attributes:
+4. Use the `hotTable` directive in your template. The following example displays the supported attributes:
 
 ```html
-<hot-table [data]="data"
+<hotTable [data]="data"
            [columns]="columns"
            [colHeaders]="colHeaders"
            [colWidths]="colHeaders"
            [options]="options"
            (HANDSONTABLE_EVENT)="eventHandler">
-</hot-table>
+</hotTable>
 ```
 
 - `data: any[]` - data source for this `HotTable`
