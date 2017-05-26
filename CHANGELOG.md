@@ -1,12 +1,17 @@
-<a name="0.47.2"></a>
-## [0.47.2](https://github.com/valor-software/ng2-handsontable/compare/0.47.1...0.47.2) (2017-03-09)
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/valor-software/ng2-handsontable/compare/1.0.0-rc.1...v1.0.0) (2017-05-26)
+- Update to Angular 4
+
+### Breaking changes
+- Input property `[col-headers]` was renamed to `[colHeaders]`
+- Input property `[col-widths]` was renamed to `[colWidths]`
+
+<a name="0.48.0"></a>
+# [0.48.0](https://github.com/valor-software/ng2-handsontable/compare/0.48.0...1.0.0-rc.1) (2017-03-13)
+- Several fixes & improvements
+- Update to latest build structure
 
 
-### Features
-
-* **module:** update to latest build structure ([e8a9924](https://github.com/valor-software/ng2-handsontable/commit/e8a9924))
-* **package:** Fixed incompatibility with Angular 2 RC4: ([#123](https://github.com/valor-software/ng2-handsontable/issues/123)) ([ab762fc](https://github.com/valor-software/ng2-handsontable/commit/ab762fc))
-* **package:** Update handsontable to ^0.31.1 ([#338](https://github.com/valor-software/ng2-handsontable/issues/338)) ([7832eb3](https://github.com/valor-software/ng2-handsontable/commit/7832eb3))
-
-
-
+<a name="0.47.0"></a>
+# [0.47.0](https://github.com/valor-software/ng2-handsontable/compare/0.47.1...0.47.2) (2017-02-23)
+- Initial release for Angular 2.4.x
