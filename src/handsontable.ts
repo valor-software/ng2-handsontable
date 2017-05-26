@@ -35,38 +35,6 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     });
   }
 
-  private parseAutoComplete(options: any) {
-    const inst = this.inst;
-    const columns = this.columns || options.columns;
-    const dataSet = options.data;
-
-    if (columns) {
-      columns.forEach((column: any) => {
-        if (typeof column.source === 'string') {
-          const relatedField: string = column.source;
-          column.source = (_query: any, process: any) => {
-            const row: number = inst.getSelected()[0];
-            const data: any = dataSet[row];
-
-            if (!data) {
-              return;
-            }
-
-            const fieldParts: string[] = relatedField.split('.');
-            let o: any = data;
-            for (const part of fieldParts) {
-              o = o[part];
-            }
-
-            process(o.map((item: any) => {
-              return !column.optionField ? item : item[column.optionField];
-            }));
-          };
-        }
-      });
-    }
-  }
-
   ngOnInit() {
     this.checkInputs();
 
@@ -112,6 +80,38 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     // tslint:disable-next-line:no-string-literal
     if (changes['data'] && !changes['data'].isFirstChange()) {
       this.inst.loadData(this.data);
+    }
+  }
+
+  private parseAutoComplete(options: any) {
+    const inst = this.inst;
+    const columns = this.columns || options.columns;
+    const dataSet = options.data;
+
+    if (columns) {
+      columns.forEach((column: any) => {
+        if (typeof column.source === 'string') {
+          const relatedField: string = column.source;
+          column.source = (_query: any, process: any) => {
+            const row: number = inst.getSelected()[0];
+            const data: any = dataSet[row];
+
+            if (!data) {
+              return;
+            }
+
+            const fieldParts: string[] = relatedField.split('.');
+            let o: any = data;
+            for (const part of fieldParts) {
+              o = o[part];
+            }
+
+            process(o.map((item: any) => {
+              return !column.optionField ? item : item[column.optionField];
+            }));
+          };
+        }
+      });
     }
   }
 
