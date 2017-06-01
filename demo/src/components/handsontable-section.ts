@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 const name = 'Handsontable';
 // webpack html imports
 /* tslint:disable-next-line:no-var-requires */
-const doc = require('html-loader!markdown-loader!../../../readme.md');
+const doc = require('html-loader!markdown-loader!./../../../README.md');
 
 /* tslint:disable-next-line:no-any */
 const tabDesc: any[] = [
