@@ -1,3 +1,8 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/valor-software/ng2-handsontable/compare/1.0.1...v1.0.2) (2017-06-01)
+
+
+
 <a name="1.0.1"></a>
 # [1.0.1](https://github.com/valor-software/ng2-handsontable/compare/0.48.0...1.0.1) (2017-05-26)
 - Update to Angular 4
