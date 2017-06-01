@@ -111,7 +111,7 @@
     "protractor": "5.1.1",
     "reflect-metadata": "0.1.10",
     "require-dir": "0.3.1",
-    "rxjs": "5.2.0",
+    "rxjs": "5.4.0",
     "ts-helpers": "^1.1.1",
     "tslint": "5.1.0",
     "tslint-config-valorsoft": "2.0.1",
