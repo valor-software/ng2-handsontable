@@ -110,7 +110,7 @@
     "prismjs-loader": "0.0.4",
     "protractor": "5.1.1",
     "reflect-metadata": "0.1.10",
-    "require-dir": "0.3.1",
+    "require-dir": "0.3.2",
     "rxjs": "5.2.0",
     "ts-helpers": "^1.1.1",
     "tslint": "5.1.0",
