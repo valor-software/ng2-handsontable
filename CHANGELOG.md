@@ -1,3 +1,8 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/valor-software/ng2-handsontable/compare/v1.0.2...v1.0.3) (2017-06-02)
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/valor-software/ng2-handsontable/compare/1.0.1...v1.0.2) (2017-06-01)
 
