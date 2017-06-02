@@ -17,14 +17,9 @@
       "prefix": "",
       "mobile": false,
       "styles": [
-        "../../node_modules/handsontable/dist/handsontable.full.min.css"
       ],
       "scripts": [
-        "../../node_modules/chroma-js/chroma.js",
-        "../../node_modules/pikaday/pikaday.js",
-        "../../node_modules/zeroclipboard/dist/ZeroClipboard.js",
-        "../../node_modules/numbro/numbro.js",
-        "../../node_modules/moment/moment.js"
+        "../../node_modules/chroma-js/chroma.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -1,19 +1,23 @@
 /* tslint:disable:no-any max-file-line-count */
-import { OnInit, OnDestroy, OnChanges, SimpleChanges, Directive, EventEmitter,
-  ElementRef, Input, NgZone } from '@angular/core';
-import { Output } from '@angular/core';
-
+import { OnInit, OnDestroy, OnChanges, SimpleChanges, Component, EventEmitter,
+  ElementRef, Input, Output, NgZone, ViewEncapsulation
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import './handsontable-dependencies';
 import * as Handsontable from 'handsontable';
+import { handsontableStyles } from './handsontable.component.css';
 
 // tslint:disable-next-line:max-line-length
 export const htEventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'afterCellMetaReset', 'afterChange', 'afterChangesObserved', 'afterColumnMove', 'afterColumnResize', 'afterColumnSort', 'afterContextMenuDefaultOptions', 'afterContextMenuHide', 'afterContextMenuShow', 'afterCopy', 'afterCopyLimit', 'afterCreateCol', 'afterCreateRow', 'afterCut', 'afterDeselect', 'afterDestroy', 'afterDetachChild', 'afterDocumentKeyDown', 'afterDropdownMenuDefaultOptions', 'afterDropdownMenuHide', 'afterDropdownMenuShow', 'afterePaste', 'afterFilter', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetColumnHeaderRenderers', 'afterGetRowHeader', 'afterGetRowHeaderRenderers', 'afterInit', 'afterLoadData', 'afterModifyTransformEnd', 'afterModifyTransformStart', 'afterMomentumScroll', 'afterOnCellCornerDblClick', 'afterOnCellCornerMouseDown', 'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterPluginsInitialized', 'afterRedo', 'afterRemoveCol', 'afterRemoveRow', 'afterRender', 'afterRenderer', 'afterRowMove', 'afterRowResize', 'afterScrollHorizontally', 'afterScrollVertically', 'afterSelection', 'afterSelectionByProp', 'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterSetDataAtCell', 'afterSetDataAtRowProp', 'afterTrimRow', 'afterUndo', 'afterUntrimRow', 'afterUpdateSettings', 'afterValidate', 'afterViewportColumnCalculatorOverride', 'afterViewportRowCalculatorOverride', 'beforeAddChild', 'beforeAutofill', 'beforeAutofillInsidePopulate', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeColumnMove', 'beforeColumnResize', 'beforeColumnSort', 'beforeContextMenuSetItems', 'beforeCopy', 'beforeCreateCol', 'beforeCreateRow', 'beforeCut', 'beforeDetachChild', 'beforeDrawBorders', 'beforeDropdownMenuSetItems', 'beforeFilter', 'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown', 'beforeOnCellMouseOut', 'beforeOnCellMouseOver', 'beforePaste', 'beforeRedo', 'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeRenderer', 'beforeRowMove', 'beforeRowResize', 'beforeSetRangeEnd', 'beforeSetRangeStart', 'beforeStretchingColumnWidth', 'beforeTouchScroll', 'beforeUndo', 'beforeValidate', 'beforeValueRender', 'construct', 'hiddenColumn', 'hiddenRow', 'init', 'manualRowHeights', 'modifyAutofillRange', 'modifyCol', 'modifyColHeader', 'modifyColumnHeaderHeight', 'modifyColWidth', 'modifyCopyableRange', 'modifyData', 'modifyRow', 'modifyRowHeader', 'modifyRowHeaderWidth', 'modifyRowHeight', 'modifyRowSourceData', 'modifyTransformEnd', 'modifyTransformStart', 'persistentStateLoad', 'persistentStateReset', 'persistentStateSave', 'skipLengthCache', 'unmodifyCol', 'unmodifyRow'];
 
-@Directive({
-  selector: 'hotTable'
+@Component({
+  selector: 'hotTable',
+  template: '',
+  encapsulation: ViewEncapsulation.None,
+  styles: [handsontableStyles]
 })
-// tslint:disable-next-line:directive-class-suffix
+// tslint:disable-next-line:component-class-suffix
 export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Input() public data: any[] = [];
   @Input() public pagedData: Observable<any[]>;
