@@ -1,4 +1,4 @@
-/* tslint:disable:no-any */
+/* tslint:disable:no-any max-file-line-count */
 import { OnInit, OnDestroy, OnChanges, SimpleChanges, Directive, EventEmitter,
   ElementRef, Input, NgZone } from '@angular/core';
 import { Output } from '@angular/core';
@@ -248,11 +248,13 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     const dataCount = Number(!!this.pagedData) + Number(!!this.data) +
       Number(!!(this.options && this.options.data));
     if (dataCount > 1) {
+      // tslint:disable-next-line:no-console
       console.error('[pagedData], [data] and [options.data] are all mutually' +
        ' exclusive');
 
       return false;
     } else if (dataCount === 0) {
+      // tslint:disable-next-line:no-console
       console.error('One of [pagedData], [data] and [options.data] needs' +
         ' to be provided');
 
