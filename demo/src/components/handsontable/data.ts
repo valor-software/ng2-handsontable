@@ -1,5 +1,5 @@
 /* tslint:disable:no-any no-magic-numbers max-file-line-count*/
-export function genData(rows = 10): any[] {
+export function getBasicData(rows = 10): any[] {
   const products: any[] = [
       {
         description: 'Big Mac',
