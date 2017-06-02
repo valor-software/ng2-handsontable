@@ -7,13 +7,6 @@ exports.config = {
     './demo/e2e/**/*.e2e-spec.ts',
   ],
   exclude: [
-    './demo/e2e/**/accordion-demo.e2e-spec.ts',
-    './demo/e2e/**/alert-demo.e2e-spec.ts',
-    './demo/e2e/**/buttons-demo.e2e-spec.ts',
-    './demo/e2e/**/carousel-demo.e2e-spec.ts',
-    './demo/e2e/**/collapse-demo.e2e-spec.ts',
-    './demo/e2e/**/leftPanelTests.po.ts',
-    './demo/e2e/**/modals-demo.e2e-spec.ts',
   ],
   capabilities: {
     browserName: 'chrome',

@@ -56,10 +56,12 @@ export class BasicDemoComponent {
   };
 
   private afterChange(e: any) {
+    // tslint:disable-next-line:no-console
     console.log(e);
   }
 
   private afterOnCellMouseDown(e: any) {
+    // tslint:disable-next-line:no-console
     console.log(e);
   }
 }
