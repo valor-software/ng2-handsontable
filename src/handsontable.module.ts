@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { HotTable } from './handsontable';
+import { HotTableComponent } from './handsontable.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [HotTable],
-  exports: [HotTable]
+  declarations: [HotTableComponent],
+  exports: [HotTableComponent]
 })
 export class HotTableModule {
 }

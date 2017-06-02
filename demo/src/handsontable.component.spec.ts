@@ -3,7 +3,7 @@ import { inject, TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, NgModule } from '@angular/core';
 // tslint:disable-next-line:import-blacklist
 import * as _ from 'lodash';
-import { htEventNames, HotTable } from '../../src/handsontable';
+import { htEventNames, HotTableComponent } from '../../src/handsontable.component';
 import { DemoModule } from './demo.module';
 import { BasicDemoComponent } from './components/handsontable/basic-demo';
 import { HotTableModule } from '../../src/handsontable.module';
@@ -13,7 +13,7 @@ import { HotTableModule } from '../../src/handsontable.module';
 class TestComponent {}
 
 
-describe('hotTable directive', () => {
+describe('HotTableComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({

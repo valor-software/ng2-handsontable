@@ -1,6 +1,6 @@
 # ng2-handsontable
 
-Native Angular2 directive for the [Handsontable](https://github.com/handsontable/handsontable) component.
+Native Angular2+ wrapper for [Handsontable](https://github.com/handsontable/handsontable).
 
 [Handsontable](https://github.com/handsontable/handsontable) is a data grid component with an Excel-like appearance. Built in JavaScript, it integrates with any data source and comes with [features](http://docs.handsontable.com/tutorial-features.html) like data validation, sorting, grouping, data binding or column ordering. Actively supported by the Handsoncode team and the GitHub community.
 
@@ -30,20 +30,20 @@ export class MyModule {
 }
 ```
 
-4. Use the `hotTable` directive in your template. The following example displays the supported attributes:
+4. Use the `hotTable` component in your template. The following example displays the supported attributes:
 
 ```html
 <hotTable [data]="data"
-           [columns]="columns"
-           [colHeaders]="colHeaders"
-           [colWidths]="colHeaders"
-           [options]="options"
-           (HANDSONTABLE_EVENT)="eventHandler">
+          [columns]="columns"
+          [colHeaders]="colHeaders"
+          [colWidths]="colHeaders"
+          [options]="options"
+          (HANDSONTABLE_EVENT)="eventHandler">
 </hotTable>
 ```
 
-- `data: any[]` - data source for this `HotTable`
-- `pageData: Observable<any[]>` - observable data source for this `HotTable` for paged data
+- `data: any[]` - data source
+- `pageData: Observable<any[]>` - observable data source for paged data
 - `columns?: any[]` - descriptors of columns that contains information regarding type, format, source, ... of particular column
 - `colHeaders?: string[]` - array of column headers, default column headers will be shown (or not be shown, it depends on other settings) if this parameter is undefined
 - `colWidths?: number[]` - array of column sizes, default column size will be applied if this parameter is undefined

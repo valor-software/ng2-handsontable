@@ -1,2 +1,2 @@
-export { HotTable } from './handsontable';
+export { HotTableComponent } from './handsontable.component';
 export { HotTableModule } from './handsontable.module';
