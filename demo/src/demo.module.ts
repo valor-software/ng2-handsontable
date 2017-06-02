@@ -26,15 +26,6 @@ import { AdvancedDemoComponent } from './components/handsontable/advanced-demo';
     SportDemoComponent,
     AdvancedDemoComponent
   ],
-  exports: [
-    BasicDemoComponent,
-    SheetDemoComponent,
-    PersonalDemoComponent,
-    FinanceDemoComponent,
-    ScienceDemoComponent,
-    SportDemoComponent,
-    AdvancedDemoComponent
-  ],
   imports: [
     BrowserModule,
     HotTableModule,
