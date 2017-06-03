@@ -17,7 +17,8 @@ export const htEventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'af
   encapsulation: ViewEncapsulation.None,
   styles: [handsontableStyles]
 })
-export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
+// tslint:disable-next-line:component-class-suffix
+export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Input() public data: any[] = [];
   @Input() public pagedData: Observable<any[]>;
   @Input() public colHeaders: string[];

@@ -20,7 +20,7 @@ class TestComponent {}
 let fixture: ComponentFixture<TestComponent>;
 
 
-describe('HotTableComponent', () => {
+describe('HotTable', () => {
 
   // beforeEach(() => {
   //   jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
