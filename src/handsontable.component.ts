@@ -155,8 +155,8 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Output() public unmodifyCol = new EventEmitter();
   @Output() public unmodifyRow = new EventEmitter();
 
-  private inst: any;
-  private view: any;
+  private inst: Handsontable;
+  private view: HTMLElement;
   private pagedDataSubscription: Subscription;
   private zoneQueue: (() => void)[] = [];
   private zoneQueueTimeout = 0;
@@ -168,17 +168,21 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     });
   }
 
+  public getHandsontableInstance(): Handsontable {
+    return this.inst;
+  }
+
   ngOnInit() {
     this.checkInputs();
 
     this.view = document.createElement('div');
-    this.view.class = 'handsontable-container';
+    this.view.className = 'handsontable-container';
     this.element.nativeElement.appendChild(this.view);
 
     const options = this.getCurrentOptions();
 
     this.ngZone.runOutsideAngular(() => {
-      this.inst = new (Handsontable as any)(this.view, options);
+      this.inst = new Handsontable(this.view, options);
     });
 
     this.parseAutoComplete(options);
