@@ -19,6 +19,9 @@
     "types": [
       "jasmine",
       "lodash"
+    ],
+    "typeRoots": [
+      "../node_modules/@types"
     ]
   },
   "exclude": [
