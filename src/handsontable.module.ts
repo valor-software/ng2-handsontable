@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { HotTable } from './handsontable';
+import { HotTable } from './handsontable.component';
 
 @NgModule({
   imports: [CommonModule],

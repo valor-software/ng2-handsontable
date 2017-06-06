@@ -56,9 +56,8 @@ const tabDesc: any[] = [
 ];
 
 const dataLink = `<p>
-  All data completes that used in these examples are available in
-  <a href="https://github.com/valor-software/ng2-handsontable/blob/master/demo/components/handsontable/data.ts">next
-  file</a>.</p>`;
+  The actual data can be viewed
+  <a href="https://github.com/valor-software/ng2-handsontable/blob/master/demo/src/components/handsontable/data.ts">here</a>.</p>`;
 
 let tabsContent = ``;
 tabDesc.forEach(desc => {

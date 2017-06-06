@@ -1,6 +1,6 @@
 /* tslint:disable:no-any */
 import { Component } from '@angular/core';
-import * as Handsontable from 'handsontable/dist/handsontable.full.js';
+import * as Handsontable from 'handsontable';
 import { getAdvancedData } from './data';
 
 @Component({

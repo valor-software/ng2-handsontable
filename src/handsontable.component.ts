@@ -1,18 +1,23 @@
-/* tslint:disable:no-any */
-import { OnInit, OnDestroy, OnChanges, SimpleChanges, Directive, EventEmitter,
-  ElementRef, Input, NgZone } from '@angular/core';
+/* tslint:disable:no-any max-file-line-count */
+import { OnInit, OnDestroy, OnChanges, SimpleChanges, Component, EventEmitter,
+  ElementRef, Input, Output, NgZone, ViewEncapsulation
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import * as Handsontable from 'handsontable/dist/handsontable.full.js';
-import { Output } from '@angular/core';
+import './handsontable-dependencies';
+import * as Handsontable from 'handsontable';
+import { handsontableStyles } from './handsontable.component.css';
 
 // tslint:disable-next-line:max-line-length
-const eventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'afterCellMetaReset', 'afterChange', 'afterChangesObserved', 'afterColumnMove', 'afterColumnResize', 'afterColumnSort', 'afterContextMenuDefaultOptions', 'afterContextMenuHide', 'afterContextMenuShow', 'afterCopy', 'afterCopyLimit', 'afterCreateCol', 'afterCreateRow', 'afterCut', 'afterDeselect', 'afterDestroy', 'afterDetachChild', 'afterDocumentKeyDown', 'afterDropdownMenuDefaultOptions', 'afterDropdownMenuHide', 'afterDropdownMenuShow', 'afterePaste', 'afterFilter', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetColumnHeaderRenderers', 'afterGetRowHeader', 'afterGetRowHeaderRenderers', 'afterInit', 'afterLoadData', 'afterModifyTransformEnd', 'afterModifyTransformStart', 'afterMomentumScroll', 'afterOnCellCornerDblClick', 'afterOnCellCornerMouseDown', 'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterPluginsInitialized', 'afterRedo', 'afterRemoveCol', 'afterRemoveRow', 'afterRender', 'afterRenderer', 'afterRowMove', 'afterRowResize', 'afterScrollHorizontally', 'afterScrollVertically', 'afterSelection', 'afterSelectionByProp', 'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterSetDataAtCell', 'afterSetDataAtRowProp', 'afterTrimRow', 'afterUndo', 'afterUntrimRow', 'afterUpdateSettings', 'afterValidate', 'afterViewportColumnCalculatorOverride', 'afterViewportRowCalculatorOverride', 'beforeAddChild', 'beforeAutofill', 'beforeAutofillInsidePopulate', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeColumnMove', 'beforeColumnResize', 'beforeColumnSort', 'beforeContextMenuSetItems', 'beforeCopy', 'beforeCreateCol', 'beforeCreateRow', 'beforeCut', 'beforeDetachChild', 'beforeDrawBorders', 'beforeDropdownMenuSetItems', 'beforeFilter', 'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown', 'beforeOnCellMouseOut', 'beforeOnCellMouseOver', 'beforePaste', 'beforeRedo', 'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeRenderer', 'beforeRowMove', 'beforeRowResize', 'beforeSetRangeEnd', 'beforeSetRangeStart', 'beforeStretchingColumnWidth', 'beforeTouchScroll', 'beforeUndo', 'beforeValidate', 'beforeValueRender', 'construct', 'hiddenColumn', 'hiddenRow', 'init', 'manualRowHeights', 'modifyAutofillRange', 'modifyCol', 'modifyColHeader', 'modifyColumnHeaderHeight', 'modifyColWidth', 'modifyCopyableRange', 'modifyData', 'modifyRow', 'modifyRowHeader', 'modifyRowHeaderWidth', 'modifyRowHeight', 'modifyRowSourceData', 'modifyTransformEnd', 'modifyTransformStart', 'persistentStateLoad', 'persistentStateReset', 'persistentStateSave', 'skipLengthCache', 'unmodifyCol', 'unmodifyRow'];
+export const htEventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'afterCellMetaReset', 'afterChange', 'afterChangesObserved', 'afterColumnMove', 'afterColumnResize', 'afterColumnSort', 'afterContextMenuDefaultOptions', 'afterContextMenuHide', 'afterContextMenuShow', 'afterCopy', 'afterCopyLimit', 'afterCreateCol', 'afterCreateRow', 'afterCut', 'afterDeselect', 'afterDestroy', 'afterDetachChild', 'afterDocumentKeyDown', 'afterDropdownMenuDefaultOptions', 'afterDropdownMenuHide', 'afterDropdownMenuShow', 'afterePaste', 'afterFilter', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetColumnHeaderRenderers', 'afterGetRowHeader', 'afterGetRowHeaderRenderers', 'afterInit', 'afterLoadData', 'afterModifyTransformEnd', 'afterModifyTransformStart', 'afterMomentumScroll', 'afterOnCellCornerDblClick', 'afterOnCellCornerMouseDown', 'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterPluginsInitialized', 'afterRedo', 'afterRemoveCol', 'afterRemoveRow', 'afterRender', 'afterRenderer', 'afterRowMove', 'afterRowResize', 'afterScrollHorizontally', 'afterScrollVertically', 'afterSelection', 'afterSelectionByProp', 'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterSetDataAtCell', 'afterSetDataAtRowProp', 'afterTrimRow', 'afterUndo', 'afterUntrimRow', 'afterUpdateSettings', 'afterValidate', 'afterViewportColumnCalculatorOverride', 'afterViewportRowCalculatorOverride', 'beforeAddChild', 'beforeAutofill', 'beforeAutofillInsidePopulate', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeColumnMove', 'beforeColumnResize', 'beforeColumnSort', 'beforeContextMenuSetItems', 'beforeCopy', 'beforeCreateCol', 'beforeCreateRow', 'beforeCut', 'beforeDetachChild', 'beforeDrawBorders', 'beforeDropdownMenuSetItems', 'beforeFilter', 'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown', 'beforeOnCellMouseOut', 'beforeOnCellMouseOver', 'beforePaste', 'beforeRedo', 'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeRenderer', 'beforeRowMove', 'beforeRowResize', 'beforeSetRangeEnd', 'beforeSetRangeStart', 'beforeStretchingColumnWidth', 'beforeTouchScroll', 'beforeUndo', 'beforeValidate', 'beforeValueRender', 'construct', 'hiddenColumn', 'hiddenRow', 'init', 'manualRowHeights', 'modifyAutofillRange', 'modifyCol', 'modifyColHeader', 'modifyColumnHeaderHeight', 'modifyColWidth', 'modifyCopyableRange', 'modifyData', 'modifyRow', 'modifyRowHeader', 'modifyRowHeaderWidth', 'modifyRowHeight', 'modifyRowSourceData', 'modifyTransformEnd', 'modifyTransformStart', 'persistentStateLoad', 'persistentStateReset', 'persistentStateSave', 'skipLengthCache', 'unmodifyCol', 'unmodifyRow'];
 
-@Directive({
-  selector: 'hotTable'
+@Component({
+  selector: 'hotTable',
+  template: '',
+  encapsulation: ViewEncapsulation.None,
+  styles: [handsontableStyles]
 })
-// tslint:disable-next-line:directive-class-suffix
+// tslint:disable-next-line:component-class-suffix
 export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Input() public data: any[] = [];
   @Input() public pagedData: Observable<any[]>;
@@ -150,24 +155,28 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   @Output() public unmodifyCol = new EventEmitter();
   @Output() public unmodifyRow = new EventEmitter();
 
-  private inst: any;
-  private view: any;
+  private inst: Handsontable;
+  private view: HTMLElement;
   private pagedDataSubscription: Subscription;
   private zoneQueue: (() => void)[] = [];
   private zoneQueueTimeout = 0;
 
   constructor(private element: ElementRef, private ngZone: NgZone) {
     // fill events dynamically
-    eventNames.forEach((eventName: string) => {
+    htEventNames.forEach((eventName: string) => {
       (this as any)[eventName] = new EventEmitter();
     });
+  }
+
+  public getHandsontableInstance(): Handsontable {
+    return this.inst;
   }
 
   ngOnInit() {
     this.checkInputs();
 
     this.view = document.createElement('div');
-    this.view.class = 'handsontable-container';
+    this.view.className = 'handsontable-container';
     this.element.nativeElement.appendChild(this.view);
 
     const options = this.getCurrentOptions();
@@ -247,11 +256,13 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
     const dataCount = Number(!!this.pagedData) + Number(!!this.data) +
       Number(!!(this.options && this.options.data));
     if (dataCount > 1) {
+      // tslint:disable-next-line:no-console
       console.error('[pagedData], [data] and [options.data] are all mutually' +
        ' exclusive');
 
       return false;
     } else if (dataCount === 0) {
+      // tslint:disable-next-line:no-console
       console.error('One of [pagedData], [data] and [options.data] needs' +
         ' to be provided');
 
@@ -264,7 +275,7 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
       data: this.data || null
     };
 
-    eventNames.forEach(eventName => {
+    htEventNames.forEach(eventName => {
       // Only register the event if the emitter has an observer (i.e., if the output is actually being used)
       if ((this as any)[eventName].observers.length) {
         htOptions[eventName] = (...args: any[]) => {

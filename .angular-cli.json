@@ -19,7 +19,6 @@
       "styles": [
       ],
       "scripts": [
-        "../../node_modules/handsontable/dist/handsontable.full.js",
         "../../node_modules/chroma-js/chroma.js"
       ],
       "environmentSource": "environments/environment.ts",

@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-invalid-this
 import { Component } from '@angular/core';
-import * as Handsontable from 'handsontable/dist/handsontable.full.js';
+import * as Handsontable from 'handsontable';
 import { getScienceData } from './data';
 
 const heatmapScale = chroma.scale(['#17F556', '#ED6D47']);

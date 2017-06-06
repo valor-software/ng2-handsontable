@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-magic-numbers
 import { Component } from '@angular/core';
-import * as Handsontable from 'handsontable/dist/handsontable.full.js';
+import * as Handsontable from 'handsontable';
 import { getPersonalData } from './data';
 
 function headerRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -12,7 +12,7 @@ function headerRenderer(instance, td, row, col, prop, value, cellProperties) {
 
 function diffRenderer(instance, td, row, col, prop, value, cellProperties) {
   // tslint:disable-next-line:no-invalid-this
-  Handsontable.cellTypes['formula'].renderer.apply(this, arguments); // tslint:disable-line:no-string-literal
+  Handsontable['cellTypes'].formula.renderer.apply(this, arguments); // tslint:disable-line:no-string-literal
   td.style.backgroundColor = '#c3f89c';
   td.style.fontWeight = (col === 13 ? 'bold' : 'normal');
 }

@@ -1,6 +1,6 @@
 // tslint:disable:no-any no-magic-numbers
 import { Component } from '@angular/core';
-import * as Handsontable from 'handsontable/dist/handsontable.full.js';
+import * as Handsontable from 'handsontable';
 
 @Component({
   selector: 'sheet-demo',

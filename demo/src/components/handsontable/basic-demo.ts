@@ -1,13 +1,13 @@
 /* tslint:disable:no-any no-magic-numbers prefer-function-over-method */
 import { Component } from '@angular/core';
-import { genData } from './data';
+import { getBasicData } from './data';
 
 @Component({
   selector: 'basic-demo',
   template: require('./basic-demo.html')
 })
 export class BasicDemoComponent {
-  private data: any[] = genData(10);
+  private data: any[] = getBasicData(10);
   private colHeaders: string[] = ['ID', 'First Name', 'Last Name', 'Address',
     'Favorite food', 'Price', 'Is active'];
   private columns: any[] = [
@@ -56,10 +56,12 @@ export class BasicDemoComponent {
   };
 
   private afterChange(e: any) {
+    // tslint:disable-next-line:no-console
     console.log(e);
   }
 
   private afterOnCellMouseDown(e: any) {
+    // tslint:disable-next-line:no-console
     console.log(e);
   }
 }

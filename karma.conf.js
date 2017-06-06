@@ -11,6 +11,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
+      require('karma-spec-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
@@ -28,8 +29,8 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
-      ? ['dots', 'coverage-istanbul']
-      : ['dots', 'kjhtml'],
+      ? ['spec', 'coverage-istanbul']
+      : ['spec', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -43,7 +44,8 @@ module.exports = function (config) {
       }
     },
     mime: { 'text/x-typescript': ['ts','tsx'] },
-    client: { captureConsole: true, clearContext: false }
+    client: { captureConsole: true, clearContext: false },
+    browserNoActivityTimeout: 60000 // Overall run-time unusually high due to current Angular-Zone issue
   };
 
   if (process.env.TRAVIS) {
@@ -75,7 +77,7 @@ module.exports = function (config) {
     configuration.browsers = Object.keys(configuration.customLaunchers);
     configuration.concurrency = 3;
     configuration.browserDisconnectTolerance = 2;
-    configuration.browserNoActivityTimeout = 20000;
+    configuration.browserNoActivityTimeout = 60000; // Overall run-time unusually high due to current Angular-Zone issue
     configuration.browserDisconnectTimeout = 5000;
   }
 
