@@ -11,12 +11,11 @@ script:
   - npm run build
   - rm -rf node_modules/ng2-handsontable
   - npm i ./dist
+  - npm run demo.build
   - npm run test-coverage
-  - npm run test
 
 after_success:
   - ./node_modules/.bin/codecov
-  - npm run test-cross
 
 addons:
   firefox: "latest"
