@@ -1,3 +1,13 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/valor-software/ng2-handsontable/compare/v1.0.2...v1.0.4) (2017-06-07)
+
+
+### Features
+
+* **component:** Adds getter for Handsontable instance ([a40ccf8](https://github.com/valor-software/ng2-handsontable/commit/a40ccf8))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/valor-software/ng2-handsontable/compare/v1.0.2...v1.0.3) (2017-06-02)
 
