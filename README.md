@@ -13,7 +13,9 @@ Native Angular2+ wrapper for [Handsontable](https://github.com/handsontable/hand
 
 2. If you are using SystemJS, add the ng2-handsontable path to your SystemJS.config.js: `'ng2-handsontable': 'node_modules/ng2-handsontable/bundles/ng2-handsontable.umd.js'`. Webpack (used by Angular-CLI) picks up the path automatically.
 
-3. Import the `HotTableModule` into your module. Here's a TypeScript example:
+3. As [Handsontable wraps the native Promise](https://github.com/handsontable/handsontable/issues/4452), **you will need to import handsontable before zone.js with `import 'handsontable'`**. Otherwise zone.js will throw an error. For an AngularCLI-project, the zone.js import happens in the `polyfill.ts` file.
+
+4. Import the `HotTableModule` into your module. Here's a TypeScript example:
 
 ```typescript
 import { HotTableModule } from 'ng2-handsontable';
@@ -30,7 +32,7 @@ export class MyModule {
 }
 ```
 
-4. Use the `hotTable` component in your template. The following example displays the supported attributes:
+5. Use the `hotTable` component in your template. The following example displays the supported attributes:
 
 ```html
 <hotTable [data]="data"
@@ -52,10 +54,10 @@ export class MyModule {
 
 The free version of Handsontable is used by default, but the pro-version could be used as a drop-in replacement.
 
-4. The following methods are available as a public API on HotTable component (which you can access from your parent component with `@ViewChild(HotTable) hotTableComponent`):
+6. The following methods are available as a public API on HotTable component (which you can access from your parent component with `@ViewChild(HotTable) hotTableComponent`):
 - `getHandsontableInstance(): Handsontable` - returns the underlying [Handsontable Core instance](https://docs.handsontable.com/Core.html); all registered Handsontable plugins are accessible via [instance.getPlugin()](https://docs.handsontable.com/pro/1.11.0/Core.html#getPlugin)
 
-5. See the [demo](http://valor-software.github.io/ng2-handsontable/) and the [demo sources](https://github.com/valor-software/ng2-handsontable/tree/master/demo/src) for further details.
+7. See the [demo](http://valor-software.github.io/ng2-handsontable/) and the [demo sources](https://github.com/valor-software/ng2-handsontable/tree/master/demo/src) for further details.
 
 
 ## Troubleshooting

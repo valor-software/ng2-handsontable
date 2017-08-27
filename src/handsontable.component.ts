@@ -4,7 +4,6 @@ import { OnInit, OnDestroy, OnChanges, SimpleChanges, Component, EventEmitter,
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import './handsontable-dependencies';
 import * as Handsontable from 'handsontable';
 import { handsontableStyles } from './handsontable.component.css';
 
@@ -193,7 +192,7 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
         Array.prototype.push.apply(this.data, newPagedData);
         this.inst.loadData(this.data);
         this.parseAutoComplete(options);
-        this.inst.updateSettings(options);
+        this.inst.updateSettings(options, false);
       });
     }
   }
@@ -212,7 +211,7 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if ('options' in changes && this.inst) {
-      this.inst.updateSettings(this.getCurrentOptions());
+      this.inst.updateSettings(this.getCurrentOptions(), false);
     }
     // tslint:disable-next-line:no-string-literal
     if (changes['data'] && !changes['data'].isFirstChange()) {
