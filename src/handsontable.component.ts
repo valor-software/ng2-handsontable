@@ -6,9 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import * as Handsontable from 'handsontable';
 import { handsontableStyles } from './handsontable.component.css';
+import * as _ from 'lodash';
 
-// tslint:disable-next-line:max-line-length
-export const htEventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'afterCellMetaReset', 'afterChange', 'afterChangesObserved', 'afterColumnMove', 'afterColumnResize', 'afterColumnSort', 'afterContextMenuDefaultOptions', 'afterContextMenuHide', 'afterContextMenuShow', 'afterCopy', 'afterCopyLimit', 'afterCreateCol', 'afterCreateRow', 'afterCut', 'afterDeselect', 'afterDestroy', 'afterDetachChild', 'afterDocumentKeyDown', 'afterDropdownMenuDefaultOptions', 'afterDropdownMenuHide', 'afterDropdownMenuShow', 'afterePaste', 'afterFilter', 'afterGetCellMeta', 'afterGetColHeader', 'afterGetColumnHeaderRenderers', 'afterGetRowHeader', 'afterGetRowHeaderRenderers', 'afterInit', 'afterLoadData', 'afterModifyTransformEnd', 'afterModifyTransformStart', 'afterMomentumScroll', 'afterOnCellCornerDblClick', 'afterOnCellCornerMouseDown', 'afterOnCellMouseDown', 'afterOnCellMouseOver', 'afterPluginsInitialized', 'afterRedo', 'afterRemoveCol', 'afterRemoveRow', 'afterRender', 'afterRenderer', 'afterRowMove', 'afterRowResize', 'afterScrollHorizontally', 'afterScrollVertically', 'afterSelection', 'afterSelectionByProp', 'afterSelectionEnd', 'afterSelectionEndByProp', 'afterSetCellMeta', 'afterSetDataAtCell', 'afterSetDataAtRowProp', 'afterTrimRow', 'afterUndo', 'afterUntrimRow', 'afterUpdateSettings', 'afterValidate', 'afterViewportColumnCalculatorOverride', 'afterViewportRowCalculatorOverride', 'beforeAddChild', 'beforeAutofill', 'beforeAutofillInsidePopulate', 'beforeCellAlignment', 'beforeChange', 'beforeChangeRender', 'beforeColumnMove', 'beforeColumnResize', 'beforeColumnSort', 'beforeContextMenuSetItems', 'beforeCopy', 'beforeCreateCol', 'beforeCreateRow', 'beforeCut', 'beforeDetachChild', 'beforeDrawBorders', 'beforeDropdownMenuSetItems', 'beforeFilter', 'beforeGetCellMeta', 'beforeInit', 'beforeInitWalkontable', 'beforeKeyDown', 'beforeOnCellMouseDown', 'beforeOnCellMouseOut', 'beforeOnCellMouseOver', 'beforePaste', 'beforeRedo', 'beforeRemoveCol', 'beforeRemoveRow', 'beforeRender', 'beforeRenderer', 'beforeRowMove', 'beforeRowResize', 'beforeSetRangeEnd', 'beforeSetRangeStart', 'beforeStretchingColumnWidth', 'beforeTouchScroll', 'beforeUndo', 'beforeValidate', 'beforeValueRender', 'construct', 'hiddenColumn', 'hiddenRow', 'init', 'manualRowHeights', 'modifyAutofillRange', 'modifyCol', 'modifyColHeader', 'modifyColumnHeaderHeight', 'modifyColWidth', 'modifyCopyableRange', 'modifyData', 'modifyRow', 'modifyRowHeader', 'modifyRowHeaderWidth', 'modifyRowHeight', 'modifyRowSourceData', 'modifyTransformEnd', 'modifyTransformStart', 'persistentStateLoad', 'persistentStateReset', 'persistentStateSave', 'skipLengthCache', 'unmodifyCol', 'unmodifyRow'];
 
 @Component({
   selector: 'hotTable',
@@ -16,8 +15,7 @@ export const htEventNames: string[] = ['afterAddChild', 'afterBeginEditing', 'af
   encapsulation: ViewEncapsulation.None,
   styles: [handsontableStyles]
 })
-// tslint:disable-next-line:component-class-suffix
-export class HotTable implements OnInit, OnDestroy, OnChanges {
+export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   @Input() public data: any[] = [];
   @Input() public pagedData: Observable<any[]>;
   @Input() public colHeaders: string[];
@@ -161,10 +159,6 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
   private zoneQueueTimeout = 0;
 
   constructor(private element: ElementRef, private ngZone: NgZone) {
-    // fill events dynamically
-    htEventNames.forEach((eventName: string) => {
-      (this as any)[eventName] = new EventEmitter();
-    });
   }
 
   public getHandsontableInstance(): Handsontable {
@@ -274,23 +268,25 @@ export class HotTable implements OnInit, OnDestroy, OnChanges {
       data: this.data || null
     };
 
-    htEventNames.forEach(eventName => {
-      // Only register the event if the emitter has an observer (i.e., if the output is actually being used)
-      if ((this as any)[eventName].observers.length) {
-        htOptions[eventName] = (...args: any[]) => {
-          let data: any[] = [];
-          // Handsontable event handlers are always called with 6 arguments. Cut off any trailing undefined values.
-          for (let index = args.length; index >= 0; index--) {
-            if (args[index] !== void 0) {
-              data = args.slice(0, index + 1);
-              break;
+    _.forOwn(this, (output, key) => {
+      if (output instanceof EventEmitter) {
+        // Only register the event if the emitter has an observer (i.e., if the output is actually being used)
+        if (output.observers.length) {
+          htOptions[key] = (...args: any[]) => {
+            let data: any[] = [];
+            // Handsontable event handlers are always called with 6 arguments. Cut off any trailing undefined values.
+            for (let index = args.length; index >= 0; index--) {
+              if (args[index] !== void 0) {
+                data = args.slice(0, index + 1);
+                break;
+              }
             }
-          }
-          // Queue all emissions to only cause 1 Zone.run() call per tick.
-          this.queueForRunningInZone(() => {
-            (this as any)[eventName].emit(data);
-          });
-        };
+            // Queue all emissions to only cause 1 Zone.run() call per tick.
+            this.queueForRunningInZone(() => {
+              output.emit(data);
+            });
+          };
+        }
       }
     });
 

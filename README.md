@@ -54,7 +54,7 @@ export class MyModule {
 
 The free version of Handsontable is used by default, but the pro-version could be used as a drop-in replacement.
 
-6. The following methods are available as a public API on HotTable component (which you can access from your parent component with `@ViewChild(HotTable) hotTableComponent`):
+6. The following methods are available as a public API on HotTableComponent (which you can access from your parent component with `@ViewChild(HotTableComponent) hotTableComponent`):
 - `getHandsontableInstance(): Handsontable` - returns the underlying [Handsontable Core instance](https://docs.handsontable.com/Core.html); all registered Handsontable plugins are accessible via [instance.getPlugin()](https://docs.handsontable.com/pro/1.11.0/Core.html#getPlugin)
 
 7. See the [demo](http://valor-software.github.io/ng2-handsontable/) and the [demo sources](https://github.com/valor-software/ng2-handsontable/tree/master/demo/src) for further details.

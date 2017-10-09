@@ -24,6 +24,7 @@
     "test": "ng test -sr",
     "test-cross": "SAUCE=true ng test -sr",
     "test-coverage": "ng test -sr -cc",
+    "test-watch": "npm run pretest && ng test -w",
     "postversion": "run-s changelog git-add git-commit-changelog",
     "git-add": "git add -A",
     "git-commit-changelog": "git commit -am \"chore(changelog): update\"",
