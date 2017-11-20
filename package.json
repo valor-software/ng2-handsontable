@@ -54,7 +54,7 @@
   },
   "homepage": "https://github.com/valor-software/ng2-handsontable#readme",
   "dependencies": {
-    "handsontable": "github:astegmaier/handsontable#fix-typescript-definitions"
+    "handsontable": "github:handsontable/handsontable#59397f7590cf1ebdb0d42c406d9944648098a5f6"
   },
   "devDependencies": {
     "karma-coverage-istanbul-reporter": "1.3.0",
