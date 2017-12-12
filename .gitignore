@@ -18,6 +18,7 @@ yarn.lock
 /coverage/*
 /libpeerconnection.log
 npm-debug.log
+/package-log.json
 
 # ignore build and dist for now
 /dist
