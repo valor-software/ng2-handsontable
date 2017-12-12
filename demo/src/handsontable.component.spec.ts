@@ -1,17 +1,17 @@
 /* tslint:disable:no-any no-magic-numbers no-consecutive-blank-lines max-file-line-count */
 import { async, TestBed, ComponentFixture } from '@angular/core/testing';
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-// tslint:disable-next-line:import-blacklist
+import { Component, NO_ERRORS_SCHEMA, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
-import { htEventNames } from '../../src/handsontable.component';
-import { BasicDemoComponent } from './components/handsontable/basic-demo';
 import { HotTableModule } from '../../src/handsontable.module';
+import { HotTableComponent } from '../../src/handsontable.component';
+import { BasicDemoComponent } from './components/handsontable/basic-demo';
 import { AdvancedDemoComponent } from './components/handsontable/advanced-demo';
 import { SheetDemoComponent } from './components/handsontable/sheet-demo';
 import { FinanceDemoComponent } from './components/handsontable/finance-demo';
 import { ScienceDemoComponent } from './components/handsontable/science-demo';
 import { SportDemoComponent } from './components/handsontable/sport-demo';
 import { DemoModule } from './demo.module';
+import * as Handsontable from 'handsontable';
 
 
 @Component({template: ''})
@@ -20,11 +20,7 @@ class TestComponent {}
 let fixture: ComponentFixture<TestComponent>;
 
 
-describe('HotTable', () => {
-
-  // beforeEach(() => {
-  //   jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
-  // });
+describe('HotTableComponent', () => {
 
   afterEach(() => {
     fixture.destroy();
@@ -251,24 +247,21 @@ function compileTestComponent(template: string, properties?: object) {
     });
 }
 
-function buildTestComponentFromProperties(properties: object) {
+function buildTestComponentFromProperties(inputsAndOutputs: object) {
+  const component = new HotTableComponent(null, null);
   // Build template
   const inputs = ['data', 'pagedData', 'colHeaders', 'columns', 'colWidths', 'options'];
-  const outputs = htEventNames;
   let template = '<hotTable ';
-  for (const input of inputs) {
-    if (input in properties) {
-      template += `[${input}]="${input}"`;
+  _.forOwn(inputsAndOutputs, (value, key) => {
+    if (component[key] instanceof EventEmitter) {
+      template += `(${key})="${key}"`;
+    } else {
+      template += `[${key}]="${key}"`;
     }
-  }
-  for (const ouput of outputs) {
-    if (ouput in properties) {
-      template += `(${ouput})="${ouput}"`;
-    }
-  }
+  });
   template += '><hotTable>';
 
-  return compileTestComponent(template, properties);
+  return compileTestComponent(template, inputsAndOutputs);
 }
 
 /* Retrieve main Handsontable <table> element in component element */
