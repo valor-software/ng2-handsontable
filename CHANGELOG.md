@@ -1,3 +1,32 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/valor-software/ng2-handsontable/compare/v1.0.4...v2.0.0) (2017-12-12)
+
+
+### Bug Fixes
+
+* **component:** Updates inline handsontable css ([baf3194](https://github.com/valor-software/ng2-handsontable/commit/baf3194)), closes [#483](https://github.com/valor-software/ng2-handsontable/issues/483)
+* **module:** Use handsontable branch with fixes typings temporarily ([f58d18d](https://github.com/valor-software/ng2-handsontable/commit/f58d18d))
+* **module:** Uses handsontable commit with fixed typing temporarily ([cf5714f](https://github.com/valor-software/ng2-handsontable/commit/cf5714f))
+
+
+### Code Refactoring
+
+* **component:** Adds Component suffix & removes output defs ([611318d](https://github.com/valor-software/ng2-handsontable/commit/611318d))
+
+
+### Features
+
+* **module:** Updates to Handsontable[@0](https://github.com/0).34.4 ([84a3938](https://github.com/valor-software/ng2-handsontable/commit/84a3938)), closes [#479](https://github.com/valor-software/ng2-handsontable/issues/479)
+* **module:** Updates to Handsontable[@0](https://github.com/0).35.0 ([cf97518](https://github.com/valor-software/ng2-handsontable/commit/cf97518))
+
+
+### BREAKING CHANGES
+
+* **component:** `HotTable` was renamed to `HotTableComponentComponent`
+* **module:** Handsontable@0.34 requires 'handsontable' to be imported before zone.js, e.g. in polyfills.ts. See https://github.com/handsontable/handsontable/issues/4452
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/valor-software/ng2-handsontable/compare/v1.0.2...v1.0.4) (2017-06-07)
 
