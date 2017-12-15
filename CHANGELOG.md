@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/valor-software/ng2-handsontable/compare/2.0.0...v2.0.1) (2017-12-15)
+
+
+### Bug Fixes
+
+* **demo:** Update numeric formats ([8a7b278](https://github.com/valor-software/ng2-handsontable/commit/8a7b278))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/valor-software/ng2-handsontable/compare/v1.0.4...v2.0.0) (2017-12-12)
 
