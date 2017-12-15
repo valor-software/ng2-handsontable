@@ -81,7 +81,7 @@ export class PersonalDemoComponent {
         const a42 = Array.apply(0, Array(42)).map((x, y) => y + 1);
         if (a42.indexOf(row) !== -1 && col >= 1) {
           cellProperties.type = 'numeric';
-          cellProperties.format = '$0,0.00';
+          cellProperties.numericFormat = { pattern: '$0,0.00', culture: 'en-US' };
         }
 
         return cellProperties;

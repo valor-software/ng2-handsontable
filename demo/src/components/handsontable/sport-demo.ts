@@ -26,11 +26,11 @@ export class SportDemoComponent {
         {data: 0, type: 'numeric'},
         {data: 1, type: 'text'},
         {data: 2, renderer: 'html', width: 200},
-        {data: 3, type: 'numeric', format: '$0,0.00'},
-        {data: 4, type: 'numeric', format: '0.00%'},
-        {data: 5, type: 'numeric', format: '0.00%'},
-        {data: 6, type: 'numeric', format: '$0,0.00'},
-        {data: 7, type: 'numeric', format: '$0,0.00'}
+        {data: 3, type: 'numeric', numericFormat: { pattern: '$0,0.00', culture: 'en-US' }},
+        {data: 4, type: 'numeric', numericFormat: { pattern: '0.00%' }},
+        {data: 5, type: 'numeric', numericFormat: { pattern: '0.00%' }},
+        {data: 6, type: 'numeric', numericFormat: { pattern: '$0,0.00', culture: 'en-US' }},
+        {data: 7, type: 'numeric', numericFormat: { pattern: '$0,0.00', culture: 'en-US' }}
       ],
       cells: (row, col, prop) => {
         const cellProperties: any = {};
