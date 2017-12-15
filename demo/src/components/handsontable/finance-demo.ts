@@ -16,11 +16,11 @@ export class FinanceDemoComponent {
     this.data = getFinanceData();
     this.colHeaders = ['Price', 'Date', '1D Chg', 'YTD Chg', 'Vol BTC'];
     this.columns = [
-      {type: 'numeric', format: '$0,0.00'},
+      {type: 'numeric', numericFormat: { pattern: '$0,0.00', culture: 'en-US' }},
       {type: 'date', dateFormat: 'DD/MM/YYYY', correctFormat: true},
-      {type: 'numeric', format: '0.00%'},
-      {type: 'numeric', format: '0.00%'},
-      {type: 'numeric', format: '0.00'}
+      {type: 'numeric', numericFormat: { pattern: '0.00%' }},
+      {type: 'numeric', numericFormat: { pattern: '0.00%' }},
+      {type: 'numeric', numericFormat: { pattern: '0.00' }}
     ];
     this.options = {
       height: 396,

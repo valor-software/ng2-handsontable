@@ -37,7 +37,7 @@ export class BasicDemoComponent {
     {
       data: 'price',
       type: 'numeric',
-      format: '$ 0,0.00'
+      numericFormat: { pattern: '$0,0.00', culture: 'en-US' }
     },
     {
       data: 'isActive',
