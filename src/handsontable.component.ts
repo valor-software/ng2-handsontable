@@ -11,6 +11,7 @@ import * as _ from 'lodash';
 @Component({
   selector: 'hot-table',
   template: ' ',
+  // tslint:disable-next-line:use-view-encapsulation
   encapsulation: ViewEncapsulation.None,
   styles: [handsontableStyles]
 })
@@ -222,7 +223,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
         if (typeof column.source === 'string') {
           const relatedField: string = column.source;
           column.source = (_query: any, process: any) => {
-            const row: number = inst.getSelected()[0];
+            const row: number = inst.getSelected()[0][0];
             const data: any = dataSet[row];
 
             if (!data) {
