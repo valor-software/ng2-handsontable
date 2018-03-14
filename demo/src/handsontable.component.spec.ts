@@ -251,7 +251,7 @@ function buildTestComponentFromProperties(inputsAndOutputs: object) {
   const component = new HotTableComponent(null, null);
   // Build template
   const inputs = ['data', 'pagedData', 'colHeaders', 'columns', 'colWidths', 'options'];
-  let template = '<hotTable ';
+  let template = '<hot-table ';
   _.forOwn(inputsAndOutputs, (value, key) => {
     if (component[key] instanceof EventEmitter) {
       template += `(${key})="${key}"`;
@@ -259,7 +259,7 @@ function buildTestComponentFromProperties(inputsAndOutputs: object) {
       template += `[${key}]="${key}"`;
     }
   });
-  template += '><hotTable>';
+  template += '><hot-table>';
 
   return compileTestComponent(template, inputsAndOutputs);
 }

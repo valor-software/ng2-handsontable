@@ -8,10 +8,9 @@ import * as Handsontable from 'handsontable';
 import { handsontableStyles } from './handsontable.component.css';
 import * as _ from 'lodash';
 
-
 @Component({
-  selector: 'hotTable',
-  template: '',
+  selector: 'hot-table',
+  template: ' ',
   encapsulation: ViewEncapsulation.None,
   styles: [handsontableStyles]
 })
