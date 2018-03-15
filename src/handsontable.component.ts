@@ -8,6 +8,9 @@ import * as Handsontable from 'handsontable';
 import { handsontableStyles } from './handsontable.component.css';
 import * as _ from 'lodash';
 
+export type TriggerableInputProperty = 'data' | 'options' | 'colHeaders' | 'colWidths' | 'columns';
+const optionsInputProperties: TriggerableInputProperty[] = ['options', 'colHeaders', 'colWidths', 'columns'];
+
 @Component({
   selector: 'hot-table',
   template: ' ',
@@ -161,8 +164,26 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private element: ElementRef, private ngZone: NgZone) {
   }
 
+  /** Get handsontable instance. */
   public getHandsontableInstance(): Handsontable {
     return this.inst;
+  }
+
+  /**
+   * Trigger the OnChanges logic for any of the given input properties, in case they were changed partially,
+   * rather than replaced by a new object. Angular would pick up the latter in ngOnChanges(), but not the former.
+   */
+  public triggerOnChanges(properties: TriggerableInputProperty[]): void {
+    const contains = (testProperties:  TriggerableInputProperty[]) =>
+      _.intersection(properties, testProperties).length > 0;
+    if (this.inst) {
+      if (contains(optionsInputProperties)) {
+        this.inst.updateSettings(this.getCurrentOptions(), false);
+      }
+      if (contains(['data'])) {
+        this.inst.loadData(this.data);
+      }
+    }
   }
 
   ngOnInit() {
@@ -204,13 +225,17 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if ('options' in changes && this.inst) {
-      this.inst.updateSettings(this.getCurrentOptions(), false);
+    const properties: TriggerableInputProperty[] = [];
+    for (const prop of optionsInputProperties) {
+      if (changes[prop] && !changes[prop].isFirstChange()) {
+        properties.push(prop);
+      }
     }
     // tslint:disable-next-line:no-string-literal
     if (changes['data'] && !changes['data'].isFirstChange()) {
-      this.inst.loadData(this.data);
+      properties.push('data');
     }
+    this.triggerOnChanges(properties);
   }
 
   private parseAutoComplete(options: any) {
@@ -290,7 +315,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
       }
     });
 
-    const additionalFields: string[] = ['colHeaders', 'colWidths', 'columns'];
+    const additionalFields: TriggerableInputProperty[] = ['colHeaders', 'colWidths', 'columns'];
     additionalFields.forEach(field => {
       if ((this as any)[field]) {
         Object.assign(htOptions, {

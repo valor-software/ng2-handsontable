@@ -1,6 +1,6 @@
 {
   "name": "ng2-handsontable",
-  "version": "2.1.0-rc.2",
+  "version": "2.1.0-rc.3",
   "dependencies": {
     "handsontable": "*"
   }
