@@ -7,3 +7,5 @@ declare module jasmine {
     toHaveCssClass(expected: any): boolean;
   }
 }
+
+declare const require: (module: string) => any;
