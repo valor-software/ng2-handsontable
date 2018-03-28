@@ -49,7 +49,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   @Output() public afterDropdownMenuDefaultOptions = new EventEmitter();
   @Output() public afterDropdownMenuHide = new EventEmitter();
   @Output() public afterDropdownMenuShow = new EventEmitter();
-  @Output() public afterePaste = new EventEmitter();
+  @Output() public afterPaste = new EventEmitter();
   @Output() public afterFilter = new EventEmitter();
   @Output() public afterGetCellMeta = new EventEmitter();
   @Output() public afterGetColHeader = new EventEmitter();
