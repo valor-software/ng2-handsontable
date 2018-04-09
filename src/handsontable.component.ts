@@ -171,10 +171,11 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   /**
-   * Trigger the OnChanges logic for any of the given input properties, in case they were changed partially,
-   * rather than replaced by a new object. Angular would pick up the latter in ngOnChanges(), but not the former.
+   * Mark any of the given input properties as changed, in case they were changed partially,
+   * rather than replaced by a new object. The component would pick up the latter through Angular's
+   * ngOnChanges(), but not the former.
    */
-  public triggerOnChanges(properties: TriggerableInputProperty[]): void {
+  public markAsChanged(properties: TriggerableInputProperty[]): void {
     const contains = (testProperties:  TriggerableInputProperty[]) =>
       _.intersection(properties, testProperties).length > 0;
     if (this.inst) {
@@ -237,7 +238,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
     if (changes['data'] && !changes['data'].isFirstChange()) {
       properties.push('data');
     }
-    this.triggerOnChanges(properties);
+    this.markAsChanged(properties);
   }
 
   private parseAutoComplete(options: any) {

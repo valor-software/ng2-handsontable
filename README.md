@@ -54,8 +54,7 @@ The free version of Handsontable is used by default, but the pro-version could b
 
 5. The following methods are available as a public API on HotTableComponent (which you can access from your parent component with `@ViewChild(HotTableComponent) hotTableComponent`):
 - `getHandsontableInstance(): Handsontable` - returns the underlying [Handsontable Core instance](https://docs.handsontable.com/Core.html); all registered Handsontable plugins are accessible via [instance.getPlugin()](https://docs.handsontable.com/pro/1.11.0/Core.html#getPlugin)
-- `triggerOnChanges(properties: ('data' | 'options' | 'colHeaders' | 'colWidths' | 'columns')[])`- Call this function to trigger the OnChanges logic for any of the given input properties, in case they were changed partially,
-rather than replaced by a new object. Angular would pick up the latter in ngOnChanges(), but not the former. For example, if another row has been added to the 'data' input array, call `triggerOnChanges(['data'])`.
+- `markAsChanged(properties: ('data' | 'options' | 'colHeaders' | 'colWidths' | 'columns')[])`- Call this function to mark any of the given input properties as changed in case they were changed partially, rather than replaced by a new object. The component picks up the latter through Angular's ngOnChanges(), but not the former. For example, when a new row is added to an existing 'data' input array, call `markAsChanged(['data'])`.
 
 6. See the [demo](http://valor-software.github.io/ng2-handsontable/) and the [demo sources](https://github.com/valor-software/ng2-handsontable/tree/master/demo/src) for further details.
 
