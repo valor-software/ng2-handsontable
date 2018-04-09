@@ -28,11 +28,7 @@ export class BasicDemoComponent {
     },
     {
       data: 'product.description',
-      source: 'product.options',
-      optionField: 'description',
-      type: 'autocomplete',
-      strict: false,
-      visibleRows: 4
+      renderer: 'text'
     },
     {
       data: 'price',
