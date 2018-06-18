@@ -154,6 +154,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   @Output() public skipLengthCache = new EventEmitter();
   @Output() public unmodifyCol = new EventEmitter();
   @Output() public unmodifyRow = new EventEmitter();
+  @Output() public hotInstanceCreated = new EventEmitter();
 
   private inst: Handsontable;
   private view: HTMLElement;
@@ -197,6 +198,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
 
     this.ngZone.runOutsideAngular(() => {
       this.inst = new Handsontable(this.view, options);
+      this.hotInstanceCreated.emit(this.inst);
     });
 
     this.parseAutoComplete(options);
