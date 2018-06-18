@@ -2,8 +2,7 @@
 import { OnInit, OnDestroy, OnChanges, SimpleChanges, Component, EventEmitter,
   ElementRef, Input, Output, NgZone, ViewEncapsulation
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 import * as Handsontable from 'handsontable';
 import { handsontableStyles } from './handsontable.component.css';
 import * as _ from 'lodash';
