@@ -1,3 +1,29 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/valor-software/ng2-handsontable/compare/2.0.1...3.0.0) (2018-06-18)
+
+
+### Bug Fixes
+
+* Add missing runOutsideAngular wrappers ([a5d1380](https://github.com/valor-software/ng2-handsontable/commit/a5d1380)).
+
+
+### Features
+
+* Add hotInstanceCreated output which emits the Handsontable instance on creation ([0bd3691](https://github.com/valor-software/ng2-handsontable/commit/0bd3691)).
+* Add markAsChanged() to mark partial input changes; fixes #482 and #459 ([57da1ec](https://github.com/valor-software/ng2-handsontable/commit/57da1ec)).
+* Update Handsontable dependency to '>= 0.37 < 1.0' ([047285e](https://github.com/valor-software/ng2-handsontable/commit/047285e)).
+* Update demo to Angular 6 ([7ec2e20](https://github.com/valor-software/ng2-handsontable/commit/7ec2e20)).
+* Update global Handsontable css ([6369f97](https://github.com/valor-software/ng2-handsontable/commit/6369f97)).
+
+### BREAKING CHANGES
+
+* Component selector was renamed from `<hotTable>` to `<hot-table>`. The former was correct for directives, but the latter is required for components by some linters. ([
+79a2dfa](https://github.com/valor-software/ng2-handsontable/commit/79a2dfa))
+* Remove autocomplete implementation, which had been broken for a while ([
+a60f8e66](https://github.com/valor-software/ng2-handsontable/commit/a60f8e66)).
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/valor-software/ng2-handsontable/compare/2.0.0...v2.0.1) (2017-12-15)
 

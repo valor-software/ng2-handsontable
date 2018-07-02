@@ -2,8 +2,7 @@
 import { OnInit, OnDestroy, OnChanges, SimpleChanges, Component, EventEmitter,
   ElementRef, Input, Output, NgZone, ViewEncapsulation
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 import * as Handsontable from 'handsontable';
 import { handsontableStyles } from './handsontable.component.css';
 import * as _ from 'lodash';
@@ -156,6 +155,8 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   @Output() public unmodifyRow = new EventEmitter();
   @Output() public hotInstanceCreated = new EventEmitter();
 
+  @Output() public hotInstanceCreated = new EventEmitter<Handsontable>();
+
   private inst: Handsontable;
   private view: HTMLElement;
   private pagedDataSubscription: Subscription;
@@ -171,19 +172,22 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   /**
-   * Trigger the OnChanges logic for any of the given input properties, in case they were changed partially,
-   * rather than replaced by a new object. Angular would pick up the latter in ngOnChanges(), but not the former.
+   * Mark any of the given input properties as changed, in case they were changed partially,
+   * rather than replaced by a new object. The component would pick up the latter through Angular's
+   * ngOnChanges(), but not the former.
    */
-  public triggerOnChanges(properties: TriggerableInputProperty[]): void {
+  public markAsChanged(properties: TriggerableInputProperty[]): void {
     const contains = (testProperties:  TriggerableInputProperty[]) =>
       _.intersection(properties, testProperties).length > 0;
     if (this.inst) {
-      if (contains(optionsInputProperties)) {
-        this.inst.updateSettings(this.getCurrentOptions(), false);
-      }
-      if (contains(['data'])) {
-        this.inst.loadData(this.data);
-      }
+      this.ngZone.runOutsideAngular(() => {
+        if (contains(optionsInputProperties)) {
+          this.inst.updateSettings(this.getCurrentOptions(), false);
+        }
+        if (contains(['data'])) {
+          this.inst.loadData(this.data);
+        }
+      });
     }
   }
 
@@ -201,15 +205,14 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
       this.hotInstanceCreated.emit(this.inst);
     });
 
-    this.parseAutoComplete(options);
-
     if (this.pagedData) {
       this.data = [];
       this.pagedDataSubscription = this.pagedData.subscribe((newPagedData: any) => {
         Array.prototype.push.apply(this.data, newPagedData);
-        this.inst.loadData(this.data);
-        this.parseAutoComplete(options);
-        this.inst.updateSettings(options, false);
+        this.ngZone.runOutsideAngular(() => {
+          this.inst.loadData(this.data);
+          this.inst.updateSettings(options, false);
+        });
       });
     }
   }
@@ -222,7 +225,9 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
       this.pagedDataSubscription.unsubscribe();
     }
     if (this.inst) {
-      this.inst.destroy();
+      this.ngZone.runOutsideAngular(() => {
+        this.inst.destroy();
+      });
     }
   }
 
@@ -237,39 +242,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
     if (changes['data'] && !changes['data'].isFirstChange()) {
       properties.push('data');
     }
-    this.triggerOnChanges(properties);
-  }
-
-  private parseAutoComplete(options: any) {
-    const inst = this.inst;
-    const columns = this.columns || options.columns;
-    const dataSet = options.data;
-
-    if (columns) {
-      columns.forEach((column: any) => {
-        if (typeof column.source === 'string') {
-          const relatedField: string = column.source;
-          column.source = (_query: any, process: any) => {
-            const row: number = inst.getSelected()[0][0];
-            const data: any = dataSet[row];
-
-            if (!data) {
-              return;
-            }
-
-            const fieldParts: string[] = relatedField.split('.');
-            let o: any = data;
-            for (const part of fieldParts) {
-              o = o[part];
-            }
-
-            process(o.map((item: any) => {
-              return !column.optionField ? item : item[column.optionField];
-            }));
-          };
-        }
-      });
-    }
+    this.markAsChanged(properties);
   }
 
   private checkInputs(): boolean {
