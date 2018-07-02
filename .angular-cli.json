@@ -14,6 +14,8 @@
       "main": "main.ts",
       "test": "../../scripts/test.ts",
       "tsconfig": "tsconfig.json",
+      "polyfills": "polyfills.ts",
+      "testTsconfig": "tsconfig.spec.json",
       "prefix": "",
       "mobile": false,
       "styles": [
