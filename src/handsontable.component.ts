@@ -153,8 +153,7 @@ export class HotTableComponent implements OnInit, OnDestroy, OnChanges {
   @Output() public skipLengthCache = new EventEmitter();
   @Output() public unmodifyCol = new EventEmitter();
   @Output() public unmodifyRow = new EventEmitter();
-  @Output() public hotInstanceCreated = new EventEmitter();
-
+  
   @Output() public hotInstanceCreated = new EventEmitter<Handsontable>();
 
   private inst: Handsontable;
