@@ -9,7 +9,7 @@ Native Angular2+ wrapper for [Handsontable](https://github.com/handsontable/hand
 
 ## Quick start
 
-1. Add ***ng2-handsontable*** to your package.json or install with `npm i ng2-handsontable --save`.
+1. Add ***ng2-handsontable*** to your package.json or install with `npm i ng2-handsontable --save`. **The latest version of ng2-handsontable only works for Angular5+. For Angular2 or Angular4 use ng2-handsontable@2.**
 
 2. If you are using SystemJS, add the ng2-handsontable path to your SystemJS.config.js: `'ng2-handsontable': 'node_modules/ng2-handsontable/bundles/ng2-handsontable.umd.js'`. Webpack (used by Angular-CLI) picks up the path automatically.
 
