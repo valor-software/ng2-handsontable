@@ -53,6 +53,9 @@
     "url": "https://github.com/valor-software/ng2-handsontable/issues"
   },
   "homepage": "https://github.com/valor-software/ng2-handsontable#readme",
+  "engines": {
+    "node": ">=6"
+  },
   "dependencies": {
     "handsontable": ">= 0.37 < 1.0"
   },
