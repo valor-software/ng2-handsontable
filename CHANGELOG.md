@@ -17,6 +17,7 @@
 
 ### BREAKING CHANGES
 
+* Support for Angular versions 2 and 4 was dropped. **ng2-handsontable@3.x will only work with Angular5+.**
 * Component selector was renamed from `<hotTable>` to `<hot-table>`. The former was correct for directives, but the latter is required for components by some linters. ([
 79a2dfa](https://github.com/valor-software/ng2-handsontable/commit/79a2dfa))
 * Remove autocomplete implementation, which had been broken for a while ([
